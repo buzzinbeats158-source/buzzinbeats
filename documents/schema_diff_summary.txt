@@ -1,0 +1,18 @@
+=== analytics_events ===
+  NULLABILITY DIFF: event_type: nullable MariaDB=1 Postgres=
+=== payments ===
+  POSTGRES-ONLY: razorpay_order_id, razorpay_payment_id, razorpay_signature
+  NULLABILITY DIFF: amount: nullable MariaDB=1 Postgres=
+  NULLABILITY DIFF: currency: nullable MariaDB=1 Postgres=
+  NULLABILITY DIFF: status: nullable MariaDB=1 Postgres=
+=== subscriptions ===
+  POSTGRES-ONLY: razorpay_subscription_id
+  NULLABILITY DIFF: status: nullable MariaDB=1 Postgres=
+  NULLABILITY DIFF: price: nullable MariaDB=1 Postgres=
+  NULLABILITY DIFF: currency: nullable MariaDB=1 Postgres=
+  NULLABILITY DIFF: started_at: nullable MariaDB=1 Postgres=
+  NULLABILITY DIFF: expires_at: nullable MariaDB=1 Postgres=
+=== users ===
+  MARIADB-ONLY: is_admin, is_blocked
+  POSTGRES-ONLY: scheduled_deletion_at, deletion_notified_10d_at, deletion_notified_5d_at, deletion_notified_1d_at
+  NULLABILITY DIFF: bypass_subscription: nullable MariaDB=1 Postgres=

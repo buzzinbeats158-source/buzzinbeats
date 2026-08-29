@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface-variant": "#53433c",
+                    "on-primary-fixed": "#351000",
+                    "surface-bright": "#ffffff",
+                    "surface-container-high": "#ecebe9",
+                    "outline-variant": "#d8c2b9",
+                    "on-tertiary-fixed-variant": "#004f4f",
+                    "on-primary-fixed-variant": "#7b3100",
+                    "on-surface": "#211711",
+                    "tertiary-fixed": "#9cf1f0",
+                    "tertiary-container": "#002b2b",
+                    "on-primary": "#ffffff",
+                    "outline": "#85736b",
+                    "on-tertiary-fixed": "#002020",
+                    "background": "#FAF9F6",
+                    "on-secondary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "primary-fixed-dim": "#ffb68f",
+                    "primary-fixed": "#ffdbcb",
+                    "surface-dim": "#e5e3e0",
+                    "surface-container-highest": "#e6e5e3",
+                    "secondary-container": "#ffdad2",
+                    "on-secondary-fixed": "#3b0900",
+                    "on-tertiary-container": "#ffffff",
+                    "surface-variant": "#f4dfd6",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed-dim": "#80d5d4",
+                    "primary": "#e06419",
+                    "on-primary-container": "#ffffff",
+                    "surface-container-low": "#f8f7f6",
+                    "surface-container": "#f2f1ef",
+                    "on-secondary-container": "#3b0900",
+                    "inverse-primary": "#ffb68f",
+                    "on-tertiary": "#ffffff",
+                    "secondary": "#FF6347",
+                    "inverse-surface": "#362f2b",
+                    "tertiary": "#006a6a",
+                    "on-background": "#211711",
+                    "secondary-fixed": "#ffdad2",
+                    "surface-tint": "#e06419",
+                    "on-error": "#ffffff",
+                    "primary-container": "#ff7d33",
+                    "on-secondary-fixed-variant": "#930006",
+                    "inverse-on-surface": "#f8f0eb",
+                    "secondary-fixed-dim": "#ffb4a3",
+                    "on-error-container": "#410002",
+                    "surface": "#FAF9F6"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "display": ["Plus Jakarta Sans"],
+                    "body": ["Inter"],
+                    "label": ["Plus Jakarta Sans"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, .font-headline { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .mesh-gradient {
+            background: radial-gradient(at top left, rgba(224, 100, 25, 0.08), transparent 40%),
+                        radial-gradient(at bottom right, rgba(255, 99, 71, 0.08), transparent 40%);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen mesh-gradient flex items-center justify-center p-6 md:p-12">
+<div class="max-w-4xl w-full">
+<!-- Section Header -->
+<div class="mb-10">
+<h1 class="text-display-large text-4xl md:text-5xl font-extrabold tracking-tighter mb-2">Subscription</h1>
+<p class="text-on-surface-variant font-medium">Manage your billing, plans, and resource limits.</p>
+</div>
+<!-- Bento Layout Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Left Column: Active Plan Card -->
+<div class="lg:col-span-7 bg-surface-container-lowest rounded-[2.5rem] p-8 shadow-lg shadow-primary/5 border border-primary/5 relative overflow-hidden group hover:-translate-y-2 transition-all duration-500">
+<!-- Decorative Glow -->
+<div class="absolute -top-12 -right-12 w-32 h-32 bg-primary/10 rounded-full blur-3xl group-hover:bg-primary/20 transition-colors"></div>
+<div class="flex justify-between items-start mb-8">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<span class="label-small bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold tracking-wider flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></span>
+                                ACTIVE
+                            </span>
+<span class="text-on-surface-variant text-sm font-medium">Starter Plan</span>
+</div>
+<h2 class="text-3xl font-bold tracking-tight">Starter Plan</h2>
+</div>
+<div class="text-right">
+<p class="text-2xl font-black text-primary">$19.00</p>
+<p class="text-on-surface-variant text-sm">per month</p>
+</div>
+</div>
+<div class="space-y-6">
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-low p-4 rounded-2xl">
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-1">Billing Cycle</p>
+<p class="font-semibold">Monthly</p>
+</div>
+<div class="bg-surface-container-low p-4 rounded-2xl">
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-1">Days Remaining</p>
+<p class="font-semibold text-primary">12 Days</p>
+</div>
+</div>
+<div class="flex items-center justify-between py-4 border-t border-primary/5">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="calendar_today">calendar_today</span>
+<div>
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-widest">Started On</p>
+<p class="text-sm font-semibold">Oct 12, 2023</p>
+</div>
+</div>
+<div class="flex items-center gap-3 text-right">
+<div>
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-widest">Next Renewal</p>
+<p class="text-sm font-semibold">Nov 12, 2023</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="event_repeat">event_repeat</span>
+</div>
+</div>
+</div>
+<div class="mt-8 flex flex-col sm:flex-row gap-4">
+<button class="flex-1 bg-gradient-to-r from-primary to-secondary text-white font-bold px-8 py-4 rounded-xl shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 active:scale-95 transition-all duration-300">
+                        Change Plan
+                    </button>
+<button class="flex-1 border-2 border-outline-variant text-on-surface font-bold px-8 py-4 rounded-xl hover:bg-surface-container transition-all active:scale-95">
+                        Cancel Plan
+                    </button>
+</div>
+</div>
+<!-- Right Column: Usage & Warnings -->
+<div class="lg:col-span-5 flex flex-col gap-6">
+<!-- Resource Usage Card -->
+<div class="bg-surface-container-lowest rounded-[2rem] p-8 shadow-lg shadow-primary/5 border border-primary/5">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-bold text-xl">Resource Usage</h3>
+<span class="material-symbols-outlined text-primary" data-icon="analytics">analytics</span>
+</div>
+<div class="space-y-6">
+<div>
+<div class="flex justify-between items-end mb-3">
+<div>
+<p class="text-sm font-bold text-on-surface-variant uppercase tracking-widest">Page Quota</p>
+<p class="text-2xl font-black text-error">11 <span class="text-on-surface-variant font-medium text-lg">/ 5 pages</span></p>
+</div>
+<span class="bg-error/10 text-error px-2 py-1 rounded-md text-[10px] font-bold tracking-tighter">OVER LIMIT</span>
+</div>
+<!-- Progress Bar Container -->
+<div class="w-full h-3 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-error rounded-full w-full relative">
+<div class="absolute inset-0 bg-white/20 animate-pulse"></div>
+</div>
+</div>
+</div>
+<ul class="space-y-3">
+<li class="flex items-center gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-xs text-primary" data-icon="check_circle">check_circle</span>
+                                Unlimited API calls
+                            </li>
+<li class="flex items-center gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-xs text-primary" data-icon="check_circle">check_circle</span>
+                                24/7 Priority Support
+                            </li>
+</ul>
+</div>
+</div>
+<!-- Warning Alert -->
+<div class="bg-error-container/40 border border-error/10 rounded-2xl p-6 flex gap-4">
+<div class="bg-error/10 p-2 rounded-lg h-fit">
+<span class="material-symbols-outlined text-error" data-icon="warning">warning</span>
+</div>
+<div>
+<p class="font-bold text-on-error-container mb-1">Limit Reached</p>
+<p class="text-sm text-on-error-container/80 leading-relaxed mb-3">
+                            You've used 220% of your current plan's page quota. Publishing new pages is currently disabled.
+                        </p>
+<a class="inline-flex items-center gap-1.5 text-primary font-bold text-sm hover:underline group" href="#">
+                            Upgrade Now
+                            <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Secondary Info Card -->
+<div class="bg-surface-container rounded-2xl p-6 border border-outline-variant/10">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-surface-bright flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-primary" data-icon="receipt_long">receipt_long</span>
+</div>
+<div>
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-widest">Payment Method</p>
+<p class="font-semibold flex items-center gap-2">
+                                Visa ending in 4242
+                                <span class="material-symbols-outlined text-xs" data-icon="edit">edit</span>
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer / Legal Info -->
+<div class="mt-12 text-center">
+<p class="text-on-surface-variant text-sm font-medium">
+                Need more custom resources? <a class="text-primary hover:underline font-bold" href="#">Contact our sales team</a> for Enterprise solutions.
+            </p>
+</div>
+</div>
+</body></html>

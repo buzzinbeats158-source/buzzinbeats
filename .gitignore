@@ -1,0 +1,12 @@
+node_modules
+graphify-out/
+.env
+.env.*
+*.env
+test credential.txt
+*.log
+*.tar.gz
+status.txt
+*.pem
+*.key
+*.sql

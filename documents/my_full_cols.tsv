@@ -1,0 +1,449 @@
+analytics_events	id	1	bigint(20) unsigned	bigint	NULL	20	0	NO	NULL	auto_increment	PRI
+analytics_events	user_id	2	bigint(20) unsigned	bigint	NULL	20	0	NO	NULL		MUL
+analytics_events	page_id	3	bigint(20) unsigned	bigint	NULL	20	0	YES	NULL		MUL
+analytics_events	product_id	4	bigint(20) unsigned	bigint	NULL	20	0	YES	NULL		MUL
+analytics_events	link_id	5	bigint(20) unsigned	bigint	NULL	20	0	YES	NULL		MUL
+analytics_events	redirect_link_id	6	bigint(20) unsigned	bigint	NULL	20	0	YES	NULL		MUL
+analytics_events	digital_product_id	7	bigint(20) unsigned	bigint	NULL	20	0	YES	NULL		MUL
+analytics_events	event_type	8	enum('page_view','product_click','link_click','redirect_link_click','digital_product_download')	enum	24	NULL	NULL	YES	NULL		
+analytics_events	device_type	9	varchar(10)	varchar	10	NULL	NULL	NO	'desktop'		
+analytics_events	created_at	10	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+analytics_events	updated_at	11	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+backups	id	1	bigint(20) unsigned	bigint	NULL	20	0	NO	NULL	auto_increment	PRI
+backups	name	2	varchar(255)	varchar	255	NULL	NULL	NO	NULL		
+backups	type	3	varchar(255)	varchar	255	NULL	NULL	NO	NULL		
+backups	trigger	4	varchar(255)	varchar	255	NULL	NULL	NO	'manual'		
+backups	destination	5	varchar(255)	varchar	255	NULL	NULL	NO	NULL		
+backups	file_path	6	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+backups	s3_key	7	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+backups	size	8	bigint(20) unsigned	bigint	NULL	20	0	NO	0		
+backups	status	9	varchar(255)	varchar	255	NULL	NULL	NO	NULL		
+backups	stage	10	varchar(255)	varchar	255	NULL	NULL	NO	'pending'		
+backups	progress	11	int(11)	int	NULL	10	0	NO	0		
+backups	files_total	12	int(11)	int	NULL	10	0	NO	0		
+backups	files_done	13	int(11)	int	NULL	10	0	NO	0		
+backups	checksum	14	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+backups	duration	15	int(11)	int	NULL	10	0	YES	NULL		
+backups	error_message	16	text	text	65535	NULL	NULL	YES	NULL		
+backups	includes	17	text	text	65535	NULL	NULL	YES	NULL		
+backups	created_at	18	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+backups	updated_at	19	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+backup_logs	id	1	bigint(20) unsigned	bigint	NULL	20	0	NO	NULL	auto_increment	PRI
+backup_logs	backup_id	2	bigint(20) unsigned	bigint	NULL	20	0	YES	NULL		MUL
+backup_logs	action	3	varchar(255)	varchar	255	NULL	NULL	NO	NULL		
+backup_logs	type	4	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+backup_logs	message	5	text	text	65535	NULL	NULL	NO	NULL		
+backup_logs	details	6	text	text	65535	NULL	NULL	YES	NULL		
+backup_logs	status_color	7	varchar(255)	varchar	255	NULL	NULL	NO	'blue'		
+backup_logs	icon	8	varchar(255)	varchar	255	NULL	NULL	NO	'info'		
+backup_logs	created_at	9	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+backup_logs	updated_at	10	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+backup_settings	id	1	bigint(20) unsigned	bigint	NULL	20	0	NO	NULL	auto_increment	PRI
+backup_settings	key	2	varchar(255)	varchar	255	NULL	NULL	NO	NULL		UNI
+backup_settings	value	3	text	text	65535	NULL	NULL	YES	NULL		
+backup_settings	created_at	4	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+backup_settings	updated_at	5	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+content_page_sections	id	1	bigint(20) unsigned	bigint	NULL	20	0	NO	NULL	auto_increment	PRI
+content_page_sections	content_page_id	2	int(11)	int	NULL	10	0	NO	NULL		MUL
+content_page_sections	section_type	3	enum('product','redirect_link','digital_product')	enum	15	NULL	NULL	NO	NULL		
+content_page_sections	section_order	4	int(10) unsigned	int	NULL	10	0	NO	0		
+content_page_sections	title	5	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+content_page_sections	is_enabled	6	tinyint(1)	tinyint	NULL	3	0	NO	1		
+content_page_sections	settings	7	longtext	longtext	4294967295	NULL	NULL	YES	NULL		
+content_page_sections	created_at	8	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+content_page_sections	updated_at	9	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+countries	id	1	int(11)	int	NULL	10	0	NO	NULL	auto_increment	PRI
+countries	name	2	varchar(255)	varchar	255	NULL	NULL	NO	NULL		
+countries	code	3	varchar(255)	varchar	255	NULL	NULL	NO	NULL		
+countries	currency_code	4	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+countries	currency_symbol	5	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+countries	created_at	6	datetime	datetime	NULL	NULL	NULL	YES	NULL		
+countries	updated_at	7	datetime	datetime	NULL	NULL	NULL	YES	NULL		
+coupons	id	1	bigint(20) unsigned	bigint	NULL	20	0	NO	NULL	auto_increment	PRI
+coupons	code	2	varchar(255)	varchar	255	NULL	NULL	NO	NULL		UNI
+coupons	title	3	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+coupons	description	4	text	text	65535	NULL	NULL	YES	NULL		
+coupons	discount_type	5	enum('flat','percent')	enum	7	NULL	NULL	NO	NULL		
+coupons	discount_value	6	decimal(10,2)	decimal	NULL	10	2	NO	NULL		
+coupons	applies_to_plan	7	enum('all','starter','growth','pro')	enum	7	NULL	NULL	NO	'all'		
+coupons	audience_type	8	enum('all','new_users','existing_users','specific_user')	enum	14	NULL	NULL	NO	'all'		
+coupons	specific_user_id	9	bigint(20) unsigned	bigint	NULL	20	0	YES	NULL		
+coupons	minimum_amount	10	decimal(10,2)	decimal	NULL	10	2	YES	NULL		
+coupons	usage_limit	11	int(10) unsigned	int	NULL	10	0	YES	NULL		
+coupons	used_count	12	int(10) unsigned	int	NULL	10	0	NO	0		
+coupons	starts_at	13	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+coupons	ends_at	14	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+coupons	status	15	enum('active','disabled','expired','scheduled')	enum	9	NULL	NULL	NO	'active'		
+coupons	created_by_admin_id	16	bigint(20) unsigned	bigint	NULL	20	0	YES	NULL		
+coupons	created_at	17	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+coupons	updated_at	18	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+coupon_redemptions	id	1	bigint(20) unsigned	bigint	NULL	20	0	NO	NULL	auto_increment	PRI
+coupon_redemptions	coupon_id	2	bigint(20) unsigned	bigint	NULL	20	0	NO	NULL		MUL
+coupon_redemptions	user_id	3	int(11)	int	NULL	10	0	NO	NULL		MUL
+coupon_redemptions	payment_id	4	bigint(20) unsigned	bigint	NULL	20	0	YES	NULL		
+coupon_redemptions	code_snapshot	5	varchar(255)	varchar	255	NULL	NULL	NO	NULL		
+coupon_redemptions	discount_amount	6	decimal(10,2)	decimal	NULL	10	2	NO	NULL		
+coupon_redemptions	original_amount	7	decimal(10,2)	decimal	NULL	10	2	NO	NULL		
+coupon_redemptions	final_amount	8	decimal(10,2)	decimal	NULL	10	2	NO	NULL		
+coupon_redemptions	used_at	9	timestamp	timestamp	NULL	NULL	NULL	NO	NULL		
+coupon_redemptions	created_at	10	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+coupon_redemptions	updated_at	11	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+digital_products	id	1	bigint(20) unsigned	bigint	NULL	20	0	NO	NULL	auto_increment	PRI
+digital_products	user_id	2	int(11)	int	NULL	10	0	NO	NULL		MUL
+digital_products	page_id	3	int(11)	int	NULL	10	0	NO	NULL		MUL
+digital_products	serial_number	4	int(10) unsigned	int	NULL	10	0	NO	NULL		
+digital_products	title	5	varchar(255)	varchar	255	NULL	NULL	NO	NULL		
+digital_products	description	6	text	text	65535	NULL	NULL	YES	NULL		
+digital_products	cover_image_path	7	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+digital_products	price	8	decimal(10,2)	decimal	NULL	10	2	NO	0.00		
+digital_products	currency_code	9	varchar(255)	varchar	255	NULL	NULL	NO	'INR'		
+digital_products	currency_symbol	10	varchar(255)	varchar	255	NULL	NULL	NO	'₹'		
+digital_products	storage_provider	11	varchar(255)	varchar	255	NULL	NULL	NO	'r2'		
+digital_products	storage_bucket	12	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+digital_products	storage_object_key	13	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+digital_products	original_file_name	14	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+digital_products	mime_type	15	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+digital_products	file_size	16	bigint(20) unsigned	bigint	NULL	20	0	YES	NULL		
+digital_products	delivery_note	17	text	text	65535	NULL	NULL	YES	NULL		
+digital_products	button_text	18	varchar(255)	varchar	255	NULL	NULL	NO	'Download'		
+digital_products	status	19	enum('active','inactive')	enum	8	NULL	NULL	NO	'active'		
+digital_products	clicks	20	bigint(20) unsigned	bigint	NULL	20	0	NO	0		
+digital_products	created_at	21	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+digital_products	updated_at	22	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+digital_products	deleted_at	23	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+digital_product_email_verifications	id	1	bigint(20) unsigned	bigint	NULL	20	0	NO	NULL	auto_increment	PRI
+digital_product_email_verifications	digital_product_sale_id	2	bigint(20) unsigned	bigint	NULL	20	0	NO	NULL		MUL
+digital_product_email_verifications	otp_hash	3	varchar(255)	varchar	255	NULL	NULL	NO	NULL		
+digital_product_email_verifications	attempts	4	int(10) unsigned	int	NULL	10	0	NO	0		
+digital_product_email_verifications	expires_at	5	timestamp	timestamp	NULL	NULL	NULL	NO	NULL		
+digital_product_email_verifications	verified_at	6	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+digital_product_email_verifications	created_at	7	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+digital_product_email_verifications	updated_at	8	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+digital_product_sales	id	1	bigint(20) unsigned	bigint	NULL	20	0	NO	NULL	auto_increment	PRI
+digital_product_sales	digital_product_id	2	bigint(20) unsigned	bigint	NULL	20	0	NO	NULL		MUL
+digital_product_sales	page_id	3	int(11)	int	NULL	10	0	NO	NULL		MUL
+digital_product_sales	seller_user_id	4	int(11)	int	NULL	10	0	NO	NULL		MUL
+digital_product_sales	buyer_name	5	varchar(255)	varchar	255	NULL	NULL	NO	NULL		
+digital_product_sales	buyer_email	6	varchar(255)	varchar	255	NULL	NULL	NO	NULL		MUL
+digital_product_sales	buyer_phone	7	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+digital_product_sales	email_verified_at	8	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+digital_product_sales	amount	9	decimal(10,2)	decimal	NULL	10	2	NO	NULL		
+digital_product_sales	currency	10	varchar(8)	varchar	8	NULL	NULL	NO	'INR'		
+digital_product_sales	razorpay_order_id	11	varchar(255)	varchar	255	NULL	NULL	YES	NULL		MUL
+digital_product_sales	razorpay_payment_id	12	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+digital_product_sales	razorpay_signature	13	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+digital_product_sales	status	14	enum('pending','paid','failed','refunded')	enum	8	NULL	NULL	NO	'pending'		
+digital_product_sales	access_token	15	char(36)	char	36	NULL	NULL	NO	NULL		UNI
+digital_product_sales	purchased_at	16	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+digital_product_sales	download_count	17	int(10) unsigned	int	NULL	10	0	NO	0		
+digital_product_sales	last_downloaded_at	18	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+digital_product_sales	created_at	19	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+digital_product_sales	updated_at	20	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+error_logs	id	1	bigint(20) unsigned	bigint	NULL	20	0	NO	NULL	auto_increment	PRI
+error_logs	reference_id	2	varchar(255)	varchar	255	NULL	NULL	NO	NULL		UNI
+error_logs	user_id	3	bigint(20) unsigned	bigint	NULL	20	0	YES	NULL		
+error_logs	username	4	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+error_logs	url	5	varchar(255)	varchar	255	NULL	NULL	NO	NULL		
+error_logs	method	6	varchar(255)	varchar	255	NULL	NULL	NO	NULL		
+error_logs	message	7	text	text	65535	NULL	NULL	NO	NULL		
+error_logs	stack_trace	8	longtext	longtext	4294967295	NULL	NULL	YES	NULL		
+error_logs	created_at	9	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+error_logs	updated_at	10	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+links	id	1	int(11)	int	NULL	10	0	NO	NULL	auto_increment	PRI
+links	page_id	2	int(11)	int	NULL	10	0	NO	NULL		MUL
+links	title	3	varchar(255)	varchar	255	NULL	NULL	NO	NULL		
+links	url	4	varchar(255)	varchar	255	NULL	NULL	NO	NULL		
+links	icon_path	5	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+links	is_enabled	6	tinyint(1)	tinyint	NULL	3	0	NO	1		
+links	order	7	int(11)	int	NULL	10	0	NO	0		
+links	clicks	8	int(11)	int	NULL	10	0	NO	0		
+links	created_at	9	datetime	datetime	NULL	NULL	NULL	YES	NULL		
+links	updated_at	10	datetime	datetime	NULL	NULL	NULL	YES	NULL		
+link_scan_history	id	1	bigint(20) unsigned	bigint	NULL	20	0	NO	NULL	auto_increment	PRI
+link_scan_history	product_id	2	int(11)	int	NULL	10	0	NO	NULL		MUL
+link_scan_history	checked_at	3	timestamp	timestamp	NULL	NULL	NULL	NO	NULL		
+link_scan_history	status	4	enum('healthy','warning','broken')	enum	7	NULL	NULL	NO	NULL		
+link_scan_history	http_code	5	int(11)	int	NULL	10	0	YES	NULL		
+link_scan_history	response_time_ms	6	int(11)	int	NULL	10	0	YES	NULL		
+link_scan_history	error_message	7	text	text	65535	NULL	NULL	YES	NULL		
+link_scan_history	created_at	8	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+link_scan_history	updated_at	9	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+login_attempts	id	1	bigint(20) unsigned	bigint	NULL	20	0	NO	NULL	auto_increment	PRI
+login_attempts	user_id	2	bigint(20) unsigned	bigint	NULL	20	0	YES	NULL		
+login_attempts	ip_address	3	varchar(255)	varchar	255	NULL	NULL	NO	NULL		
+login_attempts	attempt_count	4	int(11)	int	NULL	10	0	NO	1		
+login_attempts	last_attempt_at	5	timestamp	timestamp	NULL	NULL	NULL	NO	NULL		
+login_attempts	created_at	6	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+login_attempts	updated_at	7	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+otp_codes	id	1	bigint(20) unsigned	bigint	NULL	20	0	NO	NULL	auto_increment	PRI
+otp_codes	user_id	2	bigint(20) unsigned	bigint	NULL	20	0	YES	NULL		
+otp_codes	email	3	varchar(255)	varchar	255	NULL	NULL	NO	NULL		
+otp_codes	otp_hash	4	varchar(255)	varchar	255	NULL	NULL	NO	NULL		
+otp_codes	purpose	5	enum('signup','login','reset_password')	enum	14	NULL	NULL	NO	NULL		
+otp_codes	attempts	6	int(11)	int	NULL	10	0	NO	0		
+otp_codes	expires_at	7	timestamp	timestamp	NULL	NULL	NULL	NO	NULL		
+otp_codes	created_at	8	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+otp_codes	updated_at	9	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+pages	id	1	int(11)	int	NULL	10	0	NO	NULL	auto_increment	PRI
+pages	user_id	2	int(11)	int	NULL	10	0	NO	NULL		MUL
+pages	title	3	varchar(255)	varchar	255	NULL	NULL	NO	NULL		
+pages	slug	4	varchar(255)	varchar	255	NULL	NULL	NO	NULL		
+pages	description	5	text	text	65535	NULL	NULL	YES	NULL		
+pages	banner_path	6	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+pages	is_published	7	tinyint(1)	tinyint	NULL	3	0	NO	1		
+pages	views	8	int(11)	int	NULL	10	0	NO	0		
+pages	created_at	9	datetime	datetime	NULL	NULL	NULL	YES	NULL		
+pages	updated_at	10	datetime	datetime	NULL	NULL	NULL	YES	NULL		
+pages	status	11	varchar(255)	varchar	255	NULL	NULL	NO	'active'		
+pages	qr_color	12	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+pages	qr_logo_path	13	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+pages	serial_number	14	int(11)	int	NULL	10	0	YES	NULL		
+pages	page_id	15	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+pages	deleted_at	16	datetime	datetime	NULL	NULL	NULL	YES	NULL		
+payments	id	1	bigint(20) unsigned	bigint	NULL	20	0	NO	NULL	auto_increment	PRI
+payments	user_id	2	bigint(20) unsigned	bigint	NULL	20	0	NO	NULL		
+payments	subscription_id	3	bigint(20) unsigned	bigint	NULL	20	0	NO	NULL		
+payments	invoice_number	4	varchar(255)	varchar	255	NULL	NULL	NO	NULL		UNI
+payments	amount	5	decimal(10,2)	decimal	NULL	10	2	YES	NULL		
+payments	original_amount	6	decimal(10,2)	decimal	NULL	10	2	YES	NULL		
+payments	discount_amount	7	decimal(10,2)	decimal	NULL	10	2	NO	0.00		
+payments	final_paid_amount	8	decimal(10,2)	decimal	NULL	10	2	YES	NULL		
+payments	coupon_id	9	bigint(20) unsigned	bigint	NULL	20	0	YES	NULL		
+payments	coupon_code	10	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+payments	currency	11	varchar(3)	varchar	3	NULL	NULL	YES	'INR'		
+payments	payment_method	12	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+payments	transaction_id	13	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+payments	status	14	varchar(255)	varchar	255	NULL	NULL	YES	'paid'		
+payments	paid_at	15	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+payments	created_at	16	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+payments	updated_at	17	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+personal_access_tokens	id	1	int(11)	int	NULL	10	0	NO	NULL	auto_increment	PRI
+personal_access_tokens	tokenable_type	2	varchar(255)	varchar	255	NULL	NULL	NO	NULL		
+personal_access_tokens	tokenable_id	3	int(11)	int	NULL	10	0	NO	NULL		
+personal_access_tokens	name	4	varchar(255)	varchar	255	NULL	NULL	NO	NULL		
+personal_access_tokens	token	5	varchar(64)	varchar	64	NULL	NULL	NO	NULL		
+personal_access_tokens	abilities	6	text	text	65535	NULL	NULL	YES	NULL		
+personal_access_tokens	last_used_at	7	datetime	datetime	NULL	NULL	NULL	YES	NULL		
+personal_access_tokens	expires_at	8	datetime	datetime	NULL	NULL	NULL	YES	NULL		
+personal_access_tokens	created_at	9	datetime	datetime	NULL	NULL	NULL	YES	NULL		
+personal_access_tokens	updated_at	10	datetime	datetime	NULL	NULL	NULL	YES	NULL		
+products	id	1	int(11)	int	NULL	10	0	NO	NULL	auto_increment	PRI
+products	user_id	2	int(11)	int	NULL	10	0	NO	NULL		MUL
+products	page_id	3	int(11)	int	NULL	10	0	NO	NULL		MUL
+products	serial_number	4	int(11)	int	NULL	10	0	NO	NULL		
+products	title	5	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+products	link	6	text	text	65535	NULL	NULL	NO	NULL		
+products	image_path	7	varchar(255)	varchar	255	NULL	NULL	NO	NULL		
+products	created_at	8	datetime	datetime	NULL	NULL	NULL	YES	NULL		
+products	updated_at	9	datetime	datetime	NULL	NULL	NULL	YES	NULL		
+products	description	10	text	text	65535	NULL	NULL	YES	NULL		
+products	store_platform	11	text	text	65535	NULL	NULL	YES	NULL		
+products	clicks	12	int(11)	int	NULL	10	0	NO	0		
+products	health_status	13	enum('healthy','warning','broken','unchecked')	enum	9	NULL	NULL	NO	'unchecked'		
+products	last_checked_at	14	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+products	last_http_code	15	int(11)	int	NULL	10	0	YES	NULL		
+products	response_time_ms	16	int(11)	int	NULL	10	0	YES	NULL		
+products	failure_count	17	int(11)	int	NULL	10	0	NO	0		
+products	last_error_message	18	text	text	65535	NULL	NULL	YES	NULL		
+products	last_success_at	19	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+products	notification_sent	20	tinyint(1)	tinyint	NULL	3	0	NO	0		
+products	starting_price	21	decimal(10,2)	decimal	NULL	10	2	YES	NULL		
+products	show_price	22	tinyint(1)	tinyint	NULL	3	0	NO	1		
+products	primary_country_id	23	int(11)	int	NULL	10	0	YES	NULL		
+products	primary_country_name	24	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+products	currency_code	25	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+products	currency_symbol	26	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+redirect_links	id	1	bigint(20) unsigned	bigint	NULL	20	0	NO	NULL	auto_increment	PRI
+redirect_links	user_id	2	int(11)	int	NULL	10	0	NO	NULL		MUL
+redirect_links	page_id	3	int(11)	int	NULL	10	0	NO	NULL		MUL
+redirect_links	serial_number	4	int(10) unsigned	int	NULL	10	0	NO	NULL		
+redirect_links	title	5	varchar(255)	varchar	255	NULL	NULL	NO	NULL		
+redirect_links	description	6	text	text	65535	NULL	NULL	YES	NULL		
+redirect_links	image_path	7	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+redirect_links	destination_url	8	varchar(255)	varchar	255	NULL	NULL	NO	NULL		
+redirect_links	button_text	9	varchar(255)	varchar	255	NULL	NULL	NO	'Visit'		
+redirect_links	open_in_new_tab	10	tinyint(1)	tinyint	NULL	3	0	NO	1		
+redirect_links	status	11	enum('active','inactive')	enum	8	NULL	NULL	NO	'active'		
+redirect_links	clicks	12	bigint(20) unsigned	bigint	NULL	20	0	NO	0		
+redirect_links	created_at	13	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+redirect_links	updated_at	14	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+redirect_links	deleted_at	15	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+redirect_page_products	id	1	bigint(20) unsigned	bigint	NULL	20	0	NO	NULL	auto_increment	PRI
+redirect_page_products	amazon_asin	2	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+redirect_page_products	title	3	varchar(255)	varchar	255	NULL	NULL	NO	NULL		
+redirect_page_products	image_url	4	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+redirect_page_products	product_url	5	varchar(255)	varchar	255	NULL	NULL	NO	NULL		
+redirect_page_products	price	6	decimal(10,2)	decimal	NULL	10	2	YES	NULL		
+redirect_page_products	sort_order	7	int(10) unsigned	int	NULL	10	0	NO	0		
+redirect_page_products	is_active	8	tinyint(1)	tinyint	NULL	3	0	NO	1		
+redirect_page_products	section	9	varchar(255)	varchar	255	NULL	NULL	NO	'trending'		
+redirect_page_products	created_at	10	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+redirect_page_products	updated_at	11	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+redirect_page_settings	id	1	bigint(20) unsigned	bigint	NULL	20	0	NO	NULL	auto_increment	PRI
+redirect_page_settings	page_title	2	varchar(255)	varchar	255	NULL	NULL	NO	'Redirect Page'		
+redirect_page_settings	hero_title	3	varchar(255)	varchar	255	NULL	NULL	NO	'This page is currently unavailable.'		
+redirect_page_settings	hero_subtitle	4	text	text	65535	NULL	NULL	NO	'Please explore featured recommendations or return to the homepage.'		
+redirect_page_settings	button_1_label	5	varchar(255)	varchar	255	NULL	NULL	NO	'Go to Homepage'		
+redirect_page_settings	button_1_url	6	varchar(255)	varchar	255	NULL	NULL	NO	'/'		
+redirect_page_settings	button_1_enabled	7	tinyint(1)	tinyint	NULL	3	0	NO	1		
+redirect_page_settings	button_2_label	8	varchar(255)	varchar	255	NULL	NULL	NO	'Explore Deals'		
+redirect_page_settings	button_2_url	9	varchar(255)	varchar	255	NULL	NULL	NO	'/deals'		
+redirect_page_settings	button_2_enabled	10	tinyint(1)	tinyint	NULL	3	0	NO	1		
+redirect_page_settings	button_3_label	11	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+redirect_page_settings	button_3_url	12	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+redirect_page_settings	button_3_enabled	13	tinyint(1)	tinyint	NULL	3	0	NO	0		
+redirect_page_settings	fallback_landing_url	14	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+redirect_page_settings	fallback_landing_enabled	15	tinyint(1)	tinyint	NULL	3	0	NO	0		
+redirect_page_settings	is_active	16	tinyint(1)	tinyint	NULL	3	0	NO	0		
+redirect_page_settings	created_at	17	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+redirect_page_settings	updated_at	18	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+subscriptions	id	1	bigint(20) unsigned	bigint	NULL	20	0	NO	NULL	auto_increment	PRI
+subscriptions	user_id	2	bigint(20) unsigned	bigint	NULL	20	0	NO	NULL		
+subscriptions	plan	3	varchar(255)	varchar	255	NULL	NULL	NO	NULL		
+subscriptions	billing_cycle	4	varchar(255)	varchar	255	NULL	NULL	NO	NULL		
+subscriptions	status	5	varchar(255)	varchar	255	NULL	NULL	YES	'active'		
+subscriptions	price	6	decimal(10,2)	decimal	NULL	10	2	YES	NULL		
+subscriptions	currency	7	varchar(3)	varchar	3	NULL	NULL	YES	'INR'		
+subscriptions	started_at	8	date	date	NULL	NULL	NULL	YES	NULL		
+subscriptions	expires_at	9	date	date	NULL	NULL	NULL	YES	NULL		
+subscriptions	cancelled_at	10	date	date	NULL	NULL	NULL	YES	NULL		
+subscriptions	created_at	11	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+subscriptions	updated_at	12	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+subscription_plans	id	1	bigint(20) unsigned	bigint	NULL	20	0	NO	NULL	auto_increment	PRI
+subscription_plans	slug	2	varchar(255)	varchar	255	NULL	NULL	NO	NULL		UNI
+subscription_plans	name	3	varchar(255)	varchar	255	NULL	NULL	NO	NULL		
+subscription_plans	monthly_price	4	decimal(10,2)	decimal	NULL	10	2	NO	0.00		
+subscription_plans	yearly_price	5	decimal(10,2)	decimal	NULL	10	2	YES	NULL		
+subscription_plans	yearly_discount_percent	6	tinyint(3) unsigned	tinyint	NULL	3	0	YES	NULL		
+subscription_plans	is_active	7	tinyint(1)	tinyint	NULL	3	0	NO	1		
+subscription_plans	is_popular	8	tinyint(1)	tinyint	NULL	3	0	NO	0		
+subscription_plans	badge_label	9	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+subscription_plans	sort_order	10	tinyint(3) unsigned	tinyint	NULL	3	0	NO	0		
+subscription_plans	created_at	11	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+subscription_plans	updated_at	12	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+subscription_plan_features	id	1	bigint(20) unsigned	bigint	NULL	20	0	NO	NULL	auto_increment	PRI
+subscription_plan_features	plan_id	2	bigint(20) unsigned	bigint	NULL	20	0	NO	NULL		MUL
+subscription_plan_features	max_active_pages	3	smallint(5) unsigned	smallint	NULL	5	0	NO	1		
+subscription_plan_features	extra_pages_enabled	4	tinyint(1)	tinyint	NULL	3	0	NO	0		
+subscription_plan_features	extra_page_price	5	decimal(8,2)	decimal	NULL	8	2	YES	NULL		
+subscription_plan_features	products_per_page	6	smallint(5) unsigned	smallint	NULL	5	0	NO	20		
+subscription_plan_features	redirect_links_per_page	7	smallint(5) unsigned	smallint	NULL	5	0	NO	20		
+subscription_plan_features	digital_products_per_page	8	smallint(5) unsigned	smallint	NULL	5	0	NO	20		
+subscription_plan_features	digital_product_max_file_size_mb	9	smallint(5) unsigned	smallint	NULL	5	0	NO	50		
+subscription_plan_features	extra_products_enabled	10	tinyint(1)	tinyint	NULL	3	0	NO	0		
+subscription_plan_features	extra_product_price	11	decimal(8,2)	decimal	NULL	8	2	YES	NULL		
+subscription_plan_features	template_1_enabled	12	tinyint(1)	tinyint	NULL	3	0	NO	1		
+subscription_plan_features	template_2_enabled	13	tinyint(1)	tinyint	NULL	3	0	NO	0		
+subscription_plan_features	template_3_enabled	14	tinyint(1)	tinyint	NULL	3	0	NO	0		
+subscription_plan_features	template_4_enabled	15	tinyint(1)	tinyint	NULL	3	0	NO	0		
+subscription_plan_features	template_5_enabled	16	tinyint(1)	tinyint	NULL	3	0	NO	0		
+subscription_plan_features	template_6_enabled	17	tinyint(1)	tinyint	NULL	3	0	NO	0		
+subscription_plan_features	auto_product_fetch	18	tinyint(1)	tinyint	NULL	3	0	NO	0		
+subscription_plan_features	branding_removal	19	tinyint(1)	tinyint	NULL	3	0	NO	0		
+subscription_plan_features	personal_logo	20	tinyint(1)	tinyint	NULL	3	0	NO	0		
+subscription_plan_features	section_toggles	21	tinyint(1)	tinyint	NULL	3	0	NO	0		
+subscription_plan_features	bulk_asin_upload	22	tinyint(1)	tinyint	NULL	3	0	NO	0		
+subscription_plan_features	social_media_tags	23	tinyint(1)	tinyint	NULL	3	0	NO	0		
+subscription_plan_features	social_media_links	24	tinyint(1)	tinyint	NULL	3	0	NO	0		
+subscription_plan_features	extra_custom_link	25	tinyint(1)	tinyint	NULL	3	0	NO	0		
+subscription_plan_features	profile_on_landing	26	tinyint(1)	tinyint	NULL	3	0	NO	0		
+subscription_plan_features	product_reorder_highlight	27	tinyint(1)	tinyint	NULL	3	0	NO	0		
+subscription_plan_features	link_monitoring_level	28	enum('off','basic','advanced','advanced_realtime')	enum	17	NULL	NULL	NO	'off'		
+subscription_plan_features	support_level	29	enum('standard','priority','vip')	enum	8	NULL	NULL	NO	'standard'		
+subscription_plan_features	created_at	30	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+subscription_plan_features	updated_at	31	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+support_tickets	id	1	bigint(20) unsigned	bigint	NULL	20	0	NO	NULL	auto_increment	PRI
+support_tickets	ticket_number	2	varchar(255)	varchar	255	NULL	NULL	NO	NULL		
+support_tickets	user_id	3	bigint(20) unsigned	bigint	NULL	20	0	NO	NULL		
+support_tickets	topic	4	varchar(255)	varchar	255	NULL	NULL	NO	NULL		
+support_tickets	message	5	text	text	65535	NULL	NULL	NO	NULL		
+support_tickets	attachment_path	6	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+support_tickets	status	7	varchar(255)	varchar	255	NULL	NULL	NO	'open'		
+support_tickets	created_at	8	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+support_tickets	updated_at	9	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+system_settings	id	1	bigint(20) unsigned	bigint	NULL	20	0	NO	NULL	auto_increment	PRI
+system_settings	key	2	varchar(255)	varchar	255	NULL	NULL	NO	NULL		UNI
+system_settings	value	3	text	text	65535	NULL	NULL	YES	NULL		
+system_settings	created_at	4	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+system_settings	updated_at	5	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+trusted_devices	id	1	bigint(20) unsigned	bigint	NULL	20	0	NO	NULL	auto_increment	PRI
+trusted_devices	user_id	2	bigint(20) unsigned	bigint	NULL	20	0	NO	NULL		
+trusted_devices	device_token	3	varchar(255)	varchar	255	NULL	NULL	NO	NULL		
+trusted_devices	ip_address	4	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+trusted_devices	country	5	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+trusted_devices	user_agent	6	text	text	65535	NULL	NULL	YES	NULL		
+trusted_devices	browser	7	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+trusted_devices	device_name	8	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+trusted_devices	last_login_at	9	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+trusted_devices	created_at	10	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+trusted_devices	updated_at	11	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+users	id	1	int(11)	int	NULL	10	0	NO	NULL	auto_increment	PRI
+users	name	2	varchar(255)	varchar	255	NULL	NULL	NO	NULL		
+users	email	3	varchar(255)	varchar	255	NULL	NULL	NO	NULL		
+users	amazon_store_id	4	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+users	email_verified_at	5	datetime	datetime	NULL	NULL	NULL	YES	NULL		
+users	password	6	varchar(255)	varchar	255	NULL	NULL	NO	NULL		
+users	remember_token	7	varchar(100)	varchar	100	NULL	NULL	YES	NULL		
+users	created_at	8	datetime	datetime	NULL	NULL	NULL	YES	NULL		
+users	updated_at	9	datetime	datetime	NULL	NULL	NULL	YES	NULL		
+users	role	10	varchar(255)	varchar	255	NULL	NULL	NO	'user'		
+users	bypass_subscription	11	tinyint(1)	tinyint	NULL	3	0	YES	0		
+users	profile_photo_path	12	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+users	banner_path	13	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+users	logo_path	14	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+users	logo_enabled	15	tinyint(1)	tinyint	NULL	3	0	NO	0		
+users	header_branding_enabled	16	tinyint(1)	tinyint	NULL	3	0	NO	0		
+users	public_branding_enabled	17	tinyint(1)	tinyint	NULL	3	0	NO	1		
+users	business_title	18	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+users	category	19	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+users	bio	20	text	text	65535	NULL	NULL	YES	NULL		
+users	services_text	21	text	text	65535	NULL	NULL	YES	NULL		
+users	contact_email	22	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+users	contact_phone	23	varchar(20)	varchar	20	NULL	NULL	YES	NULL		
+users	contact_phone_code	24	varchar(10)	varchar	10	NULL	NULL	YES	NULL		
+users	contact_whatsapp	25	varchar(20)	varchar	20	NULL	NULL	YES	NULL		
+users	youtube_handle	26	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+users	instagram_handle	27	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+users	facebook_handle	28	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+users	whatsapp_handle	29	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+users	default_primary_country_code	30	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+users	show_price_pref	31	tinyint(1)	tinyint	NULL	3	0	NO	1		
+users	landing_layout	32	varchar(50)	varchar	50	NULL	NULL	NO	'grid_card'		
+users	landing_layout_is_default	33	tinyint(1)	tinyint	NULL	3	0	NO	1		
+users	username	34	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+users	phone_code	35	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+users	phone	36	varchar(255)	varchar	255	NULL	NULL	YES	NULL		
+users	is_admin	37	tinyint(1)	tinyint	NULL	3	0	YES	0		
+users	is_blocked	38	tinyint(1)	tinyint	NULL	3	0	YES	0		
+user_default_stores	id	1	int(11)	int	NULL	10	0	NO	NULL	auto_increment	PRI
+user_default_stores	user_id	2	int(11)	int	NULL	10	0	NO	NULL		MUL
+user_default_stores	name	3	varchar(255)	varchar	255	NULL	NULL	NO	NULL		
+user_default_stores	is_active	4	tinyint(1)	tinyint	NULL	3	0	NO	1		
+user_default_stores	created_at	5	datetime	datetime	NULL	NULL	NULL	YES	NULL		
+user_default_stores	updated_at	6	datetime	datetime	NULL	NULL	NULL	YES	NULL		
+user_landing_sections	id	1	bigint(20) unsigned	bigint	NULL	20	0	NO	NULL	auto_increment	PRI
+user_landing_sections	user_id	2	int(11)	int	NULL	10	0	NO	NULL		MUL
+user_landing_sections	section_key	3	varchar(50)	varchar	50	NULL	NULL	NO	NULL		
+user_landing_sections	is_enabled	4	tinyint(1)	tinyint	NULL	3	0	NO	0		
+user_landing_sections	sort_order	5	smallint(5) unsigned	smallint	NULL	5	0	NO	0		
+user_landing_sections	created_at	6	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+user_landing_sections	updated_at	7	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+user_social_media	id	1	bigint(20) unsigned	bigint	NULL	20	0	NO	NULL	auto_increment	PRI
+user_social_media	user_id	2	int(11)	int	NULL	10	0	NO	NULL		MUL
+user_social_media	platform	3	varchar(50)	varchar	50	NULL	NULL	NO	NULL		
+user_social_media	label	4	varchar(100)	varchar	100	NULL	NULL	YES	NULL		
+user_social_media	url	5	varchar(500)	varchar	500	NULL	NULL	NO	NULL		
+user_social_media	icon	6	varchar(100)	varchar	100	NULL	NULL	YES	NULL		
+user_social_media	is_enabled	7	tinyint(1)	tinyint	NULL	3	0	NO	0		
+user_social_media	sort_order	8	smallint(5) unsigned	smallint	NULL	5	0	NO	0		
+user_social_media	created_at	9	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+user_social_media	updated_at	10	timestamp	timestamp	NULL	NULL	NULL	YES	NULL		
+user_stores	id	1	int(11)	int	NULL	10	0	NO	NULL	auto_increment	PRI
+user_stores	user_id	2	int(11)	int	NULL	10	0	NO	NULL		MUL
+user_stores	name	3	varchar(255)	varchar	255	NULL	NULL	NO	NULL		
+user_stores	created_at	4	datetime	datetime	NULL	NULL	NULL	YES	NULL		
+user_stores	updated_at	5	datetime	datetime	NULL	NULL	NULL	YES	NULL		
+user_stores	button_color	6	varchar(255)	varchar	255	NULL	NULL	NO	'#FF9900'		
+user_stores	text_color	7	varchar(255)	varchar	255	NULL	NULL	NO	'#FFFFFF'		
+user_stores	is_active	8	tinyint(1)	tinyint	NULL	3	0	NO	1		
+user_stores	button_text	9	varchar(255)	varchar	255	NULL	NULL	YES	NULL		

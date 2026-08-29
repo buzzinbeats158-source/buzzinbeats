@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Broken Link Monitoring | BuzzinBeats</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface": "#FAF9F6",
+                        "inverse-primary": "#ffb68f",
+                        "surface-container-highest": "#e6e5e3",
+                        "on-tertiary-fixed": "#002020",
+                        "on-tertiary-container": "#ffffff",
+                        "on-secondary-fixed-variant": "#930006",
+                        "tertiary-fixed-dim": "#80d5d4",
+                        "primary-fixed-dim": "#ffb68f",
+                        "on-primary-container": "#ffffff",
+                        "secondary-container": "#ffdad2",
+                        "on-secondary-fixed": "#3b0900",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#9cf1f0",
+                        "surface-variant": "#f4dfd6",
+                        "primary-container": "#ff7d33",
+                        "on-primary-fixed-variant": "#7b3100",
+                        "on-error": "#ffffff",
+                        "on-background": "#211711",
+                        "on-tertiary-fixed-variant": "#004f4f",
+                        "surface-bright": "#ffffff",
+                        "surface-tint": "#e06419",
+                        "inverse-surface": "#362f2b",
+                        "surface-container-high": "#ecebe9",
+                        "outline-variant": "#d8c2b9",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-low": "#f8f7f6",
+                        "secondary": "#FF6347",
+                        "primary-fixed": "#ffdbcb",
+                        "on-secondary-container": "#3b0900",
+                        "background": "#FAF9F6",
+                        "outline": "#85736b",
+                        "on-surface-variant": "#53433c",
+                        "tertiary-container": "#002b2b",
+                        "surface-container": "#f2f1ef",
+                        "secondary-fixed": "#ffdad2",
+                        "error": "#ba1a1a",
+                        "primary": "#e06419",
+                        "secondary-fixed-dim": "#ffb4a3",
+                        "on-primary-fixed": "#351000",
+                        "inverse-on-surface": "#f8f0eb",
+                        "on-surface": "#211711",
+                        "tertiary": "#006a6a",
+                        "on-primary": "#ffffff",
+                        "surface-dim": "#e5e3e0",
+                        "on-error-container": "#410002"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Inter"],
+                        "label": ["Plus Jakarta Sans"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FAF9F6;
+            color: #211711;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .mesh-gradient {
+            background: radial-gradient(circle at 0% 0%, rgba(224, 100, 25, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 100% 100%, rgba(255, 99, 71, 0.08) 0%, transparent 50%);
+        }
+    </style>
+</head>
+<body class="min-h-screen mesh-gradient selection:bg-primary-fixed selection:text-on-primary-fixed">
+<main class="py-12 px-6 max-w-screen-2xl mx-auto space-y-8">
+<!-- Summary Stat Cards -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Healthy -->
+<div class="bg-surface-bright p-6 rounded-[1.5rem] border border-primary/5 shadow-lg transition-transform hover:-translate-y-1">
+<div class="flex justify-between items-start">
+<div class="p-2 bg-green-50 text-green-600 rounded-xl">
+<span class="material-symbols-outlined">check_circle</span>
+</div>
+<span class="text-xs font-bold uppercase tracking-widest text-green-600 bg-green-50 px-2 py-1 rounded-full">Optimal</span>
+</div>
+<div class="mt-4">
+<h3 class="text-3xl font-black text-on-background">124</h3>
+<p class="text-stone-500 font-medium">Healthy Links</p>
+</div>
+</div>
+<!-- Warning -->
+<div class="bg-surface-bright p-6 rounded-[1.5rem] border border-primary/5 shadow-lg transition-transform hover:-translate-y-1">
+<div class="flex justify-between items-start">
+<div class="p-2 bg-amber-50 text-amber-600 rounded-xl">
+<span class="material-symbols-outlined">warning</span>
+</div>
+<span class="text-xs font-bold uppercase tracking-widest text-amber-600 bg-amber-50 px-2 py-1 rounded-full">Pending</span>
+</div>
+<div class="mt-4">
+<h3 class="text-3xl font-black text-on-background">8</h3>
+<p class="text-stone-500 font-medium">Warning Status</p>
+</div>
+</div>
+<!-- Broken -->
+<div class="bg-surface-bright p-6 rounded-[1.5rem] border border-primary/5 shadow-lg transition-transform hover:-translate-y-1">
+<div class="flex justify-between items-start">
+<div class="p-2 bg-error-container text-error rounded-xl">
+<span class="material-symbols-outlined">link_off</span>
+</div>
+<span class="text-xs font-bold uppercase tracking-widest text-error bg-error-container px-2 py-1 rounded-full">Critical</span>
+</div>
+<div class="mt-4">
+<h3 class="text-3xl font-black text-on-background">3</h3>
+<p class="text-stone-500 font-medium">Broken Links</p>
+</div>
+</div>
+<!-- Last Scan -->
+<div class="bg-surface-bright p-6 rounded-[1.5rem] border border-primary/5 shadow-lg transition-transform hover:-translate-y-1">
+<div class="flex justify-between items-start">
+<div class="p-2 bg-primary/10 text-primary rounded-xl">
+<span class="material-symbols-outlined">history</span>
+</div>
+</div>
+<div class="mt-4">
+<h3 class="text-3xl font-black text-on-background">2h ago</h3>
+<p class="text-stone-500 font-medium">Last Scan Duration</p>
+</div>
+</div>
+</section>
+<!-- Filters Section -->
+<section class="bg-white p-4 rounded-2xl shadow-sm border border-primary/5 flex flex-col md:flex-row gap-4 items-center">
+<div class="relative w-full md:max-w-md">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-stone-400">search</span>
+<input class="w-full pl-12 pr-4 py-3 bg-surface-container-low border-none rounded-xl focus:ring-2 focus:ring-primary/20 transition-all text-on-surface" placeholder="Search by product name or URL..." type="text"/>
+</div>
+<div class="flex gap-3 w-full md:w-auto">
+<select class="bg-surface-container-low border-none rounded-xl px-4 py-3 text-sm font-medium text-on-surface-variant focus:ring-2 focus:ring-primary/20 cursor-pointer">
+<option>All Stores</option>
+<option>Amazon Global</option>
+<option>Best Buy</option>
+<option>Official Brand Store</option>
+</select>
+<select class="bg-surface-container-low border-none rounded-xl px-4 py-3 text-sm font-medium text-on-surface-variant focus:ring-2 focus:ring-primary/20 cursor-pointer">
+<option>All Issues</option>
+<option>404 Not Found</option>
+<option>Timeout</option>
+<option>Redirect Loop</option>
+</select>
+<button class="ml-auto md:ml-0 p-3 bg-surface-container-low text-stone-600 rounded-xl hover:bg-primary/5 hover:text-primary transition-all">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+</div>
+</section>
+<!-- Main Content Area: Monitoring Table & Issue Details -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+<!-- Left Column: Monitoring Table -->
+<div class="lg:col-span-2 bg-surface-bright rounded-[2rem] border border-primary/5 shadow-xl overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/50">
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-widest text-stone-500">Product Link</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-widest text-stone-500">Store</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-widest text-stone-500">Status</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-widest text-stone-500">Stock Status</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-widest text-stone-500">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-primary/5">
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 bg-surface-container rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Sony WH-1000XM5" class="h-full w-full object-cover" data-alt="Premium black wireless headphones on a clean studio background with soft highlights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmoKHfqLNVRnMhHWpPwVjI4oU2fXYVq8sz3ohc4932Wxk95A9QL_JAr7CzYBGG6okqKkk-ci96j-OyzH7iMIGu9Y6IR8zLmz00ao6zH29gFSb7S6UCq7z8mn0CsjK741oV8ZHXSYQs2hXdE91eGqKvo9baRz9rChXg0UuRgySkZtzH18rEmwx1pD87XBneT0tIWCLmJNmBTnzQWabu7YQsI8wvAZwyVY7RWzCNshPwbS_-7C8RBJwGSktIJrs4vLGt0JVyCahIYX4"/>
+</div>
+<div>
+<p class="font-bold text-on-background group-hover:text-primary transition-colors">Sony WH-1000XM5</p>
+<p class="text-xs text-stone-400 truncate max-w-[200px]">https://amazon.com/sony-wh1000xm5/dp/...</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="text-sm font-medium text-stone-600">Amazon US</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2 text-error font-bold text-xs uppercase tracking-tight">
+<span class="h-2 w-2 rounded-full bg-error animate-pulse"></span>
+                                    404 Error
+                                </div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-error-container text-error">Out of Stock</span>
+</td>
+<td class="px-6 py-5">
+<button class="text-primary font-bold text-sm hover:underline">Inspect</button>
+</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors group bg-primary/5 border-l-4 border-primary">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 bg-surface-container rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Nike Air Max" class="h-full w-full object-cover" data-alt="Red and white Nike Air Max sneaker dynamic profile view on a minimal gray background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCq3a5YSvNAxgS7bIf0OXUNZf3tKrc7A1xvpiKQUeCYEnaRFdNTBMj2m-clpJ9dH2ZweIrpYrmsw1qnA4WFOWf0na2HquSiaG2h1EvQrdcW1ayhqWBe2d1uj-WlPahXBVA9GUmRHXzCPLHelGgv8pBmhj8qZm9UUcaqiELxVUIyEZ9BVzBhg6vqNb57qmQLQ9tGeKet_ikJO8IULwJahIF4bIumFa4n-uGitufMPLoVtnFQApBszVrDvOHDPZa0Ls73_qDsIHucn6I"/>
+</div>
+<div>
+<p class="font-bold text-on-background group-hover:text-primary transition-colors">Nike Air Max 270</p>
+<p class="text-xs text-stone-400 truncate max-w-[200px]">https://nike.com/air-max-270-exclusive</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="text-sm font-medium text-stone-600">Nike Official</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2 text-error font-bold text-xs uppercase tracking-tight">
+<span class="h-2 w-2 rounded-full bg-error animate-pulse"></span>
+                                    404 Error
+                                </div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-green-100 text-green-700">In Stock</span>
+</td>
+<td class="px-6 py-5 text-primary font-black text-sm">Active</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 bg-surface-container rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Running Shoes" class="h-full w-full object-cover" data-alt="Pair of sleek black performance running shoes angled view in bright studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7JX3DbFxqj7uZkAn2uTYlESkCXQ7QuH4_uGN06_1XoWEwhIRhQd9JBg3BCXgV-SZQju2a0sU2Ry5Ax4tqppysXR9FCxvAH886-f3PMQHbGpLAPTWWRz_-k2gsBYT4vyWI7LLqgK6KqCv2K1SW6PdqFFOHVqcAAo0ONGIHN1ZBemDdN7MmZ-ordFswhONU8vhb2PchBRhz4oPrCAMgs4UexlnmeHQVEZdokHB7LTT4lTvcONf1NcOr7IqwOZD9f1X2DVvxrAl7sdo"/>
+</div>
+<div>
+<p class="font-bold text-on-background group-hover:text-primary transition-colors">Performance Run v4</p>
+<p class="text-xs text-stone-400 truncate max-w-[200px]">https://bestbuy.com/run-v4-special-edition</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="text-sm font-medium text-stone-600">Best Buy</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2 text-amber-600 font-bold text-xs uppercase tracking-tight">
+<span class="h-2 w-2 rounded-full bg-amber-500"></span>
+                                    Slow Response
+                                </div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-green-100 text-green-700">In Stock</span>
+</td>
+<td class="px-6 py-5">
+<button class="text-primary font-bold text-sm hover:underline">Inspect</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-6 bg-surface-container-low flex justify-between items-center">
+<p class="text-sm text-stone-500 font-medium">Showing 1-10 of 135 links</p>
+<div class="flex gap-2">
+<button class="p-2 rounded-lg border border-outline-variant hover:bg-white transition-all"><span class="material-symbols-outlined text-sm">chevron_left</span></button>
+<button class="p-2 rounded-lg border border-outline-variant bg-primary text-white transition-all font-bold text-sm px-4">1</button>
+<button class="p-2 rounded-lg border border-outline-variant hover:bg-white transition-all font-bold text-sm px-4">2</button>
+<button class="p-2 rounded-lg border border-outline-variant hover:bg-white transition-all"><span class="material-symbols-outlined text-sm">chevron_right</span></button>
+</div>
+</div>
+</div>
+<!-- Right Column: Issue Details Content Block -->
+<aside class="sticky top-12 space-y-6">
+<div class="bg-surface-bright rounded-[2.5rem] p-8 border border-primary/10 shadow-2xl overflow-hidden relative">
+<!-- Subtle Glow -->
+<div class="absolute -top-12 -right-12 w-32 h-32 bg-primary/10 rounded-full blur-3xl"></div>
+<div class="relative">
+<header class="flex justify-between items-start mb-6">
+<div>
+<h2 class="text-2xl font-extrabold tracking-tight text-on-background">Issue Details</h2>
+<p class="text-sm text-stone-500 font-medium mt-1">Ref: #ERR-404-XM5</p>
+</div>
+<span class="px-3 py-1 bg-error-container text-error text-[10px] font-black uppercase tracking-widest rounded-full">Critical</span>
+</header>
+<div class="space-y-6">
+<!-- Product Summary -->
+<div class="flex items-center gap-4 bg-surface-container-low p-4 rounded-2xl border border-primary/5">
+<img alt="Sony WH-1000XM5" class="w-16 h-16 rounded-xl object-cover shadow-md" data-alt="Close up of Sony WH-1000XM5 headphones focusing on the premium texture and logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdVZGA84_brGdLFMLwsZJidxRkN9QKsqsqVWKrsFuhGpYhjdDK23eUKgKSVKaLsK-Pso2Z3e-F0F8AbJEuSeLnt4ppqLtSRK5BuW5lIsphn9wB4vsIxZ9eq4_3AinhkBFekSX62CE1w38lk7Pz2N3w-6JADp_ZdeZiHIV1RFEgkw2YfIvl-mPx0fqtx7msTdL9b33uBD5oJgiKgAUOshUKjEiPzTeubtwmh_Tupt8d1E6rNB7ThY0-YBZ8WxAl0G8d37HMIMgNbro"/>
+<div>
+<h3 class="font-bold text-on-background">Sony WH-1000XM5</h3>
+<p class="text-xs font-bold text-error mt-1">404 NOT FOUND</p>
+</div>
+</div>
+<!-- The Issue Description -->
+<div>
+<label class="text-xs font-bold uppercase tracking-widest text-stone-400 block mb-2">The Issue</label>
+<div class="bg-surface-container-low rounded-xl p-4 border border-primary/5">
+<p class="text-sm text-on-surface-variant leading-relaxed">
+                                    The retailer has moved this product to a new category structure, resulting in a permanent link breakage (HTTP 404). This prevents customers from reaching the purchase page from your dashboards.
+                                </p>
+</div>
+</div>
+<!-- Recommended Fix -->
+<div class="bg-primary/5 border border-primary/10 rounded-2xl p-5">
+<div class="flex items-center gap-2 text-primary font-bold text-sm mb-2">
+<span class="material-symbols-outlined text-sm">auto_fix_high</span>
+                                Recommended Fix
+                            </div>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+                                The product slug has changed on the retailer's site. We found a matching URL that resolves:
+                                <span class="block mt-2 font-mono text-xs bg-white p-2 rounded border border-primary/20 text-primary">.../dp/B09XS7JWHH/ref=new_link</span>
+</p>
+<button class="w-full mt-4 py-3 bg-primary text-white font-bold rounded-xl shadow-lg shadow-primary/20 hover:shadow-xl transition-all active:scale-95 flex items-center justify-center gap-2">
+                                Apply Recommended Fix
+                            </button>
+</div>
+<!-- Manual Edit Section -->
+<div class="space-y-3 pt-2">
+<label class="text-xs font-bold uppercase tracking-widest text-stone-400 block">Edit Manually</label>
+<div class="space-y-3">
+<div class="relative">
+<input class="w-full px-4 py-3 bg-white border border-outline-variant rounded-xl focus:ring-2 focus:ring-primary/20 transition-all text-sm placeholder:text-stone-400" placeholder="Input Latest Link" type="url"/>
+</div>
+<button class="w-full py-4 bg-white border border-outline-variant text-on-surface font-bold rounded-xl hover:bg-surface-container-low transition-all active:scale-95 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">save</span>
+                                    Save New Link
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Secondary Context Card -->
+<div class="bg-surface-container-high/50 rounded-[1.5rem] p-6 border border-primary/5">
+<h4 class="font-bold text-on-background mb-4">Store Health Overview</h4>
+<div class="space-y-3">
+<div class="flex justify-between items-center text-sm">
+<span class="text-stone-500 font-medium">Amazon Global</span>
+<span class="text-green-600 font-bold">98% UP</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5">
+<div class="bg-green-500 h-1.5 rounded-full" style="width: 98%"></div>
+</div>
+<div class="flex justify-between items-center text-sm pt-2">
+<span class="text-stone-500 font-medium">Best Buy</span>
+<span class="text-amber-500 font-bold">85% UP</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5">
+<div class="bg-amber-500 h-1.5 rounded-full" style="width: 85%"></div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+</body></html>

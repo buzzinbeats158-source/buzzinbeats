@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "buzzinbeats",
+      "runtimeExecutable": "php",
+      "runtimeArgs": ["C:\\GitHub\\buzzinbeats\\buzzin deploy\\artisan", "serve", "--port=8000"],
+      "port": 8000
+    },
+    {
+      "name": "buzzinbeats-next",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "C:\\GitHub\\buzzinbeats\\buzzinbeats-next"],
+      "port": 3000
+    }
+  ]
+}

@@ -1,0 +1,263 @@
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-bright": "#ffffff",
+                      "on-primary-container": "#ffffff",
+                      "on-error": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "primary-fixed-dim": "#ffb68f",
+                      "error": "#ba1a1a",
+                      "surface-dim": "#e5e3e0",
+                      "background": "#FAF9F6",
+                      "secondary-fixed-dim": "#ffb4a3",
+                      "on-primary": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "on-tertiary": "#ffffff",
+                      "on-background": "#211711",
+                      "on-secondary-fixed": "#3b0900",
+                      "inverse-on-surface": "#f8f0eb",
+                      "surface-tint": "#e06419",
+                      "primary": "#e06419",
+                      "on-primary-fixed": "#351000",
+                      "on-surface-variant": "#53433c",
+                      "surface-container": "#f2f1ef",
+                      "surface-container-low": "#f8f7f6",
+                      "on-primary-fixed-variant": "#7b3100",
+                      "secondary": "#FF6347",
+                      "secondary-fixed": "#ffdad2",
+                      "surface-container-high": "#ecebe9",
+                      "tertiary-fixed": "#9cf1f0",
+                      "secondary-container": "#ffdad2",
+                      "surface": "#FAF9F6",
+                      "inverse-surface": "#362f2b",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-container": "#ffffff",
+                      "on-tertiary-fixed": "#002020",
+                      "on-tertiary-fixed-variant": "#004f4f",
+                      "surface-variant": "#f4dfd6",
+                      "on-secondary-fixed-variant": "#930006",
+                      "primary-fixed": "#ffdbcb",
+                      "on-error-container": "#410002",
+                      "on-secondary-container": "#3b0900",
+                      "primary-container": "#ff7d33",
+                      "inverse-primary": "#ffb68f",
+                      "tertiary": "#006a6a",
+                      "tertiary-fixed-dim": "#80d5d4",
+                      "on-surface": "#211711",
+                      "tertiary-container": "#002b2b",
+                      "outline": "#85736b",
+                      "surface-container-highest": "#e6e5e3",
+                      "outline-variant": "#d8c2b9"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Plus Jakarta Sans"],
+                      "body": ["Inter"],
+                      "label": ["Plus Jakarta Sans"]
+              }
+            },
+          }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .mesh-bg {
+            background: radial-gradient(circle at 0% 0%, rgba(224, 100, 25, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 100% 100%, rgba(255, 99, 71, 0.08) 0%, transparent 50%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background group/design-root overflow-x-hidden mesh-bg">
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-4 md:px-20 lg:px-40 flex flex-1 justify-center py-12">
+<div class="layout-content-container flex flex-col max-w-[1200px] flex-1">
+<!-- Header Section -->
+<div class="flex flex-wrap justify-between items-end gap-6 p-4 mb-8">
+<div class="flex flex-col gap-4 max-w-2xl">
+<h1 class="font-headline text-on-background text-4xl md:text-5xl font-extrabold leading-tight tracking-[-0.033em]">
+                                Simple, Transparent Pricing
+                            </h1>
+<p class="text-on-surface-variant text-lg font-normal leading-relaxed">
+                                Choose the plan that's right for your business growth. Scale seamlessly as your creator journey evolves.
+                            </p>
+</div>
+<div class="flex items-center gap-2 p-1 bg-surface-container rounded-xl border border-outline-variant/20">
+<button class="px-6 py-2 rounded-lg bg-surface-bright shadow-sm font-semibold text-sm text-on-surface">Monthly</button>
+<button class="px-6 py-2 rounded-lg font-semibold text-sm text-on-surface-variant hover:text-on-surface">Yearly (Save 20%)</button>
+</div>
+</div>
+<!-- Pricing Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-4 py-6">
+<!-- Starter Plan -->
+<div class="flex flex-col gap-6 rounded-[2rem] border border-outline-variant/30 bg-surface-container-lowest p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+<div class="flex flex-col gap-2">
+<h2 class="font-headline text-on-surface text-xl font-bold">Starter</h2>
+<p class="text-on-surface-variant text-sm">Perfect for beginners.</p>
+<div class="flex items-baseline gap-1 mt-2">
+<span class="text-on-background text-5xl font-extrabold tracking-tight">₹149</span>
+<span class="text-on-surface-variant text-base font-medium">/month</span>
+</div>
+</div>
+<button class="w-full h-12 rounded-xl bg-surface-container-high text-on-surface font-bold text-base hover:bg-surface-container-highest transition-colors">
+                                Get Started
+                            </button>
+<div class="flex flex-col gap-4">
+<p class="text-xs font-bold uppercase tracking-wider text-on-surface-variant/70">What's included:</p>
+<ul class="flex flex-col gap-3">
+<li class="flex items-center gap-3 text-sm text-on-surface">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+                                        3 Pages
+                                    </li>
+<li class="flex items-center gap-3 text-sm text-on-surface">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+                                        10 Products per Page
+                                    </li>
+<li class="flex items-center gap-3 text-sm text-on-surface">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+                                        Limited Landing Layouts
+                                    </li>
+<li class="flex items-center gap-3 text-sm text-on-surface">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+                                        Branding (BuzzinBeats)
+                                    </li>
+<li class="flex items-center gap-3 text-sm text-on-surface">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+                                        Basic Analytics
+                                    </li>
+</ul>
+</div>
+</div>
+<!-- Growth Plan (Highlighted) -->
+<div class="relative flex flex-col gap-6 rounded-[2rem] border-2 border-primary bg-surface-container-lowest p-8 shadow-2xl hover:shadow-primary/20 transition-all duration-300 hover:-translate-y-2">
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-on-primary text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-lg">
+                                Most Popular
+                            </div>
+<div class="flex flex-col gap-2">
+<h2 class="font-headline text-on-surface text-xl font-bold">Growth</h2>
+<p class="text-on-surface-variant text-sm">Everything you need to scale.</p>
+<div class="flex items-baseline gap-1 mt-2">
+<span class="text-on-background text-5xl font-extrabold tracking-tight">₹299</span>
+<span class="text-on-surface-variant text-base font-medium">/month</span>
+</div>
+</div>
+<button class="w-full h-12 rounded-xl bg-gradient-to-r from-primary to-secondary text-on-primary font-bold text-base shadow-lg shadow-primary/25 hover:opacity-90 transition-all">
+                                Get Started
+                            </button>
+<div class="flex flex-col gap-4">
+<p class="text-xs font-bold uppercase tracking-wider text-on-surface-variant/70">Everything in Starter, plus:</p>
+<ul class="flex flex-col gap-3">
+<li class="flex items-center gap-3 text-sm text-on-surface">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+                                        10 Pages
+                                    </li>
+<li class="flex items-center gap-3 text-sm text-on-surface">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+                                        20 Products per Page
+                                    </li>
+<li class="flex items-center gap-3 text-sm text-on-surface">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+                                        All Landing Layouts
+                                    </li>
+<li class="flex items-center gap-3 text-sm text-on-surface">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+                                        Basic Link Monitoring
+                                    </li>
+<li class="flex items-center gap-3 text-sm text-on-surface">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+                                        Advanced Analytics
+                                    </li>
+</ul>
+</div>
+</div>
+<!-- Pro Plan -->
+<div class="flex flex-col gap-6 rounded-[2rem] border border-outline-variant/30 bg-surface-container-lowest p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+<div class="flex flex-col gap-2">
+<h2 class="font-headline text-on-surface text-xl font-bold">Pro</h2>
+<p class="text-on-surface-variant text-sm">For elite high-volume creators.</p>
+<div class="flex items-baseline gap-1 mt-2">
+<span class="text-on-background text-5xl font-extrabold tracking-tight">₹999</span>
+<span class="text-on-surface-variant text-base font-medium">/month</span>
+</div>
+</div>
+<button class="w-full h-12 rounded-xl bg-on-background text-on-primary font-bold text-base hover:opacity-90 transition-all">
+                                Get Started
+                            </button>
+<div class="flex flex-col gap-4">
+<p class="text-xs font-bold uppercase tracking-wider text-on-surface-variant/70">Everything in Growth, plus:</p>
+<ul class="flex flex-col gap-3">
+<li class="flex items-center gap-3 text-sm text-on-surface">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+                                        100 Pages
+                                    </li>
+<li class="flex items-center gap-3 text-sm text-on-surface">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+                                        30 Products per Page
+                                    </li>
+<li class="flex items-center gap-3 text-sm text-on-surface">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+                                        Priority Fetch / Monitoring
+                                    </li>
+<li class="flex items-center gap-3 text-sm text-on-surface">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+                                        Profile on Landing Page
+                                    </li>
+<li class="flex items-center gap-3 text-sm text-on-surface">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+                                        Priority Support
+                                    </li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Comparison Table -->
+<!-- FAQ & Contact Footer -->
+<div class="@container">
+<div class="flex flex-col items-center gap-8 px-4 py-16 md:py-24 text-center">
+<div class="max-w-[720px] flex flex-col gap-4">
+<h1 class="font-headline text-on-background text-4xl md:text-5xl font-black leading-tight tracking-[-0.033em]">
+                                    Still have questions?
+                                </h1>
+<p class="text-on-surface-variant text-lg font-normal leading-relaxed">
+                                    Our support team is here to help you find the perfect fit for your creator business. Reach out anytime.
+                                </p>
+</div>
+<div class="flex flex-wrap justify-center gap-4">
+<button class="flex min-w-[180px] cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-primary text-on-primary text-lg font-bold shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all">
+                                    Contact Support
+                                </button>
+<button class="flex min-w-[180px] cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-surface-container-high text-on-surface text-lg font-bold hover:bg-surface-container-highest transition-colors">
+                                    Read FAQs
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

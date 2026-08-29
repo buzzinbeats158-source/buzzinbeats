@@ -1,0 +1,457 @@
+analytics_events	id	1	bigint	NULL	64	0	NO	nextval('analytics_events_new_id_seq'::regclass)	int8
+analytics_events	user_id	2	bigint	NULL	64	0	NO	NULL	int8
+analytics_events	page_id	3	bigint	NULL	64	0	YES	NULL	int8
+analytics_events	product_id	4	bigint	NULL	64	0	YES	NULL	int8
+analytics_events	link_id	5	bigint	NULL	64	0	YES	NULL	int8
+analytics_events	redirect_link_id	6	bigint	NULL	64	0	YES	NULL	int8
+analytics_events	digital_product_id	7	bigint	NULL	64	0	YES	NULL	int8
+analytics_events	event_type	8	character varying	255	NULL	NULL	NO	NULL	varchar
+analytics_events	device_type	9	character varying	10	NULL	NULL	NO	'desktop'::character varying	varchar
+analytics_events	created_at	10	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+analytics_events	updated_at	11	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+backup_logs	id	1	bigint	NULL	64	0	NO	nextval('backup_logs_id_seq'::regclass)	int8
+backup_logs	backup_id	2	bigint	NULL	64	0	YES	NULL	int8
+backup_logs	action	3	character varying	255	NULL	NULL	NO	NULL	varchar
+backup_logs	type	4	character varying	255	NULL	NULL	YES	NULL	varchar
+backup_logs	message	5	text	NULL	NULL	NULL	NO	NULL	text
+backup_logs	details	6	text	NULL	NULL	NULL	YES	NULL	text
+backup_logs	status_color	7	character varying	255	NULL	NULL	NO	'blue'::character varying	varchar
+backup_logs	icon	8	character varying	255	NULL	NULL	NO	'info'::character varying	varchar
+backup_logs	created_at	9	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+backup_logs	updated_at	10	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+backup_settings	id	1	bigint	NULL	64	0	NO	nextval('backup_settings_id_seq'::regclass)	int8
+backup_settings	key	2	character varying	255	NULL	NULL	NO	NULL	varchar
+backup_settings	value	3	text	NULL	NULL	NULL	YES	NULL	text
+backup_settings	created_at	4	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+backup_settings	updated_at	5	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+backups	id	1	bigint	NULL	64	0	NO	nextval('backups_id_seq'::regclass)	int8
+backups	name	2	character varying	255	NULL	NULL	NO	NULL	varchar
+backups	type	3	character varying	255	NULL	NULL	NO	NULL	varchar
+backups	trigger	4	character varying	255	NULL	NULL	NO	'manual'::character varying	varchar
+backups	destination	5	character varying	255	NULL	NULL	NO	NULL	varchar
+backups	file_path	6	character varying	255	NULL	NULL	YES	NULL	varchar
+backups	s3_key	7	character varying	255	NULL	NULL	YES	NULL	varchar
+backups	size	8	bigint	NULL	64	0	NO	'0'::bigint	int8
+backups	status	9	character varying	255	NULL	NULL	NO	NULL	varchar
+backups	checksum	10	character varying	255	NULL	NULL	YES	NULL	varchar
+backups	duration	11	integer	NULL	32	0	YES	NULL	int4
+backups	error_message	12	text	NULL	NULL	NULL	YES	NULL	text
+backups	includes	13	text	NULL	NULL	NULL	YES	NULL	text
+backups	created_at	14	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+backups	updated_at	15	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+backups	stage	16	character varying	255	NULL	NULL	NO	'pending'::character varying	varchar
+backups	progress	17	integer	NULL	32	0	NO	0	int4
+backups	files_total	18	integer	NULL	32	0	NO	0	int4
+backups	files_done	19	integer	NULL	32	0	NO	0	int4
+content_page_sections	id	1	bigint	NULL	64	0	NO	nextval('content_page_sections_id_seq'::regclass)	int8
+content_page_sections	content_page_id	2	integer	NULL	32	0	NO	NULL	int4
+content_page_sections	section_type	3	character varying	255	NULL	NULL	NO	NULL	varchar
+content_page_sections	section_order	4	integer	NULL	32	0	NO	0	int4
+content_page_sections	title	5	character varying	255	NULL	NULL	YES	NULL	varchar
+content_page_sections	is_enabled	6	boolean	NULL	NULL	NULL	NO	true	bool
+content_page_sections	settings	7	json	NULL	NULL	NULL	YES	NULL	json
+content_page_sections	created_at	8	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+content_page_sections	updated_at	9	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+countries	id	1	bigint	NULL	64	0	NO	nextval('countries_id_seq'::regclass)	int8
+countries	name	2	character varying	255	NULL	NULL	NO	NULL	varchar
+countries	code	3	character varying	2	NULL	NULL	NO	NULL	varchar
+countries	currency_code	4	character varying	8	NULL	NULL	YES	NULL	varchar
+countries	currency_symbol	5	character varying	16	NULL	NULL	YES	NULL	varchar
+countries	created_at	6	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+countries	updated_at	7	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+coupon_redemptions	id	1	bigint	NULL	64	0	NO	nextval('coupon_redemptions_id_seq'::regclass)	int8
+coupon_redemptions	coupon_id	2	bigint	NULL	64	0	NO	NULL	int8
+coupon_redemptions	user_id	3	integer	NULL	32	0	NO	NULL	int4
+coupon_redemptions	payment_id	4	bigint	NULL	64	0	YES	NULL	int8
+coupon_redemptions	code_snapshot	5	character varying	255	NULL	NULL	NO	NULL	varchar
+coupon_redemptions	discount_amount	6	numeric	NULL	10	2	NO	NULL	numeric
+coupon_redemptions	original_amount	7	numeric	NULL	10	2	NO	NULL	numeric
+coupon_redemptions	final_amount	8	numeric	NULL	10	2	NO	NULL	numeric
+coupon_redemptions	used_at	9	timestamp without time zone	NULL	NULL	NULL	NO	NULL	timestamp
+coupon_redemptions	created_at	10	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+coupon_redemptions	updated_at	11	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+coupons	id	1	bigint	NULL	64	0	NO	nextval('coupons_id_seq'::regclass)	int8
+coupons	code	2	character varying	255	NULL	NULL	NO	NULL	varchar
+coupons	title	3	character varying	255	NULL	NULL	YES	NULL	varchar
+coupons	description	4	text	NULL	NULL	NULL	YES	NULL	text
+coupons	discount_type	5	character varying	255	NULL	NULL	NO	NULL	varchar
+coupons	discount_value	6	numeric	NULL	10	2	NO	NULL	numeric
+coupons	applies_to_plan	7	character varying	255	NULL	NULL	NO	'all'::character varying	varchar
+coupons	audience_type	8	character varying	255	NULL	NULL	NO	'all'::character varying	varchar
+coupons	specific_user_id	9	bigint	NULL	64	0	YES	NULL	int8
+coupons	minimum_amount	10	numeric	NULL	10	2	YES	NULL	numeric
+coupons	usage_limit	11	integer	NULL	32	0	YES	NULL	int4
+coupons	used_count	12	integer	NULL	32	0	NO	0	int4
+coupons	starts_at	13	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+coupons	ends_at	14	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+coupons	status	15	character varying	255	NULL	NULL	NO	'active'::character varying	varchar
+coupons	created_by_admin_id	16	bigint	NULL	64	0	YES	NULL	int8
+coupons	created_at	17	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+coupons	updated_at	18	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+digital_product_email_verifications	id	1	bigint	NULL	64	0	NO	nextval('digital_product_email_verifications_id_seq'::regclass)	int8
+digital_product_email_verifications	digital_product_sale_id	2	bigint	NULL	64	0	NO	NULL	int8
+digital_product_email_verifications	otp_hash	3	character varying	255	NULL	NULL	NO	NULL	varchar
+digital_product_email_verifications	attempts	4	integer	NULL	32	0	NO	0	int4
+digital_product_email_verifications	expires_at	5	timestamp without time zone	NULL	NULL	NULL	NO	NULL	timestamp
+digital_product_email_verifications	verified_at	6	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+digital_product_email_verifications	created_at	7	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+digital_product_email_verifications	updated_at	8	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+digital_product_sales	id	1	bigint	NULL	64	0	NO	nextval('digital_product_sales_id_seq'::regclass)	int8
+digital_product_sales	digital_product_id	2	bigint	NULL	64	0	NO	NULL	int8
+digital_product_sales	page_id	3	integer	NULL	32	0	NO	NULL	int4
+digital_product_sales	seller_user_id	4	integer	NULL	32	0	NO	NULL	int4
+digital_product_sales	buyer_name	5	character varying	255	NULL	NULL	NO	NULL	varchar
+digital_product_sales	buyer_email	6	character varying	255	NULL	NULL	NO	NULL	varchar
+digital_product_sales	buyer_phone	7	character varying	255	NULL	NULL	YES	NULL	varchar
+digital_product_sales	email_verified_at	8	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+digital_product_sales	amount	9	numeric	NULL	10	2	NO	NULL	numeric
+digital_product_sales	currency	10	character varying	8	NULL	NULL	NO	'INR'::character varying	varchar
+digital_product_sales	razorpay_order_id	11	character varying	255	NULL	NULL	YES	NULL	varchar
+digital_product_sales	razorpay_payment_id	12	character varying	255	NULL	NULL	YES	NULL	varchar
+digital_product_sales	razorpay_signature	13	character varying	255	NULL	NULL	YES	NULL	varchar
+digital_product_sales	status	14	character varying	255	NULL	NULL	NO	'pending'::character varying	varchar
+digital_product_sales	access_token	15	uuid	NULL	NULL	NULL	NO	NULL	uuid
+digital_product_sales	purchased_at	16	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+digital_product_sales	download_count	17	integer	NULL	32	0	NO	0	int4
+digital_product_sales	last_downloaded_at	18	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+digital_product_sales	created_at	19	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+digital_product_sales	updated_at	20	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+digital_products	id	1	bigint	NULL	64	0	NO	nextval('digital_products_id_seq'::regclass)	int8
+digital_products	user_id	2	integer	NULL	32	0	NO	NULL	int4
+digital_products	page_id	3	integer	NULL	32	0	NO	NULL	int4
+digital_products	serial_number	4	integer	NULL	32	0	NO	NULL	int4
+digital_products	title	5	character varying	255	NULL	NULL	NO	NULL	varchar
+digital_products	description	6	text	NULL	NULL	NULL	YES	NULL	text
+digital_products	cover_image_path	7	character varying	255	NULL	NULL	YES	NULL	varchar
+digital_products	price	8	numeric	NULL	10	2	NO	'0'::numeric	numeric
+digital_products	currency_code	9	character varying	255	NULL	NULL	NO	'INR'::character varying	varchar
+digital_products	currency_symbol	10	character varying	255	NULL	NULL	NO	'₹'::character varying	varchar
+digital_products	storage_provider	11	character varying	255	NULL	NULL	NO	'r2'::character varying	varchar
+digital_products	storage_bucket	12	character varying	255	NULL	NULL	YES	NULL	varchar
+digital_products	storage_object_key	13	character varying	255	NULL	NULL	YES	NULL	varchar
+digital_products	original_file_name	14	character varying	255	NULL	NULL	YES	NULL	varchar
+digital_products	mime_type	15	character varying	255	NULL	NULL	YES	NULL	varchar
+digital_products	file_size	16	bigint	NULL	64	0	YES	NULL	int8
+digital_products	delivery_note	17	text	NULL	NULL	NULL	YES	NULL	text
+digital_products	button_text	18	character varying	255	NULL	NULL	NO	'Download'::character varying	varchar
+digital_products	status	19	character varying	255	NULL	NULL	NO	'active'::character varying	varchar
+digital_products	clicks	20	bigint	NULL	64	0	NO	'0'::bigint	int8
+digital_products	created_at	21	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+digital_products	updated_at	22	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+digital_products	deleted_at	23	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+error_logs	id	1	bigint	NULL	64	0	NO	nextval('error_logs_id_seq'::regclass)	int8
+error_logs	reference_id	2	character varying	255	NULL	NULL	NO	NULL	varchar
+error_logs	user_id	3	bigint	NULL	64	0	YES	NULL	int8
+error_logs	username	4	character varying	255	NULL	NULL	YES	NULL	varchar
+error_logs	url	5	character varying	255	NULL	NULL	NO	NULL	varchar
+error_logs	method	6	character varying	255	NULL	NULL	NO	NULL	varchar
+error_logs	message	7	text	NULL	NULL	NULL	NO	NULL	text
+error_logs	stack_trace	8	text	NULL	NULL	NULL	YES	NULL	text
+error_logs	created_at	9	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+error_logs	updated_at	10	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+link_scan_history	id	1	bigint	NULL	64	0	NO	nextval('link_scan_history_id_seq'::regclass)	int8
+link_scan_history	product_id	2	integer	NULL	32	0	NO	NULL	int4
+link_scan_history	checked_at	3	timestamp without time zone	NULL	NULL	NULL	NO	NULL	timestamp
+link_scan_history	status	4	character varying	255	NULL	NULL	NO	NULL	varchar
+link_scan_history	http_code	5	integer	NULL	32	0	YES	NULL	int4
+link_scan_history	response_time_ms	6	integer	NULL	32	0	YES	NULL	int4
+link_scan_history	error_message	7	text	NULL	NULL	NULL	YES	NULL	text
+link_scan_history	created_at	8	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+link_scan_history	updated_at	9	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+links	id	1	bigint	NULL	64	0	NO	nextval('links_id_seq'::regclass)	int8
+links	page_id	2	bigint	NULL	64	0	NO	NULL	int8
+links	title	3	character varying	255	NULL	NULL	NO	NULL	varchar
+links	url	4	character varying	255	NULL	NULL	NO	NULL	varchar
+links	icon_path	5	character varying	255	NULL	NULL	YES	NULL	varchar
+links	is_enabled	6	boolean	NULL	NULL	NULL	NO	true	bool
+links	order	7	integer	NULL	32	0	NO	0	int4
+links	clicks	8	bigint	NULL	64	0	NO	'0'::bigint	int8
+links	created_at	9	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+links	updated_at	10	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+login_attempts	id	1	bigint	NULL	64	0	NO	nextval('login_attempts_id_seq'::regclass)	int8
+login_attempts	user_id	2	bigint	NULL	64	0	YES	NULL	int8
+login_attempts	ip_address	3	character varying	255	NULL	NULL	NO	NULL	varchar
+login_attempts	attempt_count	4	integer	NULL	32	0	NO	1	int4
+login_attempts	last_attempt_at	5	timestamp without time zone	NULL	NULL	NULL	NO	NULL	timestamp
+login_attempts	created_at	6	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+login_attempts	updated_at	7	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+otp_codes	id	1	bigint	NULL	64	0	NO	nextval('otp_codes_id_seq'::regclass)	int8
+otp_codes	user_id	2	bigint	NULL	64	0	YES	NULL	int8
+otp_codes	email	3	character varying	255	NULL	NULL	NO	NULL	varchar
+otp_codes	otp_hash	4	character varying	255	NULL	NULL	NO	NULL	varchar
+otp_codes	purpose	5	character varying	255	NULL	NULL	NO	NULL	varchar
+otp_codes	attempts	6	integer	NULL	32	0	NO	0	int4
+otp_codes	expires_at	7	timestamp without time zone	NULL	NULL	NULL	NO	NULL	timestamp
+otp_codes	created_at	8	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+otp_codes	updated_at	9	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+pages	id	1	bigint	NULL	64	0	NO	nextval('pages_id_seq'::regclass)	int8
+pages	user_id	2	bigint	NULL	64	0	NO	NULL	int8
+pages	title	3	character varying	255	NULL	NULL	NO	NULL	varchar
+pages	slug	4	character varying	255	NULL	NULL	NO	NULL	varchar
+pages	description	5	text	NULL	NULL	NULL	YES	NULL	text
+pages	banner_path	6	character varying	255	NULL	NULL	YES	NULL	varchar
+pages	is_published	7	boolean	NULL	NULL	NULL	NO	true	bool
+pages	views	8	bigint	NULL	64	0	NO	'0'::bigint	int8
+pages	created_at	9	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+pages	updated_at	10	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+pages	status	11	character varying	255	NULL	NULL	NO	'active'::character varying	varchar
+pages	qr_color	12	character varying	255	NULL	NULL	YES	NULL	varchar
+pages	qr_logo_path	13	character varying	255	NULL	NULL	YES	NULL	varchar
+pages	serial_number	14	bigint	NULL	64	0	YES	NULL	int8
+pages	deleted_at	15	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+pages	page_id	16	character varying	255	NULL	NULL	YES	NULL	varchar
+payments	id	1	bigint	NULL	64	0	NO	nextval('payments_id_seq'::regclass)	int8
+payments	user_id	2	bigint	NULL	64	0	NO	NULL	int8
+payments	subscription_id	3	bigint	NULL	64	0	NO	NULL	int8
+payments	invoice_number	4	character varying	255	NULL	NULL	NO	NULL	varchar
+payments	amount	5	numeric	NULL	10	2	NO	NULL	numeric
+payments	currency	6	character varying	3	NULL	NULL	NO	'INR'::character varying	varchar
+payments	payment_method	7	character varying	255	NULL	NULL	YES	NULL	varchar
+payments	transaction_id	8	character varying	255	NULL	NULL	YES	NULL	varchar
+payments	status	9	character varying	255	NULL	NULL	NO	'paid'::character varying	varchar
+payments	paid_at	10	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+payments	created_at	11	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+payments	updated_at	12	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+payments	razorpay_order_id	13	character varying	255	NULL	NULL	YES	NULL	varchar
+payments	razorpay_payment_id	14	character varying	255	NULL	NULL	YES	NULL	varchar
+payments	razorpay_signature	15	character varying	255	NULL	NULL	YES	NULL	varchar
+payments	original_amount	16	numeric	NULL	10	2	YES	NULL	numeric
+payments	discount_amount	17	numeric	NULL	10	2	NO	'0'::numeric	numeric
+payments	final_paid_amount	18	numeric	NULL	10	2	YES	NULL	numeric
+payments	coupon_id	19	bigint	NULL	64	0	YES	NULL	int8
+payments	coupon_code	20	character varying	255	NULL	NULL	YES	NULL	varchar
+personal_access_tokens	id	1	bigint	NULL	64	0	NO	nextval('personal_access_tokens_id_seq'::regclass)	int8
+personal_access_tokens	tokenable_type	2	character varying	255	NULL	NULL	NO	NULL	varchar
+personal_access_tokens	tokenable_id	3	bigint	NULL	64	0	NO	NULL	int8
+personal_access_tokens	name	4	character varying	255	NULL	NULL	NO	NULL	varchar
+personal_access_tokens	token	5	character varying	64	NULL	NULL	NO	NULL	varchar
+personal_access_tokens	abilities	6	text	NULL	NULL	NULL	YES	NULL	text
+personal_access_tokens	last_used_at	7	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+personal_access_tokens	expires_at	8	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+personal_access_tokens	created_at	9	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+personal_access_tokens	updated_at	10	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+products	id	1	bigint	NULL	64	0	NO	nextval('products_id_seq'::regclass)	int8
+products	user_id	2	bigint	NULL	64	0	NO	NULL	int8
+products	page_id	3	bigint	NULL	64	0	NO	NULL	int8
+products	serial_number	4	integer	NULL	32	0	NO	NULL	int4
+products	title	5	character varying	255	NULL	NULL	YES	NULL	varchar
+products	link	6	text	NULL	NULL	NULL	NO	NULL	text
+products	image_path	7	character varying	255	NULL	NULL	NO	NULL	varchar
+products	created_at	8	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+products	updated_at	9	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+products	description	10	text	NULL	NULL	NULL	YES	NULL	text
+products	store_platform	11	text	NULL	NULL	NULL	YES	NULL	text
+products	clicks	12	bigint	NULL	64	0	NO	'0'::bigint	int8
+products	starting_price	13	numeric	NULL	10	2	YES	NULL	numeric
+products	primary_country_id	14	bigint	NULL	64	0	YES	NULL	int8
+products	primary_country_name	15	character varying	255	NULL	NULL	YES	NULL	varchar
+products	currency_code	16	character varying	8	NULL	NULL	YES	NULL	varchar
+products	currency_symbol	17	character varying	16	NULL	NULL	YES	NULL	varchar
+products	show_price	18	boolean	NULL	NULL	NULL	NO	true	bool
+products	health_status	19	character varying	255	NULL	NULL	NO	'unchecked'::character varying	varchar
+products	last_checked_at	20	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+products	last_http_code	21	integer	NULL	32	0	YES	NULL	int4
+products	response_time_ms	22	integer	NULL	32	0	YES	NULL	int4
+products	failure_count	23	integer	NULL	32	0	NO	0	int4
+products	last_error_message	24	text	NULL	NULL	NULL	YES	NULL	text
+products	last_success_at	25	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+products	notification_sent	26	boolean	NULL	NULL	NULL	NO	false	bool
+redirect_links	id	1	bigint	NULL	64	0	NO	nextval('redirect_links_id_seq'::regclass)	int8
+redirect_links	user_id	2	integer	NULL	32	0	NO	NULL	int4
+redirect_links	page_id	3	integer	NULL	32	0	NO	NULL	int4
+redirect_links	serial_number	4	integer	NULL	32	0	NO	NULL	int4
+redirect_links	title	5	character varying	255	NULL	NULL	NO	NULL	varchar
+redirect_links	description	6	text	NULL	NULL	NULL	YES	NULL	text
+redirect_links	image_path	7	character varying	255	NULL	NULL	YES	NULL	varchar
+redirect_links	destination_url	8	character varying	255	NULL	NULL	NO	NULL	varchar
+redirect_links	button_text	9	character varying	255	NULL	NULL	NO	'Visit'::character varying	varchar
+redirect_links	open_in_new_tab	10	boolean	NULL	NULL	NULL	NO	true	bool
+redirect_links	status	11	character varying	255	NULL	NULL	NO	'active'::character varying	varchar
+redirect_links	clicks	12	bigint	NULL	64	0	NO	'0'::bigint	int8
+redirect_links	created_at	13	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+redirect_links	updated_at	14	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+redirect_links	deleted_at	15	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+redirect_page_products	id	1	bigint	NULL	64	0	NO	nextval('redirect_page_products_id_seq'::regclass)	int8
+redirect_page_products	amazon_asin	2	character varying	255	NULL	NULL	YES	NULL	varchar
+redirect_page_products	title	3	character varying	255	NULL	NULL	NO	NULL	varchar
+redirect_page_products	image_url	4	character varying	255	NULL	NULL	YES	NULL	varchar
+redirect_page_products	product_url	5	character varying	255	NULL	NULL	NO	NULL	varchar
+redirect_page_products	price	6	numeric	NULL	10	2	YES	NULL	numeric
+redirect_page_products	sort_order	7	integer	NULL	32	0	NO	0	int4
+redirect_page_products	is_active	8	boolean	NULL	NULL	NULL	NO	true	bool
+redirect_page_products	created_at	9	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+redirect_page_products	updated_at	10	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+redirect_page_products	section	11	character varying	255	NULL	NULL	NO	'trending'::character varying	varchar
+redirect_page_settings	id	1	bigint	NULL	64	0	NO	nextval('redirect_page_settings_id_seq'::regclass)	int8
+redirect_page_settings	page_title	2	character varying	255	NULL	NULL	NO	'Redirect Page'::character varying	varchar
+redirect_page_settings	hero_title	3	character varying	255	NULL	NULL	NO	'This page is currently unavailable.'::character varying	varchar
+redirect_page_settings	hero_subtitle	4	text	NULL	NULL	NULL	NO	'Please explore featured recommendations or return to the homepage.'::text	text
+redirect_page_settings	button_1_label	5	character varying	255	NULL	NULL	NO	'Go to Homepage'::character varying	varchar
+redirect_page_settings	button_1_url	6	character varying	255	NULL	NULL	NO	'/'::character varying	varchar
+redirect_page_settings	button_1_enabled	7	boolean	NULL	NULL	NULL	NO	true	bool
+redirect_page_settings	button_2_label	8	character varying	255	NULL	NULL	NO	'Explore Deals'::character varying	varchar
+redirect_page_settings	button_2_url	9	character varying	255	NULL	NULL	NO	'/deals'::character varying	varchar
+redirect_page_settings	button_2_enabled	10	boolean	NULL	NULL	NULL	NO	true	bool
+redirect_page_settings	button_3_label	11	character varying	255	NULL	NULL	YES	NULL	varchar
+redirect_page_settings	button_3_url	12	character varying	255	NULL	NULL	YES	NULL	varchar
+redirect_page_settings	button_3_enabled	13	boolean	NULL	NULL	NULL	NO	false	bool
+redirect_page_settings	fallback_landing_url	14	character varying	255	NULL	NULL	YES	NULL	varchar
+redirect_page_settings	fallback_landing_enabled	15	boolean	NULL	NULL	NULL	NO	false	bool
+redirect_page_settings	is_active	16	boolean	NULL	NULL	NULL	NO	false	bool
+redirect_page_settings	created_at	17	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+redirect_page_settings	updated_at	18	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+subscription_plan_features	id	1	bigint	NULL	64	0	NO	nextval('subscription_plan_features_id_seq'::regclass)	int8
+subscription_plan_features	plan_id	2	bigint	NULL	64	0	NO	NULL	int8
+subscription_plan_features	max_active_pages	3	smallint	NULL	16	0	NO	'1'::smallint	int2
+subscription_plan_features	extra_pages_enabled	4	boolean	NULL	NULL	NULL	NO	false	bool
+subscription_plan_features	extra_page_price	5	numeric	NULL	8	2	YES	NULL	numeric
+subscription_plan_features	products_per_page	6	smallint	NULL	16	0	NO	'20'::smallint	int2
+subscription_plan_features	extra_products_enabled	7	boolean	NULL	NULL	NULL	NO	false	bool
+subscription_plan_features	extra_product_price	8	numeric	NULL	8	2	YES	NULL	numeric
+subscription_plan_features	template_1_enabled	9	boolean	NULL	NULL	NULL	NO	true	bool
+subscription_plan_features	template_2_enabled	10	boolean	NULL	NULL	NULL	NO	false	bool
+subscription_plan_features	template_3_enabled	11	boolean	NULL	NULL	NULL	NO	false	bool
+subscription_plan_features	template_4_enabled	12	boolean	NULL	NULL	NULL	NO	false	bool
+subscription_plan_features	template_5_enabled	13	boolean	NULL	NULL	NULL	NO	false	bool
+subscription_plan_features	template_6_enabled	14	boolean	NULL	NULL	NULL	NO	false	bool
+subscription_plan_features	auto_product_fetch	15	boolean	NULL	NULL	NULL	NO	false	bool
+subscription_plan_features	branding_removal	16	boolean	NULL	NULL	NULL	NO	false	bool
+subscription_plan_features	bulk_asin_upload	17	boolean	NULL	NULL	NULL	NO	false	bool
+subscription_plan_features	social_media_tags	18	boolean	NULL	NULL	NULL	NO	false	bool
+subscription_plan_features	social_media_links	19	boolean	NULL	NULL	NULL	NO	false	bool
+subscription_plan_features	extra_custom_link	20	boolean	NULL	NULL	NULL	NO	false	bool
+subscription_plan_features	profile_on_landing	21	boolean	NULL	NULL	NULL	NO	false	bool
+subscription_plan_features	product_reorder_highlight	22	boolean	NULL	NULL	NULL	NO	false	bool
+subscription_plan_features	link_monitoring_level	23	character varying	255	NULL	NULL	NO	'off'::character varying	varchar
+subscription_plan_features	support_level	24	character varying	255	NULL	NULL	NO	'standard'::character varying	varchar
+subscription_plan_features	created_at	25	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+subscription_plan_features	updated_at	26	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+subscription_plan_features	personal_logo	27	boolean	NULL	NULL	NULL	NO	false	bool
+subscription_plan_features	section_toggles	28	boolean	NULL	NULL	NULL	NO	false	bool
+subscription_plan_features	redirect_links_per_page	29	smallint	NULL	16	0	NO	'20'::smallint	int2
+subscription_plan_features	digital_products_per_page	30	smallint	NULL	16	0	NO	'20'::smallint	int2
+subscription_plan_features	digital_product_max_file_size_mb	31	smallint	NULL	16	0	NO	'50'::smallint	int2
+subscription_plans	id	1	bigint	NULL	64	0	NO	nextval('subscription_plans_id_seq'::regclass)	int8
+subscription_plans	slug	2	character varying	255	NULL	NULL	NO	NULL	varchar
+subscription_plans	name	3	character varying	255	NULL	NULL	NO	NULL	varchar
+subscription_plans	monthly_price	4	numeric	NULL	10	2	NO	'0'::numeric	numeric
+subscription_plans	yearly_price	5	numeric	NULL	10	2	YES	NULL	numeric
+subscription_plans	yearly_discount_percent	6	smallint	NULL	16	0	YES	NULL	int2
+subscription_plans	is_active	7	boolean	NULL	NULL	NULL	NO	true	bool
+subscription_plans	is_popular	8	boolean	NULL	NULL	NULL	NO	false	bool
+subscription_plans	badge_label	9	character varying	255	NULL	NULL	YES	NULL	varchar
+subscription_plans	sort_order	10	smallint	NULL	16	0	NO	'0'::smallint	int2
+subscription_plans	created_at	11	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+subscription_plans	updated_at	12	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+subscriptions	id	1	bigint	NULL	64	0	NO	nextval('subscriptions_id_seq'::regclass)	int8
+subscriptions	user_id	2	bigint	NULL	64	0	NO	NULL	int8
+subscriptions	plan	3	character varying	255	NULL	NULL	NO	NULL	varchar
+subscriptions	billing_cycle	4	character varying	255	NULL	NULL	NO	NULL	varchar
+subscriptions	status	5	character varying	255	NULL	NULL	NO	'active'::character varying	varchar
+subscriptions	price	6	numeric	NULL	10	2	NO	NULL	numeric
+subscriptions	currency	7	character varying	3	NULL	NULL	NO	'INR'::character varying	varchar
+subscriptions	started_at	8	date	NULL	NULL	NULL	NO	NULL	date
+subscriptions	expires_at	9	date	NULL	NULL	NULL	NO	NULL	date
+subscriptions	cancelled_at	10	date	NULL	NULL	NULL	YES	NULL	date
+subscriptions	created_at	11	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+subscriptions	updated_at	12	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+subscriptions	razorpay_subscription_id	13	character varying	255	NULL	NULL	YES	NULL	varchar
+support_tickets	id	1	bigint	NULL	64	0	NO	nextval('support_tickets_id_seq'::regclass)	int8
+support_tickets	ticket_number	2	character varying	255	NULL	NULL	NO	NULL	varchar
+support_tickets	user_id	3	bigint	NULL	64	0	NO	NULL	int8
+support_tickets	topic	4	character varying	255	NULL	NULL	NO	NULL	varchar
+support_tickets	message	5	text	NULL	NULL	NULL	NO	NULL	text
+support_tickets	attachment_path	6	character varying	255	NULL	NULL	YES	NULL	varchar
+support_tickets	status	7	character varying	255	NULL	NULL	NO	'open'::character varying	varchar
+support_tickets	created_at	8	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+support_tickets	updated_at	9	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+system_settings	id	1	bigint	NULL	64	0	NO	nextval('system_settings_id_seq'::regclass)	int8
+system_settings	key	2	character varying	255	NULL	NULL	NO	NULL	varchar
+system_settings	value	3	text	NULL	NULL	NULL	YES	NULL	text
+system_settings	created_at	4	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+system_settings	updated_at	5	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+trusted_devices	id	1	bigint	NULL	64	0	NO	nextval('trusted_devices_id_seq'::regclass)	int8
+trusted_devices	user_id	2	bigint	NULL	64	0	NO	NULL	int8
+trusted_devices	device_token	3	character varying	255	NULL	NULL	NO	NULL	varchar
+trusted_devices	ip_address	4	character varying	255	NULL	NULL	YES	NULL	varchar
+trusted_devices	country	5	character varying	255	NULL	NULL	YES	NULL	varchar
+trusted_devices	user_agent	6	text	NULL	NULL	NULL	YES	NULL	text
+trusted_devices	browser	7	character varying	255	NULL	NULL	YES	NULL	varchar
+trusted_devices	device_name	8	character varying	255	NULL	NULL	YES	NULL	varchar
+trusted_devices	last_login_at	9	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+trusted_devices	created_at	10	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+trusted_devices	updated_at	11	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+user_default_stores	id	1	bigint	NULL	64	0	NO	nextval('user_default_stores_id_seq'::regclass)	int8
+user_default_stores	user_id	2	bigint	NULL	64	0	NO	NULL	int8
+user_default_stores	name	3	character varying	255	NULL	NULL	NO	NULL	varchar
+user_default_stores	is_active	4	boolean	NULL	NULL	NULL	NO	true	bool
+user_default_stores	created_at	5	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+user_default_stores	updated_at	6	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+user_landing_sections	id	1	bigint	NULL	64	0	NO	nextval('user_landing_sections_id_seq'::regclass)	int8
+user_landing_sections	user_id	2	integer	NULL	32	0	NO	NULL	int4
+user_landing_sections	section_key	3	character varying	50	NULL	NULL	NO	NULL	varchar
+user_landing_sections	is_enabled	4	boolean	NULL	NULL	NULL	NO	false	bool
+user_landing_sections	sort_order	5	smallint	NULL	16	0	NO	'0'::smallint	int2
+user_landing_sections	created_at	6	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+user_landing_sections	updated_at	7	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+user_social_media	id	1	bigint	NULL	64	0	NO	nextval('user_social_media_id_seq'::regclass)	int8
+user_social_media	user_id	2	integer	NULL	32	0	NO	NULL	int4
+user_social_media	platform	3	character varying	50	NULL	NULL	NO	NULL	varchar
+user_social_media	label	4	character varying	100	NULL	NULL	YES	NULL	varchar
+user_social_media	url	5	character varying	500	NULL	NULL	NO	NULL	varchar
+user_social_media	icon	6	character varying	100	NULL	NULL	YES	NULL	varchar
+user_social_media	is_enabled	7	boolean	NULL	NULL	NULL	NO	false	bool
+user_social_media	sort_order	8	smallint	NULL	16	0	NO	'0'::smallint	int2
+user_social_media	created_at	9	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+user_social_media	updated_at	10	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+user_stores	id	1	bigint	NULL	64	0	NO	nextval('user_stores_id_seq'::regclass)	int8
+user_stores	user_id	2	bigint	NULL	64	0	NO	NULL	int8
+user_stores	name	3	character varying	255	NULL	NULL	NO	NULL	varchar
+user_stores	created_at	4	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+user_stores	updated_at	5	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+user_stores	button_color	6	character varying	255	NULL	NULL	NO	'#FF9900'::character varying	varchar
+user_stores	text_color	7	character varying	255	NULL	NULL	NO	'#FFFFFF'::character varying	varchar
+user_stores	is_active	8	boolean	NULL	NULL	NULL	NO	true	bool
+user_stores	button_text	9	character varying	255	NULL	NULL	YES	NULL	varchar
+users	id	1	bigint	NULL	64	0	NO	nextval('users_id_seq'::regclass)	int8
+users	name	2	character varying	255	NULL	NULL	NO	NULL	varchar
+users	email	3	character varying	255	NULL	NULL	NO	NULL	varchar
+users	email_verified_at	4	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+users	password	5	character varying	255	NULL	NULL	NO	NULL	varchar
+users	remember_token	6	character varying	100	NULL	NULL	YES	NULL	varchar
+users	created_at	7	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+users	updated_at	8	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+users	role	9	character varying	255	NULL	NULL	NO	'user'::character varying	varchar
+users	profile_photo_path	10	character varying	2048	NULL	NULL	YES	NULL	varchar
+users	banner_path	11	character varying	255	NULL	NULL	YES	NULL	varchar
+users	business_title	12	character varying	255	NULL	NULL	YES	NULL	varchar
+users	category	13	character varying	255	NULL	NULL	YES	NULL	varchar
+users	bio	14	text	NULL	NULL	NULL	YES	NULL	text
+users	youtube_handle	15	character varying	255	NULL	NULL	YES	NULL	varchar
+users	instagram_handle	16	character varying	255	NULL	NULL	YES	NULL	varchar
+users	facebook_handle	17	character varying	255	NULL	NULL	YES	NULL	varchar
+users	whatsapp_handle	18	character varying	255	NULL	NULL	YES	NULL	varchar
+users	default_primary_country_code	19	character varying	8	NULL	NULL	YES	NULL	varchar
+users	username	20	character varying	255	NULL	NULL	YES	NULL	varchar
+users	phone_code	21	character varying	10	NULL	NULL	YES	NULL	varchar
+users	phone	22	character varying	20	NULL	NULL	YES	NULL	varchar
+users	show_price_pref	23	boolean	NULL	NULL	NULL	NO	true	bool
+users	amazon_store_id	24	character varying	255	NULL	NULL	YES	NULL	varchar
+users	landing_layout	25	character varying	50	NULL	NULL	NO	'grid_card'::character varying	varchar
+users	landing_layout_is_default	26	boolean	NULL	NULL	NULL	NO	true	bool
+users	scheduled_deletion_at	27	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+users	deletion_notified_10d_at	28	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+users	deletion_notified_5d_at	29	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+users	deletion_notified_1d_at	30	timestamp without time zone	NULL	NULL	NULL	YES	NULL	timestamp
+users	bypass_subscription	31	boolean	NULL	NULL	NULL	NO	false	bool
+users	logo_path	32	character varying	255	NULL	NULL	YES	NULL	varchar
+users	logo_enabled	33	boolean	NULL	NULL	NULL	NO	false	bool
+users	header_branding_enabled	34	boolean	NULL	NULL	NULL	NO	false	bool
+users	services_text	35	text	NULL	NULL	NULL	YES	NULL	text
+users	contact_email	36	character varying	255	NULL	NULL	YES	NULL	varchar
+users	contact_phone	37	character varying	20	NULL	NULL	YES	NULL	varchar
+users	contact_phone_code	38	character varying	10	NULL	NULL	YES	NULL	varchar
+users	contact_whatsapp	39	character varying	20	NULL	NULL	YES	NULL	varchar
+users	public_branding_enabled	40	boolean	NULL	NULL	NULL	NO	true	bool
+users	is_admin	41	boolean	NULL	NULL	NULL	YES	false	bool
+users	is_blocked	42	boolean	NULL	NULL	NULL	YES	false	bool

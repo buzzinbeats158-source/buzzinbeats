@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BuzzinBeats | Every Beat, Every Link, One QR</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f8f7f6",
+                        "tertiary-fixed": "#9cf1f0",
+                        "inverse-primary": "#ffb68f",
+                        "primary": "#e06419",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed-variant": "#930006",
+                        "surface-container-high": "#ecebe9",
+                        "on-surface": "#211711",
+                        "on-background": "#211711",
+                        "on-surface-variant": "#53433c",
+                        "on-primary-fixed-variant": "#7b3100",
+                        "surface-bright": "#ffffff",
+                        "secondary-container": "#ffdad2",
+                        "secondary": "#FF6347",
+                        "on-tertiary-container": "#ffffff",
+                        "inverse-surface": "#362f2b",
+                        "inverse-on-surface": "#f8f0eb",
+                        "on-tertiary-fixed-variant": "#004f4f",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#ffdad2",
+                        "tertiary-container": "#002b2b",
+                        "primary-container": "#ff7d33",
+                        "on-primary-fixed": "#351000",
+                        "background": "#FAF9F6",
+                        "surface-tint": "#e06419",
+                        "on-secondary": "#ffffff",
+                        "outline": "#85736b",
+                        "outline-variant": "#d8c2b9",
+                        "on-tertiary-fixed": "#002020",
+                        "surface-dim": "#e5e3e0",
+                        "tertiary-fixed-dim": "#80d5d4",
+                        "surface-container-highest": "#e6e5e3",
+                        "primary-fixed-dim": "#ffb68f",
+                        "surface": "#FAF9F6",
+                        "surface-container": "#f2f1ef",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#ffb4a3",
+                        "tertiary": "#006a6a",
+                        "on-error-container": "#410002",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#f4dfd6",
+                        "on-secondary-fixed": "#3b0900",
+                        "on-secondary-container": "#3b0900",
+                        "on-primary-container": "#ffffff",
+                        "primary-fixed": "#ffdbcb",
+                        "on-tertiary": "#ffffff"
+                    },
+                    fontFamily: {
+                        headline: ["Plus Jakarta Sans"],
+                        body: ["Inter"],
+                        label: ["Plus Jakarta Sans"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .mesh-gradient {
+            background-image: radial-gradient(at 0% 0%, rgba(224, 100, 25, 0.08) 0px, transparent 50%),
+                              radial-gradient(at 100% 100%, rgba(224, 100, 25, 0.08) 0px, transparent 50%);
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background font-body text-on-surface overflow-x-hidden selection:bg-primary-container selection:text-white">
+<!-- 1. HERO CAROUSEL -->
+<section class="relative h-[870px] md:h-[921px] overflow-hidden group">
+<div class="flex h-full transition-transform duration-700 ease-in-out">
+<!-- Hero Card 1 -->
+<div class="w-full flex-shrink-0 relative overflow-hidden flex items-center justify-center p-6 md:p-12">
+<img class="absolute inset-0 w-full h-full object-cover opacity-10 blur-sm" data-alt="Abstract vibrant orange tech background with floating smartphone and glowing QR code in a studio setting with soft bokeh" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvbUJldft8R_YqG6GhHOJlCs4d5ZKLYX0D8gnBwgEF532UOv0JIOb1anb2_atpUofYV095OHM4b0sEeLYsCB7SK8IKqTanljNSCXpN1Ymq93xrUd7P7iyHplJUryJiWf5L5HGp0FBUjbMwRW3n9AUMXkSmo7KafEE_ZflNsvnBnnJizuaamLSwZwcXxdE19rTc391JP4MiMdPhH_bznkL7-kBDBCU19eXrj8_DaiLPcZvI53im8XtDsUMgmwznNdA666j9mzzkK74"/>
+<div class="relative z-10 max-w-5xl text-center space-y-6">
+<span class="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary font-label text-sm uppercase tracking-widest font-bold">Unrestricted Sharing</span>
+<h1 class="font-headline text-5xl md:text-7xl font-extrabold tracking-tighter text-on-surface leading-[1.1]">Every Platform Has Rules.<br/><span class="text-primary">Your QR Code Doesn't.</span></h1>
+<p class="text-body-large max-w-2xl mx-auto text-on-surface-variant leading-relaxed">Instagram limits you to 2 links, and bio space is tight. We give you a digital bridge that works wherever your content goes.</p>
+<div class="pt-4">
+<button class="bg-gradient-to-r from-primary to-secondary text-white font-headline font-bold px-10 py-5 rounded-xl shadow-lg shadow-primary/30 hover:shadow-xl hover:translate-y-[-2px] transition-all flex items-center gap-2 mx-auto">
+                            Get my free QR store <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Additional slides would follow same structure but are implied for "Auto-slide" UI behavior -->
+</div>
+<!-- Manual Arrows -->
+<button class="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/80 backdrop-blur-md flex items-center justify-center shadow-lg hover:bg-primary hover:text-white transition-all text-on-surface">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/80 backdrop-blur-md flex items-center justify-center shadow-lg hover:bg-primary hover:text-white transition-all text-on-surface">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+<!-- Dots -->
+<div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-3">
+<div class="w-12 h-2 rounded-full bg-primary shadow-sm"></div>
+<div class="w-2 h-2 rounded-full bg-primary/20"></div>
+<div class="w-2 h-2 rounded-full bg-primary/20"></div>
+<div class="w-2 h-2 rounded-full bg-primary/20"></div>
+</div>
+</section>
+<!-- 2. SCROLLING CREATOR CARDS -->
+<section class="py-16 bg-surface-container-low overflow-hidden">
+<div class="max-w-7xl mx-auto px-6 mb-10 text-center">
+<h2 class="font-label text-sm font-extrabold uppercase tracking-[0.2em] text-primary/60">Made for creators like you</h2>
+</div>
+<div class="flex gap-6 animate-marquee whitespace-nowrap overflow-x-auto hide-scrollbar px-6">
+<!-- Creator Card -->
+<div class="inline-block min-w-[280px] bg-white p-8 rounded-3xl shadow-sm border border-primary/5 hover:translate-y-[-4px] transition-all">
+<span class="material-symbols-outlined text-primary mb-4 text-4xl" data-icon="videocam">videocam</span>
+<h3 class="font-headline font-bold text-xl mb-2">YouTubers</h3>
+<p class="text-on-surface-variant whitespace-normal">Monetize every second of your screen time with persistent links.</p>
+</div>
+<div class="inline-block min-w-[280px] bg-white p-8 rounded-3xl shadow-sm border border-primary/5 hover:translate-y-[-4px] transition-all">
+<span class="material-symbols-outlined text-primary mb-4 text-4xl" data-icon="movie">movie</span>
+<h3 class="font-headline font-bold text-xl mb-2">Reels Creators</h3>
+<p class="text-on-surface-variant whitespace-normal">One tap or scan is all it takes to turn viewers into shoppers.</p>
+</div>
+<div class="inline-block min-w-[280px] bg-white p-8 rounded-3xl shadow-sm border border-primary/5 hover:translate-y-[-4px] transition-all">
+<span class="material-symbols-outlined text-primary mb-4 text-4xl" data-icon="payments">payments</span>
+<h3 class="font-headline font-bold text-xl mb-2">Affiliate Marketers</h3>
+<p class="text-on-surface-variant whitespace-normal">Scale your commission potential across any visual medium.</p>
+</div>
+<div class="inline-block min-w-[280px] bg-white p-8 rounded-3xl shadow-sm border border-primary/5 hover:translate-y-[-4px] transition-all">
+<span class="material-symbols-outlined text-primary mb-4 text-4xl" data-icon="camera">camera</span>
+<h3 class="font-headline font-bold text-xl mb-2">Instagram Influencers</h3>
+<p class="text-on-surface-variant whitespace-normal">Break free from the 'Link in Bio' restrictions instantly.</p>
+</div>
+<div class="inline-block min-w-[280px] bg-white p-8 rounded-3xl shadow-sm border border-primary/5 hover:translate-y-[-4px] transition-all">
+<span class="material-symbols-outlined text-primary mb-4 text-4xl" data-icon="sports_esports">sports_esports</span>
+<h3 class="font-headline font-bold text-xl mb-2">Gaming Creators</h3>
+<p class="text-on-surface-variant whitespace-normal">Your setup, your gear, one scan away for your loyal fans.</p>
+</div>
+</div>
+</section>
+<!-- 3. PAIN vs SOLUTION GRID -->
+<section class="py-24 px-6 mesh-gradient">
+<div class="max-w-6xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="font-headline text-4xl font-bold tracking-tight">The Old Way vs. The <span class="text-primary">BuzzinBeats</span> Way</h2>
+</div>
+<div class="grid md:grid-cols-2 gap-x-12 gap-y-8">
+<!-- Row 1 -->
+<div class="bg-surface-container rounded-3xl p-8 flex items-start gap-4 border border-outline-variant/20 relative">
+<span class="material-symbols-outlined text-error" data-icon="error_outline">error_outline</span>
+<div>
+<p class="font-bold text-on-surface mb-2">Your old videos are bleeding commissions</p>
+<p class="text-sm text-on-surface-variant">Bio links change, but your viral videos from last year still have dead or incorrect links.</p>
+</div>
+</div>
+<div class="bg-primary/5 rounded-3xl p-8 flex items-start gap-4 border border-primary/20">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+<div>
+<p class="font-bold text-primary mb-2">Every video stays "shoppable" forever</p>
+<p class="text-sm text-on-surface-variant">The QR code in your video never changes. Simply update the destination in your dashboard.</p>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="bg-surface-container rounded-3xl p-8 flex items-start gap-4 border border-outline-variant/20">
+<span class="material-symbols-outlined text-error" data-icon="block">block</span>
+<div>
+<p class="font-bold text-on-surface mb-2">"Go to the link in my bio..."</p>
+<p class="text-sm text-on-surface-variant">Asking users to leave the video, open your profile, and search for a link kills conversion.</p>
+</div>
+</div>
+<div class="bg-primary/5 rounded-3xl p-8 flex items-start gap-4 border border-primary/20">
+<span class="material-symbols-outlined text-primary" data-icon="qr_code_scanner">qr_code_scanner</span>
+<div>
+<p class="font-bold text-primary mb-2">Scan. Shop. Done.</p>
+<p class="text-sm text-on-surface-variant">Viewers point their phone and buy while the hype is at its peak. Friction eliminated.</p>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="bg-surface-container rounded-3xl p-8 flex items-start gap-4 border border-outline-variant/20">
+<span class="material-symbols-outlined text-error" data-icon="visibility_off">visibility_off</span>
+<div>
+<p class="font-bold text-on-surface mb-2">You have no idea what's actually working</p>
+<p class="text-sm text-on-surface-variant">Generic affiliate links don't tell you which platform or specific video drove the sale.</p>
+</div>
+</div>
+<div class="bg-primary/5 rounded-3xl p-8 flex items-start gap-4 border border-primary/20">
+<span class="material-symbols-outlined text-primary" data-icon="analytics">analytics</span>
+<div>
+<p class="font-bold text-primary mb-2">See exactly what's making you money</p>
+<p class="text-sm text-on-surface-variant">Granular data shows you which QR codes are converting best in real-time.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. FEATURES BENTO GRID -->
+<section class="py-24 px-6 bg-white">
+<div class="max-w-7xl mx-auto">
+<h2 class="font-headline text-4xl font-bold mb-12 text-center">Built for Scale, <span class="text-primary">Designed for Speed</span></h2>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<!-- Wide Card -->
+<div class="md:col-span-2 bg-surface-container-low rounded-[2.5rem] p-10 flex flex-col justify-between border border-primary/5 shadow-lg group">
+<div class="flex justify-between items-start mb-8">
+<div>
+<h3 class="font-headline font-bold text-2xl mb-2">Bulk ASIN input — paste and go</h3>
+<p class="text-on-surface-variant">Drop a list of Amazon IDs and we'll build your store in seconds. No tedious manual adding.</p>
+</div>
+<div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-primary" data-icon="dynamic_feed">dynamic_feed</span>
+</div>
+</div>
+<div class="mt-4 bg-white rounded-2xl p-4 shadow-sm border border-primary/10">
+<div class="flex items-center gap-2 text-xs font-mono text-primary/60">
+<span>B08L5TNJJ7, B09G96TFFY, B08N5N6RSS...</span>
+</div>
+</div>
+</div>
+<!-- Small Card 1 -->
+<div class="bg-primary text-white rounded-[2.5rem] p-8 flex flex-col justify-between shadow-xl shadow-primary/20">
+<span class="material-symbols-outlined text-4xl mb-4" data-icon="insights">insights</span>
+<h3 class="font-headline font-bold text-xl leading-tight">Real-time analytics dashboard</h3>
+</div>
+<!-- Small Card 2 -->
+<div class="bg-surface-bright rounded-[2.5rem] p-8 flex flex-col border border-primary/10 shadow-lg justify-between">
+<span class="material-symbols-outlined text-primary text-4xl mb-4" data-icon="grid_view">grid_view</span>
+<h3 class="font-headline font-bold text-xl leading-tight">5 High-conversion layout styles</h3>
+</div>
+<!-- Small Card 3 -->
+<div class="bg-surface-container-high rounded-[2.5rem] p-8 flex flex-col justify-between group hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-primary group-hover:text-white text-4xl mb-4 transition-colors" data-icon="badge">badge</span>
+<h3 class="font-headline font-bold text-xl leading-tight group-hover:text-white transition-colors">One unified store ID</h3>
+</div>
+<!-- Small Card 4 -->
+<div class="bg-white rounded-[2.5rem] p-8 flex flex-col border border-primary/10 shadow-lg justify-between">
+<span class="material-symbols-outlined text-primary text-4xl mb-4" data-icon="shield_person">shield_person</span>
+<h3 class="font-headline font-bold text-xl leading-tight">Your 24/7 affiliate link bodyguard</h3>
+</div>
+<!-- Wide Card Footer -->
+<div class="md:col-span-2 bg-gradient-to-br from-secondary to-primary rounded-[2.5rem] p-10 flex items-center gap-8 text-white relative overflow-hidden">
+<div class="relative z-10">
+<h3 class="font-headline font-bold text-2xl mb-2">Legacy QR Redirect</h3>
+<p class="opacity-90">Change your destination page without ever re-printing or re-editing your old video QR codes.</p>
+</div>
+<span class="material-symbols-outlined text-8xl opacity-10 absolute -right-4 -bottom-4" data-icon="history">history</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. HOW IT WORKS -->
+<section class="py-24 bg-surface-container-low px-6">
+<div class="max-w-6xl mx-auto">
+<div class="text-center mb-20">
+<h2 class="font-headline text-4xl font-bold mb-4">Launch in <span class="text-primary">Under 5 Minutes</span></h2>
+<p class="text-on-surface-variant">Simple steps to passive commission bliss.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<!-- Step 1 -->
+<div class="relative">
+<span class="text-8xl font-black text-primary/10 absolute -top-12 -left-4">01</span>
+<div class="relative z-10 pt-4">
+<h3 class="font-headline font-bold text-xl mb-3">Sign Up</h3>
+<p class="text-on-surface-variant">Quick onboarding to set up your creator credentials and niche focus.</p>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="relative">
+<span class="text-8xl font-black text-primary/10 absolute -top-12 -left-4">02</span>
+<div class="relative z-10 pt-4">
+<h3 class="font-headline font-bold text-xl mb-3">Enter Store ID</h3>
+<p class="text-on-surface-variant">Connect your Amazon or affiliate IDs to ensure you get credited for every sale.</p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="relative">
+<span class="text-8xl font-black text-primary/10 absolute -top-12 -left-4">03</span>
+<div class="relative z-10 pt-4">
+<h3 class="font-headline font-bold text-xl mb-3">Create Page</h3>
+<p class="text-on-surface-variant">Choose from our battle-tested templates designed for high mobile conversion.</p>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="relative">
+<span class="text-8xl font-black text-primary/10 absolute -top-12 -left-4">04</span>
+<div class="relative z-10 pt-4">
+<h3 class="font-headline font-bold text-xl mb-3">Add Products</h3>
+<p class="text-on-surface-variant">Paste links or ASINs. We'll fetch images, titles, and real-time pricing automatically.</p>
+</div>
+</div>
+<!-- Step 5 -->
+<div class="relative">
+<span class="text-8xl font-black text-primary/10 absolute -top-12 -left-4">05</span>
+<div class="relative z-10 pt-4">
+<h3 class="font-headline font-bold text-xl mb-3">Publish/Share</h3>
+<p class="text-on-surface-variant">Download your custom high-res QR code and place it in your next video overlay.</p>
+</div>
+</div>
+<!-- Step 6 -->
+<div class="relative">
+<span class="text-8xl font-black text-primary/10 absolute -top-12 -left-4">06</span>
+<div class="relative z-10 pt-4">
+<h3 class="font-headline font-bold text-xl mb-3">Watch Analytics</h3>
+<p class="text-on-surface-variant">Monitor clicks and conversions. Optimize based on what your audience loves.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. QR BRIDGE VISUAL -->
+<section class="py-24 bg-white relative overflow-hidden">
+<div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
+<div class="md:w-1/2">
+<h2 class="font-headline text-5xl font-extrabold tracking-tight mb-8">The Bridge to <span class="text-primary">Direct Sales</span></h2>
+<div class="space-y-8">
+<div class="flex items-center gap-6 group">
+<div class="w-16 h-16 rounded-2xl bg-orange-50 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
+<span class="material-symbols-outlined text-3xl" data-icon="smart_display">smart_display</span>
+</div>
+<p class="text-xl font-bold">Viewer watches your video content</p>
+</div>
+<div class="w-px h-12 bg-primary/20 ml-8"></div>
+<div class="flex items-center gap-6 group">
+<div class="w-16 h-16 rounded-2xl bg-orange-50 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
+<span class="material-symbols-outlined text-3xl" data-icon="qr_code_2">qr_code_2</span>
+</div>
+<p class="text-xl font-bold">Instinctively scans the corner QR</p>
+</div>
+<div class="w-px h-12 bg-primary/20 ml-8"></div>
+<div class="flex items-center gap-6 group">
+<div class="w-16 h-16 rounded-2xl bg-orange-50 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
+<span class="material-symbols-outlined text-3xl" data-icon="web">web</span>
+</div>
+<p class="text-xl font-bold">Lands on your optimized shop page</p>
+</div>
+<div class="w-px h-12 bg-primary/20 ml-8"></div>
+<div class="flex items-center gap-6 group">
+<div class="w-16 h-16 rounded-2xl bg-orange-50 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
+<span class="material-symbols-outlined text-3xl" data-icon="shopping_cart_checkout">shopping_cart_checkout</span>
+</div>
+<p class="text-xl font-bold">Clicks Buy and you earn commissions</p>
+</div>
+</div>
+</div>
+<div class="md:w-1/2 relative">
+<div class="relative w-full aspect-square bg-gradient-to-tr from-primary/10 to-transparent rounded-full flex items-center justify-center p-12">
+<div class="relative bg-white p-8 rounded-[3rem] shadow-2xl border border-primary/10 max-w-sm w-full animate-bounce-slow">
+<img class="rounded-3xl shadow-lg mb-6 border border-primary/5" data-alt="Close up of a modern smartphone showing a clean product affiliate landing page with orange buy buttons and high quality product photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoZuo_oDirf8lAE4N1sl_x-qfm1v0dINo7eLP3PuDMagKH3eE1Q_S2-3pGih3pI0SZjXXEg9InllyyFKWgh2yfwCrJ4DPdSKiDY6TAYFU-qLg4Hg-6aBs3vyess5V7sdlUscn5wkbl2d9aBDj9wMo-X7nZKl1llK-9ug9yen_8FJuP75I4gG491K8cYpqNQS3OasOkqAi3U7RrNKAqxPHj3CKQzA2NKNljTDF_mQlzQvogAmc__Okx5xgLBoUHKr2_CJhPaZKJc9c"/>
+<div class="bg-primary/5 p-4 rounded-2xl border border-primary/10 flex items-center gap-3">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-xl" data-icon="check_circle">check_circle</span>
+</div>
+<span class="text-sm font-bold text-primary">Conversion Captured</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 7. TESTIMONIALS -->
+<section class="py-24 bg-surface-container-low px-6">
+<div class="max-w-7xl mx-auto">
+<div class="flex justify-between items-end mb-16">
+<div>
+<h2 class="font-headline text-4xl font-bold">Loved by <span class="text-primary">10k+ Creators</span></h2>
+<p class="text-on-surface-variant mt-2">Real results from creators who switched to the QR-first strategy.</p>
+</div>
+<div class="flex gap-2">
+<button class="w-12 h-12 rounded-full border border-primary/20 flex items-center justify-center hover:bg-primary hover:text-white transition-all"><span class="material-symbols-outlined">west</span></button>
+<button class="w-12 h-12 rounded-full border border-primary/20 flex items-center justify-center hover:bg-primary hover:text-white transition-all"><span class="material-symbols-outlined">east</span></button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<div class="bg-white p-8 rounded-3xl shadow-sm border border-primary/5">
+<div class="flex gap-1 text-primary mb-4">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="italic text-on-surface mb-8 leading-relaxed">"My old links were a mess. BuzzinBeats streamlined everything. The QR codes in my tech reviews have a 30% higher CTR than the description links."</p>
+<div class="flex items-center gap-4">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="Portrait of a young professional tech reviewer smiling, high-key lighting, modern clean studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_g23moCqSoHiqihUZh9zi21Ew0JaQBDzoW9kzT2azAWyXX76MBrzeGCTrgAHzlWdNP1kkRp2BXLkM-7vIzA-NOW4Pnhf6gilufEyPo1Nww5PKTvhVTQ1iUoCAt6d61aIji3PyEhG31j0lcJTgpZEDtw8dhrjP5fjGjuXXxfCiNBqNySpEow7tmzNHluhonuT5jjKN0RS8MKTa6ibwxMDfItYHMjb9QheeoX37aJR8Btoq1-OYW8sUdx9asoZsyjVuAvIPIAcfqdM"/>
+<div>
+<p class="font-bold">Amit K.</p>
+<p class="text-xs text-on-surface-variant">Tech YouTuber</p>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-white p-8 rounded-3xl shadow-sm border border-primary/5">
+<div class="flex gap-1 text-primary mb-4">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="italic text-on-surface mb-8 leading-relaxed">"Finally, a tool that understands the Creator Economy. I don't have to keep telling people to check my bio anymore. It's right there on the screen."</p>
+<div class="flex items-center gap-4">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="Close-up portrait of a lifestyle influencer with warm lighting and a soft natural background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8a0sOCJaDc9VWQxB-zO5c271qoqvD0tsWeEr7yUjF7D9CzHArEA04U0E4_AR_YKS0b0ydjMxol4G9cuUqFZSK3jFJAkeLlPfB4owoj4qFJ9HS4hWyYUfP4y9xv726PqJc_OADi9miotRJ_hW9Nz50Op-FgP-V4_c1evIXHHz3wv-hFyqTHpZs_r6Y18IsJILnOjBMp4DkOgnHpj2lkzCxnT48iVPEWIUe5etHveywifOKCNkKXeOvSjc6Tb0Nx9_hOqDiGvxjPpE"/>
+<div>
+<p class="font-bold">Priya R.</p>
+<p class="text-xs text-on-surface-variant">Lifestyle Influencer</p>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-white p-8 rounded-3xl shadow-sm border border-primary/5">
+<div class="flex gap-1 text-primary mb-4">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="italic text-on-surface mb-8 leading-relaxed">"The bulk ASIN feature is a lifesaver for my monthly 'Top Picks' blogs. Setting up a shoppable page used to take hours, now it's done in minutes."</p>
+<div class="flex items-center gap-4">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="Portrait of a young male writer in a casual setting with soft window lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtrLNYSbWIoCqUfs_11pTVadfFphlcZxuBFfMeJRky4DdZFpTNEOXURzuvEUsUD3MLzWHTIwouPyFvo6Ol4R4uUS9b_8UhV-jxwe0n9hk36R8L0ASHydTvK7bCDFOA1rwYVkcC6MHHFZbN5aluFshoufnbUPfnhoT4Aj2fiU8qpSf2ljSThWr6Ix-pVcBwD3SLJzaTecjl17H6CyXkRYgbMmghI7y-xtHoHKuVGs2wRgAiYwjDhUaepeYljCmk0s9w3_3JU6HMPa4"/>
+<div>
+<p class="font-bold">Suresh M.</p>
+<p class="text-xs text-on-surface-variant">Lifestyle Blogger</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 8. FINAL CTA -->
+<section class="py-24 px-6 relative overflow-hidden">
+<div class="absolute inset-0 mesh-gradient opacity-30"></div>
+<div class="max-w-5xl mx-auto bg-inverse-surface text-inverse-on-surface rounded-[3rem] p-12 md:p-20 text-center relative z-10 shadow-2xl overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-3xl -mr-32 -mt-32"></div>
+<div class="relative z-10">
+<h2 class="font-headline text-4xl md:text-6xl font-extrabold mb-6">Your next video should<br/><span class="text-primary">pay you forever.</span></h2>
+<p class="text-xl opacity-80 mb-10 max-w-xl mx-auto">Stop losing money to broken links. Start building your sustainable creator storefront today.</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="bg-primary text-white font-headline font-bold px-12 py-5 rounded-xl shadow-lg hover:shadow-primary/40 hover:-translate-y-1 transition-all">
+                        Create my free store →
+                    </button>
+<button class="bg-white/10 backdrop-blur-md border border-white/20 text-white font-headline font-bold px-12 py-5 rounded-xl hover:bg-white/20 transition-all">
+                        View Demo Shop
+                    </button>
+</div>
+<p class="mt-8 text-sm opacity-50">No credit card required. Free forever version available.</p>
+</div>
+</div>
+</section>
+</body></html>

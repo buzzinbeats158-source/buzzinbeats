@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BuzzinBeats Checkout | Solar Kinetic</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "tertiary-container": "#002b2b",
+                  "inverse-surface": "#362f2b",
+                  "tertiary": "#006a6a",
+                  "outline-variant": "#d8c2b9",
+                  "on-background": "#211711",
+                  "on-tertiary-fixed": "#002020",
+                  "surface-container-lowest": "#ffffff",
+                  "on-secondary": "#ffffff",
+                  "primary-fixed": "#ffdbcb",
+                  "on-primary": "#ffffff",
+                  "outline": "#85736b",
+                  "secondary": "#FF6347",
+                  "on-primary-fixed": "#351000",
+                  "on-surface": "#211711",
+                  "on-primary-fixed-variant": "#7b3100",
+                  "surface-container-low": "#f8f7f6",
+                  "background": "#FAF9F6",
+                  "surface-container": "#f2f1ef",
+                  "on-secondary-fixed": "#3b0900",
+                  "inverse-on-surface": "#f8f0eb",
+                  "surface-variant": "#f4dfd6",
+                  "surface": "#FAF9F6",
+                  "on-error": "#ffffff",
+                  "secondary-fixed-dim": "#ffb4a3",
+                  "on-tertiary-container": "#ffffff",
+                  "surface-bright": "#ffffff",
+                  "primary-fixed-dim": "#ffb68f",
+                  "on-tertiary-fixed-variant": "#004f4f",
+                  "on-primary-container": "#ffffff",
+                  "tertiary-fixed": "#9cf1f0",
+                  "tertiary-fixed-dim": "#80d5d4",
+                  "error-container": "#ffdad6",
+                  "error": "#ba1a1a",
+                  "secondary-container": "#ffdad2",
+                  "surface-container-highest": "#e6e5e3",
+                  "surface-container-high": "#ecebe9",
+                  "on-error-container": "#410002",
+                  "on-secondary-fixed-variant": "#930006",
+                  "surface-tint": "#e06419",
+                  "on-surface-variant": "#53433c",
+                  "secondary-fixed": "#ffdad2",
+                  "surface-dim": "#e5e3e0",
+                  "primary": "#e06419",
+                  "on-tertiary": "#ffffff",
+                  "inverse-primary": "#ffb68f",
+                  "primary-container": "#ff7d33",
+                  "on-secondary-container": "#3b0900"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.25rem",
+                  "lg": "0.5rem",
+                  "xl": "0.75rem",
+                  "full": "9999px"
+          },
+          "fontFamily": {
+                  "headline": ["Plus Jakarta Sans"],
+                  "display": ["Plus Jakarta Sans"],
+                  "body": ["Inter"],
+                  "label": ["Plus Jakarta Sans"]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .mesh-gradient {
+      background: radial-gradient(circle at top left, rgba(224, 100, 25, 0.08), transparent 40%),
+                  radial-gradient(circle at bottom right, rgba(255, 99, 71, 0.08), transparent 40%);
+    }
+    @keyframes shine {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+    .animate-shine {
+      position: relative;
+      overflow: hidden;
+    }
+    .animate-shine::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      animation: shine 2s infinite;
+    }
+  </style>
+</head>
+<body class="bg-background font-body text-on-surface min-h-screen flex items-center justify-center p-4 md:p-8 mesh-gradient">
+<div class="max-w-6xl w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Left Column: Order Summary -->
+<div class="lg:col-span-5 space-y-6">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">receipt_long</span>
+</div>
+<h1 class="font-headline text-2xl font-extrabold tracking-tight">Checkout</h1>
+</div>
+<!-- Special Offer Banner -->
+<div class="bg-gradient-to-r from-primary to-secondary p-0.5 rounded-[1.5rem] shadow-xl animate-shine">
+<div class="bg-surface-bright rounded-[1.4rem] p-5 flex items-start gap-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl font-bold">celebration</span>
+</div>
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="text-[11px] font-black uppercase tracking-[0.2em] text-primary">Special Offer: Upgrade Today!</span>
+<span class="h-2 w-2 rounded-full bg-primary animate-ping"></span>
+</div>
+<p class="text-sm text-on-surface font-bold leading-tight">
+        Get an additional <span class="text-primary underline decoration-2 underline-offset-2">30 bonus days</span> on your plan.
+      </p>
+</div>
+</div>
+</div>
+<div class="bg-surface-bright rounded-[2.5rem] p-8 shadow-lg border border-primary/5 relative overflow-hidden">
+<!-- Abstract Decorative Glow -->
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl -mr-16 -mt-16"></div>
+<h2 class="font-headline text-xl font-bold mb-8 text-on-surface border-b border-surface-container-high pb-4">Order Summary</h2>
+<div class="space-y-6">
+<div class="flex justify-between items-start">
+<div>
+<p class="font-headline font-bold text-lg text-primary">Growth Plan</p>
+<p class="text-on-surface-variant text-sm mt-1">Professional tools for rising creators</p>
+</div>
+<p class="font-headline font-bold text-lg">₹299 <span class="text-xs text-on-surface-variant font-medium">/ month</span></p>
+</div>
+<div class="space-y-4 pt-6 border-t border-surface-container">
+<div class="flex justify-between text-on-surface-variant">
+<span>Duration</span>
+<span class="font-semibold text-on-surface">3 Months <span class="text-primary">+ 30 Bonus Days</span></span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>Subtotal</span>
+<span class="font-semibold text-on-surface">₹897</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>Platform Fee</span>
+<span class="font-semibold text-tertiary">FREE</span>
+</div>
+</div>
+<div class="pt-6 mt-6 border-t-2 border-dashed border-surface-container-highest">
+<div class="flex justify-between items-center">
+<span class="font-headline font-bold text-xl">Total Payable</span>
+<span class="font-headline font-extrabold text-3xl text-primary tracking-tight">₹897</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Subscription Settings -->
+<div class="lg:col-span-7">
+<div class="bg-surface-container-low rounded-[2.5rem] p-8 md:p-10 shadow-2xl border border-primary/10 relative">
+<div class="flex justify-between items-center mb-10">
+<h2 class="font-headline text-2xl font-bold">Subscription Settings</h2>
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase">Customizing</span>
+</div>
+<!-- Month Selector -->
+<div class="mb-10">
+<label class="block text-sm font-bold text-on-surface-variant uppercase tracking-wider mb-4">Choose Duration (Months)</label>
+<div class="flex items-center gap-4">
+<button class="w-14 h-14 rounded-2xl bg-surface-bright border border-outline-variant flex items-center justify-center text-primary hover:border-primary hover:shadow-lg transition-all active:scale-95 group">
+<span class="material-symbols-outlined font-bold group-hover:scale-110">remove</span>
+</button>
+<div class="flex-1 max-w-[120px]">
+<input class="w-full h-14 text-center text-2xl font-extrabold bg-surface-bright rounded-2xl border-2 border-primary focus:ring-0 focus:outline-none text-on-surface" readonly="" type="text" value="3"/>
+</div>
+<button class="w-14 h-14 rounded-2xl bg-primary text-white flex items-center justify-center shadow-lg shadow-primary/30 hover:scale-105 transition-all active:scale-95">
+<span class="material-symbols-outlined font-bold">add</span>
+</button>
+</div>
+</div>
+<!-- Quick Select Pills -->
+<div class="mb-12">
+<label class="block text-sm font-bold text-on-surface-variant uppercase tracking-wider mb-4">Quick Select</label>
+<div class="flex flex-wrap gap-3">
+<button class="px-6 py-3 rounded-full bg-surface-bright border border-outline-variant text-on-surface font-semibold hover:border-primary hover:text-primary transition-all">1 Month</button>
+<button class="px-6 py-3 rounded-full bg-primary text-white font-bold shadow-lg shadow-primary/20 ring-4 ring-primary/10">3 Months</button>
+<button class="px-6 py-3 rounded-full bg-surface-bright border border-outline-variant text-on-surface font-semibold hover:border-primary hover:text-primary transition-all">6 Months</button>
+<button class="px-6 py-3 rounded-full bg-surface-bright border border-outline-variant text-on-surface font-semibold hover:border-primary hover:text-primary transition-all">12 Months</button>
+</div>
+</div>
+<!-- Action Area -->
+<div class="space-y-6">
+<button class="w-full py-5 rounded-2xl bg-gradient-to-r from-primary to-secondary text-white font-headline font-extrabold text-xl shadow-xl shadow-primary/30 hover:-translate-y-1 transition-all active:scale-[0.98] flex items-center justify-center gap-3">
+            Pay ₹897 Securely
+            <span class="material-symbols-outlined">lock</span>
+</button>
+<div class="flex flex-col items-center justify-center space-y-4">
+<div class="flex items-center gap-6 opacity-60 grayscale hover:grayscale-0 transition-all cursor-default">
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Secured by</span>
+<img alt="Razorpay Logo" class="h-5" data-alt="Official blue Razorpay company logo with stylized 'R' icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4dtFR94zVBkj3uX4Dgg0iNJO6OAiww0gwQCGf_yYDImuIl9nAyDqwdJiXq2pgGVJy1czMPjGNvIBs_kLROgBlNE5BgZx0W9ynH2YPyB8wmBdHrt5pjin3zvPfZnv6pL5N1Xps3JBoPJvTNfBMXylsOVUAUQXUcLPKoVZTvMenp6sZKWAWgvAfuUQUhKqMVuAEbOP_9srGsneCEo-nXulTSY_kuqkaAE23qTUnUehJuuLDfdRuv0IodkKl-BuU8BY4KsijByBrjmU"/>
+</div>
+<div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-8">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">shield</span>
+<span class="text-sm font-medium">Secure Payment via Razorpay</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">event_busy</span>
+<span class="text-sm font-medium">Cancel anytime</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Decorative Floating Element -->
+<div class="absolute -right-4 -bottom-4 w-24 h-24 bg-tertiary-container/5 rounded-3xl rotate-12 -z-10"></div>
+<div class="absolute -left-6 top-1/2 w-12 h-12 bg-secondary/10 rounded-full blur-xl"></div>
+</div>
+<!-- Bottom Assistance Tag -->
+<div class="mt-8 flex justify-center">
+<a class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-surface-container-highest/50 text-on-surface-variant text-sm font-medium hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined text-base">help_outline</span>
+          Need help with your subscription? Contact Support
+        </a>
+</div>
+</div>
+</div>
+</body></html>

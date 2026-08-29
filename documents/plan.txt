@@ -1,0 +1,1582 @@
+You are working on the existing BuzzinBeats application.
+
+IMPORTANT:
+Do NOT rebuild the application from scratch.
+Do NOT unnecessarily change the existing Product Management functionality.
+First inspect the existing Laravel/PHP application, database schema, routes, controllers, models, Blade views/components, JavaScript, and existing admin/user dashboard before making changes.
+
+The goal is to restructure the existing "Pages / Product Page" architecture into a more flexible CONTENT system.
+
+============================================================
+1. NEW CORE CONCEPT
+============================================================
+
+The application currently behaves as if every page is a Product Page.
+
+That architecture must now change.
+
+A BuzzinBeats public page should be treated as a:
+
+CONTENT PAGE
+
+A Content Page can contain one or more of these three independent content types:
+
+1. Products
+2. Redirect Links
+3. Digital Products / Digital Content
+
+A single Content Page must be able to contain:
+
+- only Products
+- only Redirect Links
+- only Digital Products
+- Products + Redirect Links
+- Products + Digital Products
+- Redirect Links + Digital Products
+- Products + Redirect Links + Digital Products
+
+Therefore these are NOT mutually exclusive page types.
+
+They are CONTENT SECTIONS that can coexist on the same public page.
+
+Example:
+
+A user creates:
+
+"CTET Preparation"
+
+That page could contain:
+
+SECTION 1:
+Redirect → Rank Pulse website
+
+SECTION 2:
+Digital Product → CTET Practice Paper ₹49
+
+SECTION 3:
+Products → Recommended Amazon Products
+
+The user must be able to control the order of these sections.
+
+For example:
+
+1. Redirect Links
+2. Digital Products
+3. Products
+
+OR:
+
+1. Products
+2. Redirect Links
+3. Digital Products
+
+The order must be completely user-controlled.
+
+============================================================
+2. SIDEBAR ARCHITECTURE
+============================================================
+
+Change the existing sidebar concept.
+
+Instead of treating Products as the parent of the page creation system, introduce:
+
+Content
+
+The sidebar should conceptually be:
+
+Dashboard
+
+Content
+    ├── My Content Pages
+    ├── Products
+    ├── Redirect Links
+    └── Digital Products
+
+Analytics
+
+Store
+
+Link Health
+
+Settings
+
+If the current application already has "My Pages", preserve it where appropriate, but the common terminology should now be CONTENT.
+
+The important distinction is:
+
+CONTENT PAGE = the public landing page/container
+
+PRODUCT = one type of content inside that page
+
+REDIRECT LINK = another type of content inside that page
+
+DIGITAL PRODUCT = another type of content inside that page
+
+Do not confuse the page/container with the individual content items.
+
+============================================================
+3. CREATE CONTENT PAGE
+============================================================
+
+The first step must be the existing "Create New Page" flow.
+
+This page creation screen should be COMMON for all three content types.
+
+Do NOT create:
+
+Create Product Page
+Create Redirect Page
+Create Digital Product Page
+
+Instead there must be only:
+
+CREATE CONTENT PAGE
+
+The existing Create New Page design should remain substantially the same.
+
+It should contain:
+
+PAGE IDENTITY
+
+- Page Name
+- Description
+
+QR & LINK SETTINGS
+
+- Custom URL Slug
+- QR Accent Color
+- Center Logo
+- Live QR Preview
+- Copy Link
+- Download QR
+
+The user creates the page first.
+
+Example:
+
+Page Name:
+CTET Preparation
+
+Description:
+All CTET preparation resources in one place.
+
+Slug:
+ctet
+
+Result:
+
+BA001-P019
+buzzinbeats.com/Balaram/ctet
+
+At this stage NO product, redirect, or digital product needs to be selected.
+
+The page/container is created first.
+
+============================================================
+4. AFTER PAGE CREATION — CONTENT BUILDER
+============================================================
+
+After creating the Content Page, take the user to a new:
+
+MANAGE CONTENT PAGE
+
+screen.
+
+Example header:
+
+CTET Preparation
+BA001-P019
+
+buzzinbeats.com/Balaram/ctet
+
+Status: Draft
+
+Then provide a content builder.
+
+The user should see:
+
+CONTENT SECTIONS
+
+[ + Add Content ]
+
+The Add Content interface must provide THREE options:
+
+1. Product
+2. Redirect Link
+3. Digital Product
+
+These three options must be selectable independently.
+
+IMPORTANT:
+
+They must NOT behave like radio buttons where selecting one removes another.
+
+The user can add all three.
+
+Example:
+
++ Add Product
++ Add Redirect Link
++ Add Digital Product
+
+============================================================
+5. PRODUCT SECTION
+============================================================
+
+The EXISTING PRODUCT MANAGEMENT SYSTEM must be preserved.
+
+Do NOT rewrite the current product functionality unless required for integration.
+
+The existing tabs:
+
+Manual Entry
+Auto Fetch
+Search & Add
+
+should continue to work.
+
+The current Product Management system is primarily designed around Amazon and affiliate products.
+
+Keep that behavior.
+
+PRODUCT MANUAL ENTRY:
+
+- Image
+- Product Title
+- Description
+- Currency
+- Starting Price
+- Store Links
+- Add Another Link
+- Add Product
+
+The store dropdown can continue supporting:
+
+Amazon
+Flipkart
+Other supported stores
+
+AUTO FETCH:
+
+Continue the existing ASIN-based Amazon fetching workflow.
+
+SEARCH & ADD:
+
+Continue the existing Amazon product search workflow.
+
+The only architectural change is:
+
+Products are now CONTENT ITEMS that belong to a Content Page.
+
+Do not break the existing Amazon workflow.
+
+============================================================
+6. REDIRECT LINK SECTION
+============================================================
+
+Create a completely separate Redirect Links module.
+
+A redirect item should have its own interface.
+
+Example:
+
+ADD REDIRECT LINK
+
+Title:
+Rank Pulse
+
+Description:
+Prepare for CTET with Rank Pulse.
+
+Image:
+[ Upload ]
+
+Destination URL:
+https://example.com
+
+Button Text:
+Visit Website
+
+Optional settings:
+
+Open Link In:
+- Same Tab
+- New Tab
+
+Status:
+- Active
+- Inactive
+
+Button:
+
+[ Add Redirect Link ]
+
+The redirect item must be stored separately from Products.
+
+Example use:
+
+Rank Pulse website
+
+The public page should display something like:
+
+Rank Pulse
+Prepare for CTET with Rank Pulse.
+
+[ Visit Rank Pulse ]
+
+Clicking it redirects the visitor to the configured URL.
+
+============================================================
+7. DIGITAL PRODUCT SECTION
+============================================================
+
+Create a completely separate Digital Product module.
+
+This is intended for future monetization of downloadable content.
+
+Examples:
+
+- CTET Practice Papers
+- PDF Notes
+- eBooks
+- Study Material
+- Question Papers
+- ZIP files
+- Other downloadable digital files
+
+Interface should include:
+
+DIGITAL PRODUCT
+
+Title
+Description
+Cover Image
+Price
+Currency
+
+Digital File:
+[ Upload File ]
+
+Supported file types should be determined by the existing application architecture and security requirements.
+
+Payment/access configuration:
+
+Price:
+₹99
+
+Access method:
+Secure download / access-controlled file
+
+The system should be designed so that after successful payment the customer can receive:
+
+- Access confirmation
+- Secure download link
+- Access key/order reference where applicable
+
+IMPORTANT:
+
+Do NOT implement insecure public file URLs.
+
+Digital files must not simply be placed into a publicly accessible folder and exposed directly.
+
+Use secure access/download logic.
+
+The exact payment implementation can be integrated according to the existing payment architecture.
+
+============================================================
+8. COMBINING ALL THREE CONTENT TYPES
+============================================================
+
+This is one of the most important requirements.
+
+A Content Page must support multiple content types simultaneously.
+
+Example:
+
+CONTENT PAGE:
+CTET Preparation
+
+Contains:
+
+1. Redirect Link
+   Rank Pulse
+
+2. Digital Product
+   CTET Practice Paper
+
+3. Products
+   Recommended Study Products
+
+The user should be able to add multiple items of the SAME type too.
+
+For example:
+
+Products:
+- Headphones
+- Keyboard
+- Notebook
+- Study Lamp
+
+Redirects:
+- Rank Pulse
+- YouTube Channel
+- Telegram Group
+
+Digital Products:
+- CTET Practice Paper
+- Child Development Notes
+- Previous Year Papers
+
+All of these can exist on the same Content Page.
+
+============================================================
+9. SECTION ORDER / DRAG AND DROP
+============================================================
+
+After the user has selected/created the desired content sections, provide:
+
+PAGE SECTIONS
+
+Example:
+
+┌─────────────────────────────────┐
+│ ☷ Redirect Links                │
+│   2 items                       │
+└─────────────────────────────────┘
+
+┌─────────────────────────────────┐
+│ ☷ Digital Products              │
+│   3 items                       │
+└─────────────────────────────────┘
+
+┌─────────────────────────────────┐
+│ ☷ Products                      │
+│   8 items                       │
+└─────────────────────────────────┘
+
+The user must be able to drag and reorder these sections.
+
+Example:
+
+Before:
+
+1. Products
+2. Redirect Links
+3. Digital Products
+
+After drag and drop:
+
+1. Redirect Links
+2. Digital Products
+3. Products
+
+The public page must render sections in exactly this order.
+
+Do NOT hard-code:
+
+Products first
+Redirect second
+Digital third
+
+The order must come from the database.
+
+============================================================
+10. IMPORTANT DISTINCTION:
+CONTENT ITEMS VS PAGE SECTIONS
+============================================================
+
+Use a clean architecture.
+
+There are two separate concepts:
+
+A. CONTENT ITEMS
+
+Examples:
+
+Product:
+Amazon Headphones
+
+Redirect:
+Rank Pulse
+
+Digital Product:
+CTET Practice Paper
+
+B. PAGE SECTIONS
+
+The page section determines how those content items are grouped/displayed on a particular Content Page.
+
+For example:
+
+Content Page:
+CTET Preparation
+
+Sections:
+
+section_order = 1
+type = redirect
+title = Useful Links
+
+section_order = 2
+type = digital_product
+title = Study Materials
+
+section_order = 3
+type = product
+title = Recommended Products
+
+Do not duplicate product/redirect/digital-product data unnecessarily just to control ordering.
+
+============================================================
+11. DATABASE ARCHITECTURE
+============================================================
+
+This is VERY IMPORTANT.
+
+Products, Redirect Links and Digital Products must have separate database tables.
+
+Do NOT put all three into one generic content table with dozens of nullable fields.
+
+Use separate tables.
+
+At minimum:
+
+products
+
+redirect_links
+
+digital_products
+
+The existing products table/schema should be inspected first and preserved wherever possible.
+
+Each table should have its own appropriate fields.
+
+------------------------------------------------------------
+PRODUCTS
+------------------------------------------------------------
+
+Use the existing product table if one already exists.
+
+Typical fields may include:
+
+id
+user_id
+page_id / content_page_id
+title
+description
+image
+currency
+price
+store links / related store records
+amazon ASIN where applicable
+status
+created_at
+updated_at
+
+DO NOT blindly create duplicate columns if the existing database already contains them.
+
+------------------------------------------------------------
+REDIRECT LINKS
+------------------------------------------------------------
+
+redirect_links
+
+id
+user_id
+content_page_id
+title
+description
+image
+destination_url
+button_text
+open_in_new_tab
+status
+created_at
+updated_at
+
+------------------------------------------------------------
+DIGITAL PRODUCTS
+------------------------------------------------------------
+
+digital_products
+
+id
+user_id
+content_page_id
+title
+description
+cover_image
+price
+currency
+file_path / storage reference
+file_name
+file_size
+status
+created_at
+updated_at
+
+Additional payment/order tables can be introduced later.
+
+============================================================
+12. CONTENT PAGE TABLE
+============================================================
+
+The page/container should remain separate.
+
+Example:
+
+content_pages
+
+id
+user_id
+page_code
+name
+description
+slug
+qr_color
+qr_logo
+status
+published_at
+created_at
+updated_at
+
+Use the existing page table if one already exists.
+
+Do NOT create a duplicate page system if the existing system can be adapted.
+
+============================================================
+13. PAGE SECTION TABLE
+============================================================
+
+Create a dedicated table to control the composition and order of a Content Page.
+
+Example:
+
+content_page_sections
+
+id
+content_page_id
+section_type
+section_order
+title
+is_enabled
+created_at
+updated_at
+
+section_type values:
+
+product
+redirect
+digital_product
+
+Example:
+
+id | content_page_id | section_type | section_order | is_enabled
+
+1  | 19              | redirect     | 1             | true
+2  | 19              | digital      | 2             | true
+3  | 19              | product      | 3             | true
+
+This table controls the PAGE STRUCTURE.
+
+The actual content remains in:
+
+products
+redirect_links
+digital_products
+
+============================================================
+14. DATABASE RELATIONSHIPS
+============================================================
+
+Use proper Laravel relationships.
+
+ContentPage:
+
+hasMany(Product)
+hasMany(RedirectLink)
+hasMany(DigitalProduct)
+hasMany(ContentPageSection)
+
+Product:
+
+belongsTo(ContentPage)
+
+RedirectLink:
+
+belongsTo(ContentPage)
+
+DigitalProduct:
+
+belongsTo(ContentPage)
+
+ContentPageSection:
+
+belongsTo(ContentPage)
+
+The architecture should be clean and maintainable.
+
+If the existing product architecture already uses another relationship pattern, inspect it first and adapt carefully rather than breaking it.
+
+============================================================
+15. PUBLIC PAGE RENDERING
+============================================================
+
+The public page must NOT assume it is a product page.
+
+Instead:
+
+1. Load Content Page.
+2. Load enabled Content Page Sections.
+3. Sort sections by section_order.
+4. Render each section according to section_type.
+5. Load the corresponding content items.
+6. Render the public section.
+
+Example:
+
+Content Page
+
+Hero
+
+Section 1:
+Redirect Links
+
+Section 2:
+Digital Products
+
+Section 3:
+Products
+
+Footer
+
+If the user changes the order:
+
+Section 1:
+Products
+
+Section 2:
+Redirect Links
+
+Section 3:
+Digital Products
+
+The public page must immediately follow the new order.
+
+============================================================
+16. SECTION VISIBILITY
+============================================================
+
+The user must be able to enable/disable sections.
+
+Example:
+
+Products
+[ ON ]
+
+Redirect Links
+[ OFF ]
+
+Digital Products
+[ ON ]
+
+If a section is disabled:
+
+- Do not display it publicly.
+- Do not delete its underlying content.
+- The content remains stored and can be enabled again.
+
+This is important.
+
+Disabling a section must NOT delete content.
+
+============================================================
+17. PRODUCT-SPECIFIC PREVIEW SETTINGS
+============================================================
+
+The existing Product Page has settings such as:
+
+- Show Product Cards
+- Show Related Products
+- Show Store Badge
+- Show Price
+
+These should remain available for the PRODUCT SECTION.
+
+Do NOT apply these settings globally to the whole Content Page.
+
+For example:
+
+Product Section settings:
+
+Show Price
+Show Store Badge
+Show Related Products
+Product Layout:
+Grid / List
+
+Redirect Section settings can have their own configuration.
+
+Digital Product Section can have its own configuration.
+
+Each section should control only its own presentation.
+
+============================================================
+18. CONTENT BUILDER USER FLOW
+============================================================
+
+The final user workflow should be:
+
+STEP 1
+
+Content
+
+→ Create New Page
+
+↓
+
+STEP 2
+
+Create Page
+
+Page Identity
++
+QR & Link Settings
+
+↓
+
+Create Page
+
+↓
+
+STEP 3
+
+Manage Content Page
+
+Show:
+
+Page Name
+Page URL
+Status
+Preview
+Publish
+
+Then:
+
+CONTENT SECTIONS
+
+[ + Add Content ]
+
+Options:
+
+[ Product ]
+[ Redirect Link ]
+[ Digital Product ]
+
+↓
+
+STEP 4
+
+User adds whatever they want.
+
+Example:
+
+Product
++ Redirect
++ Digital Product
+
+↓
+
+STEP 5
+
+Configure each section.
+
+↓
+
+STEP 6
+
+Reorder sections using drag and drop.
+
+↓
+
+STEP 7
+
+Preview
+
+↓
+
+STEP 8
+
+Publish
+
+============================================================
+19. DRAFT / PUBLISH SYSTEM
+============================================================
+
+Do not automatically publish every modification.
+
+The page should support:
+
+Draft
+Published
+Unpublished / Disabled
+
+The user can:
+
+Save Changes
+
+Preview
+
+Publish
+
+If appropriate, show:
+
+"Unsaved Changes"
+
+before publishing.
+
+The public page should use the published state.
+
+============================================================
+20. ADMIN PANEL
+============================================================
+
+The ADMIN PANEL must also be redesigned around this same architecture.
+
+Admin should NOT treat everything as Products.
+
+Create a common:
+
+CONTENT MANAGEMENT
+
+area.
+
+Admin should be able to see:
+
+Content Pages
+Products
+Redirect Links
+Digital Products
+
+------------------------------------------------------------
+ADMIN CONTENT PAGES
+------------------------------------------------------------
+
+Admin table:
+
+Page Code
+Page Name
+Owner
+Content Types
+Status
+Created On
+Updated On
+Actions
+
+Example:
+
+BA001-P019
+CTET Preparation
+Product + Redirect + Digital
+Published
+
+Actions:
+
+View
+Preview
+Edit
+Disable
+Delete
+
+------------------------------------------------------------
+ADMIN PRODUCTS
+------------------------------------------------------------
+
+Separate admin product management.
+
+Columns:
+
+Product
+Owner
+Store
+Price
+Status
+Created On
+Actions
+
+------------------------------------------------------------
+ADMIN REDIRECT LINKS
+------------------------------------------------------------
+
+Separate admin redirect management.
+
+Columns:
+
+Title
+Destination
+Owner
+Status
+Created On
+Actions
+
+Admin should be able to inspect destination URLs.
+
+------------------------------------------------------------
+ADMIN DIGITAL PRODUCTS
+------------------------------------------------------------
+
+Separate admin digital product management.
+
+Columns:
+
+Title
+Owner
+Price
+File Type
+Status
+Created On
+Actions
+
+Admin must NOT expose secure download files unnecessarily.
+
+============================================================
+21. ADMIN PAGE DETAIL
+============================================================
+
+When admin opens a Content Page:
+
+Example:
+
+CTET Preparation
+BA001-P019
+
+Show:
+
+PAGE INFORMATION
+
+Owner
+URL
+Status
+Created Date
+
+CONTENT SUMMARY
+
+Products: 12
+Redirect Links: 2
+Digital Products: 3
+
+PAGE SECTION ORDER
+
+1. Redirect Links
+2. Digital Products
+3. Products
+
+Admin should be able to inspect the structure.
+
+============================================================
+22. MIGRATION / EXISTING DATA
+============================================================
+
+THIS IS CRITICAL.
+
+Before modifying the database:
+
+1. Inspect the current schema.
+2. Inspect existing migrations.
+3. Inspect Product models.
+4. Inspect Product controllers.
+5. Inspect existing Page models.
+6. Inspect current relationships.
+7. Identify existing production/local data.
+
+Do NOT delete existing data.
+
+Do NOT drop existing product tables unless absolutely unavoidable.
+
+Existing Products must continue working.
+
+Existing pages should be migrated into the new Content Page architecture safely.
+
+If existing pages currently behave as Product Pages:
+
+- Convert them to Content Pages.
+- Create a Product section for pages that already contain products.
+- Preserve all existing products.
+- Preserve existing URLs/slugs.
+- Preserve QR codes where possible.
+- Preserve analytics relationships.
+- Preserve affiliate links.
+
+Existing public URLs MUST NOT be broken.
+
+============================================================
+23. ROUTES
+============================================================
+
+Review the existing route structure.
+
+Create clean routes following the application's current conventions.
+
+Conceptually:
+
+Content Pages:
+
+/content
+/content/create
+/content/{page}/manage
+/content/{page}/settings
+/content/{page}/preview
+
+Products:
+
+/content/{page}/products
+/content/{page}/products/create
+/content/{page}/products/{product}/edit
+
+Redirect Links:
+
+/content/{page}/redirects
+/content/{page}/redirects/create
+/content/{page}/redirects/{redirect}/edit
+
+Digital Products:
+
+/content/{page}/digital-products
+/content/{page}/digital-products/create
+/content/{page}/digital-products/{digitalProduct}/edit
+
+Do not blindly use these exact URLs if the existing routing architecture has a better convention.
+
+Maintain backward compatibility where necessary.
+
+============================================================
+24. UI REQUIREMENTS
+============================================================
+
+Use the EXISTING BuzzinBeats design language.
+
+Do not redesign the whole dashboard.
+
+Maintain:
+
+- Existing sidebar
+- Existing orange brand accent
+- Existing typography
+- Existing card style
+- Existing buttons
+- Existing spacing system
+- Existing responsive behavior
+
+The new interface should feel like an extension of the current application.
+
+Avoid unnecessary visual complexity.
+
+============================================================
+25. CONTENT BUILDER UI
+============================================================
+
+Recommended structure:
+
+HEADER
+
+CTET Preparation
+BA001-P019
+Published
+
+[ Preview ] [ Save ] [ Publish ]
+
+------------------------------------------------
+
+CONTENT SECTIONS
+
+Choose what appears on your page.
+
+[ + Add Content ]
+
+------------------------------------------------
+
+SECTION CARD
+
+☷ 1   Redirect Links
+      2 items
+
+      [Manage]
+      [Settings]
+      [Disable]
+
+------------------------------------------------
+
+☷ 2   Digital Products
+    3 items
+
+    [Manage]
+    [Settings]
+    [Disable]
+
+------------------------------------------------
+
+☷ 3   Products
+    12 items
+
+    [Manage]
+    [Settings]
+    [Disable]
+
+------------------------------------------------
+
+The drag handle must make it obvious that sections can be reordered.
+
+============================================================
+26. ADD CONTENT MODAL
+============================================================
+
+When the user clicks:
+
++ Add Content
+
+show:
+
+ADD CONTENT
+
+What would you like to add?
+
+[ Product ]
+Promote physical products and affiliate products.
+
+[ Redirect Link ]
+Send visitors to another website or landing page.
+
+[ Digital Product ]
+Sell PDFs, notes, practice papers and other digital content.
+
+The user can repeatedly open this modal and add different content types.
+
+Do NOT force a single content type.
+
+============================================================
+27. IMPORTANT TERMINOLOGY
+============================================================
+
+Use consistent terminology throughout the application.
+
+Preferred:
+
+CONTENT PAGE
+PRODUCT
+REDIRECT LINK
+DIGITAL PRODUCT
+CONTENT SECTION
+
+Avoid using:
+
+Product Page
+
+when referring to the overall page.
+
+A Product Page is now only a legacy term.
+
+The overall public page should be called:
+
+CONTENT PAGE
+
+============================================================
+28. ANALYTICS COMPATIBILITY
+============================================================
+
+Inspect the existing analytics system.
+
+Do not break existing:
+
+- page views
+- clicks
+- product clicks
+- affiliate clicks
+- QR tracking
+- link tracking
+
+Where possible, analytics should distinguish:
+
+Product click
+Redirect click
+Digital Product purchase/click
+Page view
+
+Do not implement a completely new analytics architecture unless necessary.
+
+============================================================
+29. SECURITY
+============================================================
+
+Implement proper authorization.
+
+Users must only be able to:
+
+- create their own content pages
+- modify their own products
+- modify their own redirect links
+- modify their own digital products
+
+Prevent IDOR vulnerabilities.
+
+Admin access must remain separate.
+
+Validate all URLs.
+
+Sanitize uploaded filenames.
+
+Validate uploaded files.
+
+Digital files must be protected from unauthorized direct access.
+
+Do not expose internal storage paths publicly.
+
+============================================================
+30. IMPLEMENTATION PROCESS
+============================================================
+
+Follow this exact development process.
+
+PHASE 1 — INSPECT
+
+First inspect:
+
+- database
+- migrations
+- models
+- controllers
+- routes
+- Blade templates
+- JavaScript
+- existing Product Management
+- existing Page Management
+- Admin Panel
+- public page rendering
+- analytics
+
+Then provide a short technical assessment.
+
+DO NOT MODIFY CODE YET.
+
+PHASE 2 — DATABASE PLAN
+
+Create a migration plan.
+
+Identify:
+
+Existing tables to preserve
+New tables required
+Relationships
+Data migration requirements
+
+PHASE 3 — DATABASE IMPLEMENTATION
+
+Implement:
+
+content_pages if required
+products integration
+redirect_links
+digital_products
+content_page_sections
+
+Use migrations.
+
+Do not destroy existing data.
+
+PHASE 4 — MODELS & RELATIONSHIPS
+
+Implement proper Laravel relationships.
+
+PHASE 5 — USER DASHBOARD
+
+Implement:
+
+Content
+→ My Content Pages
+→ Create Content Page
+→ Manage Content Page
+
+PHASE 6 — PRODUCT INTEGRATION
+
+Move/integrate the EXISTING Product Management UI under the Content Page system.
+
+Do not rewrite working Amazon functionality unnecessarily.
+
+PHASE 7 — REDIRECT LINKS
+
+Implement Redirect Link management.
+
+PHASE 8 — DIGITAL PRODUCTS
+
+Implement Digital Product management.
+
+Use secure storage/access architecture.
+
+PHASE 9 — SECTION BUILDER
+
+Implement:
+
+Add Content
+Enable/Disable
+Drag & Drop
+Section ordering
+Section settings
+
+PHASE 10 — PUBLIC PAGE
+
+Modify public page rendering so it dynamically renders:
+
+Hero
++
+enabled ordered sections
++
+footer
+
+according to database configuration.
+
+PHASE 11 — ADMIN PANEL
+
+Implement corresponding admin management.
+
+PHASE 12 — TESTING
+
+Test:
+
+1. Product-only page
+2. Redirect-only page
+3. Digital-only page
+4. Product + Redirect
+5. Product + Digital
+6. Redirect + Digital
+7. Product + Redirect + Digital
+
+Test section ordering.
+
+Test disabling sections.
+
+Test re-enabling sections.
+
+Test editing content.
+
+Test deleting content.
+
+Test page publishing.
+
+Test existing pages.
+
+Test existing product data.
+
+Test existing URLs.
+
+Test authorization.
+
+Test digital file security.
+
+============================================================
+31. ACCEPTANCE CRITERIA
+============================================================
+
+The implementation is successful ONLY if:
+
+✓ "Content" is the common concept.
+
+✓ User first creates a Content Page.
+
+✓ Page creation UI is common and independent of content type.
+
+✓ After page creation, user can add Products.
+
+✓ After page creation, user can add Redirect Links.
+
+✓ After page creation, user can add Digital Products.
+
+✓ All three can coexist on the same page.
+
+✓ Multiple items of each type are supported.
+
+✓ Existing Product Manual Entry remains functional.
+
+✓ Existing Amazon Auto Fetch remains functional.
+
+✓ Existing Amazon Search & Add remains functional.
+
+✓ Products, Redirect Links and Digital Products use separate database tables.
+
+✓ Page sections are stored separately from content items.
+
+✓ Section order is stored in the database.
+
+✓ User can drag and reorder sections.
+
+✓ User can enable/disable sections.
+
+✓ Disabled sections are not deleted.
+
+✓ Public page renders sections according to database order.
+
+✓ Product-specific display settings remain product-section specific.
+
+✓ Redirect pages do not force product cards.
+
+✓ Digital product pages do not force product cards.
+
+✓ Existing page URLs remain functional.
+
+✓ Existing product data remains intact.
+
+✓ Admin can manage all three content types separately.
+
+✓ Admin can inspect a Content Page and see its section composition.
+
+✓ Proper authorization exists.
+
+✓ Digital files are securely protected.
+
+✓ Existing analytics functionality is not broken.
+
+✓ The implementation uses the existing BuzzinBeats UI/UX style.
+
+============================================================
+32. FINAL IMPORTANT RULE
+============================================================
+
+Do not make assumptions and start replacing the current system.
+
+First inspect the existing implementation and explain:
+
+1. Current page architecture
+2. Current product architecture
+3. Current database schema
+4. Existing relationships
+5. Existing admin architecture
+6. What can be reused
+7. What needs to be changed
+8. Migration strategy
+9. Files that will be modified
+
+Then implement the redesign incrementally.
+
+The existing Product Management system is valuable and should be preserved.
+
+The goal is NOT to rebuild BuzzinBeats.
+
+The goal is to evolve it from:
+
+PRODUCT PAGE
+      ↓
+PRODUCTS
+
+into:
+
+CONTENT PAGE
+      ↓
+┌───────────────┬────────────────┬────────────────────┐
+│   PRODUCTS    │ REDIRECT LINKS │ DIGITAL PRODUCTS   │
+└───────────────┴────────────────┴────────────────────┘
+                       ↓
+                 REORDER SECTIONS
+                       ↓
+                    PREVIEW
+                       ↓
+                    PUBLISH
+
+Keep the architecture modular, database-driven, scalable and easy to extend in the future.

@@ -1,0 +1,236 @@
+HERO SECTION
+
+Hero Carousel — 4 Sliding Cards
+
+Card 1
+Headline:
+Every Platform Has Rules.
+Your QR Code Doesn't.
+Subheadline:
+Instagram limits you to 2 links. TikTok blocks links entirely. YouTube buries them in descriptions. Your QR code works on all of them — without asking permission.
+Body:
+No matter which platform your content lives on, your BuzzinBeats QR code goes with it. Embed it in a video, print it on packaging, drop it in a thumbnail — one scan takes your viewer straight to your store. No platform can block it, limit it, or hide it.
+Visual Cue for Designer:
+Background should feel like multiple platform logos fading into one clean QR code in the center.
+CTA Button:
+Get my free QR store →
+
+Card 2
+Headline:
+Serious Creators Don't Lose
+Commissions to Broken Links.
+Subheadline:
+Your 2-year-old viral video is still getting views. Is it still making you money? If your product links are broken, the answer is no.
+Body:
+Every out-of-stock product, every changed Amazon URL, every expired affiliate link is a commission you earned but never received. BuzzinBeats monitors every link on every page you've ever created. The moment something breaks, you get an instant notification — and our automation steps in to protect your earnings before you even open the app.
+Visual Cue for Designer:
+Show a cracked/broken link icon on the left transforming into a solid, glowing green link on the right. Dark, serious tone.
+CTA Button:
+Never lose a commission again →
+
+Card 3
+Headline:
+Build Your Store Once.
+Share It Everywhere.
+Forever.
+Subheadline:
+One landing page. One link. One QR code. Works on every platform, in every video, across every piece of content you have ever made.
+Body:
+Create your BuzzinBeats product page once — add products from Amazon, your own store, or anywhere else. Then share that one link across YouTube descriptions, Instagram bio, WhatsApp, email newsletters, and printed materials. Update the products anytime you want. The link never changes. The QR code never changes. Your audience always sees what you want them to see.
+Visual Cue for Designer:
+One central glowing card/store with arrows pointing outward to YouTube, Instagram, TikTok, WhatsApp, Email icons around it. Clean hub-and-spoke layout.
+CTA Button:
+Build my store now →
+
+Card 4
+Headline:
+Stop Saying
+"Link in Bio."
+Start Showing a QR Code.
+Subheadline:
+The moment they're watching is the highest-intent moment they'll ever have. Don't send them on a 6-step journey to find your link. Put the store in the frame.
+Body:
+Every time you say "link in bio" you are asking your viewer to pause the video, leave the app, open your profile, scroll to the bio, find the right link, and then remember what they wanted to buy. Most of them never make it. A BuzzinBeats QR code on screen means one scan — and they're already on your product page, ready to buy, while the video is still playing.
+Visual Cue for Designer:
+Split screen — left side shows a frustrated viewer scrolling through a bio trying to find a link. Right side shows a clean phone screen with one QR scan going straight to a product page.
+CTA Button:
+Show my QR code in every video →
+
+Carousel Behaviour Notes for Designer
+PropertySpecificationAuto-slideEvery 4 secondsTransitionSmooth horizontal slideActive indicator4 dots at bottom — filled dot = active cardPause on hoverYes — pause auto-slide when user hoversManual navigationLeft and right arrow buttons on sidesLoopYes — after card 4, goes back to card 1Mobile behaviourFull width swipeable cardsCard heightFixed height — all 4 cards same size
+
+
+
+SECTION 2 — SCROLLING CREATOR CARDS
+(Auto-scrolling horizontal strip — "this is made for me" moment)
+Section Label: Made for creators like you
+Section Title: Every creator earns more with BuzzinBeats
+Card 1 — YouTubers
+Title: YouTubers
+Body: Link every product from your video in one page. When a product goes out of stock, swap the ASIN — the URL never changes, old videos keep earning.
+Card 2 — Reels & Shorts Creators
+Title: Reels & Shorts Creators
+Body: Put a QR code on screen. Viewers scan and shop while watching — no "link in bio" friction, no app switching, no lost sales.
+Card 3 — Affiliate Marketers
+Title: Affiliate Marketers
+Body: One clean storefront. Multiple Amazon products. Track exactly which items are earning you money and which ones aren't pulling their weight.
+Card 4 — Instagram Influencers
+Title: Instagram Influencers
+Body: Replace the messy, cluttered link-in-bio with one professional product page your followers will actually trust and click through.
+Card 5 — Gaming Creators
+Title: Gaming Creators
+Body: Showcase your full setup — keyboard, mouse, monitor, headset — on a single page. Your viewers always know where to buy your exact gear.
+Card 6 — Bloggers & Writers
+Title: Bloggers & Writers
+Body: Embed one link in every article. When Amazon changes a product URL, you update it in BuzzinBeats — not in every blog post you've ever written.
+Card 7 — Podcasters
+Title: Podcasters
+Body: Mention a product on air. Drop one short link in your show notes. Earn a commission every time a listener clicks through — even years later.
+
+SECTION 3 — PAIN vs SOLUTION
+(2-column grid — left is pain, right is the fix)
+Section Label: The Creator's Problem
+Section Title: Every broken link is money you didn't earn
+
+Pain Card 1
+Tag: Without BuzzinBeats
+Title: Your old videos are bleeding commissions
+Body: Amazon links break. Products go out of stock. Your 2-year-old viral video still gets thousands of views every month — but earns $0 because every product link leads to a 404. You have no alert, no fix, no fallback.
+Solution Card 1
+Tag: With BuzzinBeats
+Title: Every video stays "shoppable" forever
+Body: Swap the ASIN in your dashboard and the page updates instantly — the URL and QR code stay the same. Your oldest videos keep earning. You get notified the moment any product link breaks, before it costs you a single rupee.
+
+Pain Card 2
+Tag: Without BuzzinBeats
+Title: "Go to the link in my bio…"
+Body: You lose up to 80% of impulse buyers at this exact moment. They have to stop the video, leave the app, open your profile, find your bio, and then hunt for the right link. Most of them just don't bother.
+Solution Card 2
+Tag: With BuzzinBeats
+Title: Scan. Shop. Done.
+Body: Embed a high-resolution QR code directly in your video. Viewers scan while watching — no app switching, no bio hunting, no friction. You turn every platform — YouTube, Instagram, TikTok — into a direct point of sale.
+
+Pain Card 3
+Tag: Without BuzzinBeats
+Title: You have no idea what's actually working
+Body: You post product links across 5 videos, 3 platforms, and a blog. You check Amazon Associates and see some earnings — but you have no idea which video drove them, which product converted, or where to double down.
+Solution Card 3
+Tag: With BuzzinBeats
+Title: See exactly what's making you money
+Body: Every page, every product, every click is tracked in your dashboard. Views, CTR, top-performing products, device breakdown — all in one place. Stop guessing. Start scaling what works.
+
+SECTION 4 — FEATURES BENTO
+(Grid of feature cards — mix of wide and small)
+Section Label: Platform Features
+Section Title: Everything you need. Nothing you don't.
+
+Feature Card 1 — WIDE
+Icon: ⚡
+Title: Bulk ASIN input — paste and go
+Body: Drop a list of ASINs separated by commas, spaces, or newlines. BuzzinBeats validates every one, removes duplicates automatically, and fetches the product title, image, and description in seconds. Add 20 products in the time it used to take to add one.
+UI callout: 3 valid · 1 invalid (skipped) · Fetching products…
+
+Feature Card 2
+Icon: 📊
+Title: Real-time analytics dashboard
+Body: Total page views, unique visitors, click-through rate, top-performing products, store performance, and device breakdown — all updated live. Know what's working before you waste time on what isn't.
+
+Feature Card 3
+Icon: 🎨
+Title: 5 layout styles — one click to switch
+Body: Choose from Grid, Horizontal List, Single Column, Featured + Grid, or Compact Grid. Set any layout as your default — it applies to every page you create going forward.
+Layout names:
+
+Grid Card (Default)
+Horizontal List
+Featured + Grid
+Compact Grid
+Single Column
+
+
+Feature Card 4
+Icon: 🔗
+Title: One store ID. Infinite affiliate links.
+Body: Enter your Amazon affiliate Store ID once. Every product you add — now or in the future — automatically gets your affiliate link baked in. No manual link building. No missed commissions.
+
+Feature Card 5
+Icon: 🛡️
+Title: Your 24/7 affiliate link bodyguard
+Body: BuzzinBeats monitors your product links around the clock. The moment a product goes out of stock or a link breaks, you get an instant alert so you can swap it before it costs you commissions. Think of it as revenue insurance.
+
+Feature Card 6
+Icon: 📲
+Title: Legacy QR redirect — migrate without losing traffic
+Body: Already have old QR codes or links from another tool like GitHub or AppScript? Point them to BuzzinBeats. They'll redirect seamlessly to your new product pages. Zero broken links. Zero lost traffic.
+
+SECTION 5 — HOW IT WORKS
+(Simple numbered flow — 6 steps)
+Section Label: The process
+Section Title: From zero to live store in under 2 minutes
+Step 1
+Number: 01
+Title: Sign up and get your creator ID
+Body: Create your free account. You'll get a unique ID (e.g., BB001) that identifies all your pages on the platform.
+Step 2
+Number: 02
+Title: Enter your Amazon affiliate Store ID
+Body: Add your Store ID once. Every affiliate link on every product page you ever create will use it automatically.
+Step 3
+Number: 03
+Title: Create a page and choose your layout
+Body: Name your page, pick one of 5 layouts, and you're ready to add products. Each page gets its own unique shareable link.
+Step 4
+Number: 04
+Title: Add products by ASIN
+Body: Paste one ASIN or a hundred. BuzzinBeats fetches the image, title, and description from Amazon and builds the product cards automatically.
+Step 5
+Number: 05
+Title: Publish and share
+Body: Hit publish. Share your page link in video descriptions, story swipe-ups, tweets, or emails — or embed the QR code directly in your video.
+Step 6
+Number: 06
+Title: Watch analytics roll in
+Body: Every view, every click, every conversion is tracked. Log in any time to see what's performing and optimise for more earnings.
+
+SECTION 6 — QR BRIDGE
+(Visual section — QR to landing page flow)
+Section Label: The QR bridge
+Section Title: Scan-to-shop from any video, on any platform
+Body:
+Forget "link in bio." Embed a high-resolution QR code directly in your video content. Viewers scan without leaving the app — no friction, no lost sales.
+Flow steps:
+Step 1: Viewer watches your video on any platform
+Step 2: They scan the QR code shown on screen
+Step 3: They land on your product page instantly
+Step 4: They click "Buy on Amazon" — you earn the commission
+Callout box:
+"Every QR code you generate works forever. Even if you change the products on the page, the QR code link stays the same."
+
+SECTION 7 — SOCIAL PROOF / TESTIMONIALS
+Section Label: Early users love it
+Section Title: Real creators. Real results.
+
+Testimonial 1
+Stars: ★★★★★
+Quote: "I used to spend 30 minutes per video manually updating affiliate links. Now I just swap the ASIN in my BuzzinBeats dashboard and it updates everywhere instantly. It's saved me hours every single week."
+Name: Amit K.
+Role: Tech YouTuber · 180K subscribers
+Testimonial 2
+Stars: ★★★★★
+Quote: "The QR code feature completely changed how I monetise my Reels. My click-through rate went from 1.2% to 6.8% because viewers don't have to leave Instagram to shop. This is the feature I didn't know I needed."
+Name: Priya R.
+Role: Lifestyle Influencer · 94K followers
+Testimonial 3
+Stars: ★★★★★
+Quote: "I had three years of blog posts with broken Amazon links quietly killing my income. BuzzinBeats let me migrate everything in one afternoon and the old redirects just worked. I didn't lose a single visitor."
+Name: Suresh M.
+Role: Affiliate Blogger · 5 years experience
+
+SECTION 8 — FINAL CTA
+Headline:
+Your next video should
+pay you forever.
+Subheadline:
+Start building product pages in minutes. No credit card. No design skills. No complicated setup. Just paste an ASIN and go.
+Primary Button: Create my free store →
+Footnote: Free to start · No credit card required · Cancel anytime

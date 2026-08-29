@@ -1,0 +1,346 @@
+**Task: Build Broken Link Monitoring System (UI + Backend + Data Flow) for BuzzinBeats**
+
+I want to build a complete Broken Link Monitoring system for BuzzinBeats where users can monitor Amazon, Flipkart, and custom links from their dashboard.
+
+This should include:
+
+* Frontend UI
+* Backend logic
+* Database structure
+* Scheduled scanning system
+* API/data flow to frontend
+* Notifications when links fail
+
+Build it as a scalable SaaS feature.
+
+---
+
+# 🎯 Objective
+
+Create a system that automatically checks product links, stores results, and displays clean actionable data in the user dashboard.
+
+Users should be able to:
+
+* See healthy / warning / broken links
+* Filter and search links
+* View issue details
+* Recheck links manually
+* Receive alerts when links break
+
+---
+
+# 🧱 1. Database Requirements
+
+Use existing tables where possible and modify current schema if needed.
+
+## Product Links Data
+
+Each product/link should store:
+
+* id
+* user_id
+* page_id
+* product_name
+* store_type (amazon / flipkart / custom)
+* product_url
+* created_at
+* updated_at
+
+## Link Health Fields (add if missing)
+
+* health_status (healthy / warning / broken)
+* last_checked_at
+* last_http_code
+* response_time_ms
+* failure_count
+* last_error_message
+* last_success_at
+
+## Scan History Table (recommended)
+
+Store every scan result:
+
+* id
+* product_id
+* checked_at
+* status
+* http_code
+* response_time_ms
+* error_message
+
+---
+
+# ⚙️ 2. Backend Link Checker Logic
+
+Create a background service / scheduled task that runs automatically.
+
+## Schedule
+
+Run:
+
+* Daily minimum
+* Better: every 6 hours
+* Use queue/batch processing for scalability
+
+## Scan Process
+
+For each active product link:
+
+### Step 1: Detect Store Type
+
+* Amazon
+* Flipkart
+* Custom
+
+### Step 2: Run Proper Check
+
+## Amazon
+
+Use Amazon API if configured.
+If API unavailable, fallback to HTTP request.
+
+Check:
+
+* Page reachable
+* Valid response
+* Not removed
+
+## Flipkart
+
+Use HTTP request.
+
+Check:
+
+* Status code
+* Redirect success
+* Not product removed page (if detectable)
+
+## Custom Links
+
+Use generic URL health check:
+
+* DNS resolves
+* HTTP response
+* Timeout
+* Redirect loop
+* SSL optional
+
+---
+
+# 🚨 3. Status Decision Rules
+
+## Healthy
+
+* HTTP 200
+* Valid destination
+* Fast response
+
+## Warning
+
+* Slow response
+* Temporary redirect
+* Rate limited
+* One-time failure
+
+## Broken
+
+* 404
+* 410
+* Timeout repeatedly
+* DNS fail
+* Invalid URL
+* Failed multiple scans
+
+---
+
+# 🔁 4. Failure Threshold Logic
+
+Do not mark broken on one random failure.
+
+Example:
+
+* 1st failure = warning
+* 3 consecutive failures = broken
+
+Reset failure_count after successful scan.
+
+---
+
+# 🔔 5. Notification System
+
+When status changes to broken:
+
+## Notify User
+
+* Email notification
+* In-app dashboard alert
+
+Include:
+
+* Product name
+* Page ID
+* Store type
+* Problem found
+* Quick fix link
+
+Avoid repeated spam notifications.
+
+Send only on state change or after cooldown.
+
+---
+
+# 🌐 6. API / Frontend Data Endpoints
+
+Create secure user endpoints to fetch dashboard data.
+
+## Summary Endpoint
+
+Return:
+
+* total_healthy
+* total_warning
+* total_broken
+* last_scan_time
+
+## Table Endpoint
+
+Paginated list:
+
+* product_name
+* page_id
+* store_type
+* health_status
+* last_checked_at
+* last_error_message
+
+## Detail Endpoint
+
+For drawer/modal:
+
+* full_url
+* scan_history
+* last_success_at
+* failure_count
+* suggested_fix
+
+## Manual Recheck Endpoint
+
+Allow user to recheck selected link instantly.
+
+---
+
+# 🖥️ 7. Frontend UI Behavior
+
+## Header
+
+Title: Broken Link Monitoring
+
+Button: Run New Scan
+
+## Summary Cards
+
+Show:
+
+* Healthy Links
+* Warning Links
+* Broken Links
+* Last Scan Time
+
+Load from summary API.
+
+## Filters
+
+* Search product
+* Filter status
+* Filter store
+* Date range
+
+Use API query params.
+
+## Main Table
+
+Columns:
+
+* Product
+* Page ID
+* Store
+* Status Badge
+* Last Checked
+* Action Buttons
+
+## Actions
+
+* View Details
+* Edit Link
+* Recheck
+* Open Link
+
+## Details Drawer
+
+Load detail endpoint dynamically.
+
+Show:
+
+* Full URL
+* Error type
+* Scan history
+* Suggested fix
+
+---
+
+# 📱 8. Mobile Behavior
+
+Convert rows into stacked cards.
+
+Keep:
+
+* Status visible
+* Actions easy to tap
+* Filters collapsible
+
+---
+
+# ⚡ 9. Performance Rules
+
+* Process scans in batches
+* Queue jobs
+* Add request timeouts
+* Respect rate limits
+* Cache dashboard summary if needed
+* Paginate large datasets
+
+---
+
+# 🔐 10. Security Rules
+
+* User only sees own links
+* Auth required
+* Validate URLs
+* Prevent abuse of manual recheck
+* Protect admin/system jobs
+
+---
+
+# 🧪 11. Testing Checklist
+
+Verify:
+
+* Healthy link shown correctly
+* Broken link detected
+* Warning state works
+* Notifications sent once
+* Manual recheck works
+* Filters work
+* Large user data performs well
+* User cannot access others’ data
+
+---
+
+# 🚀 Final Goal
+
+Create a production-ready link health monitoring system for BuzzinBeats that automatically protects creator conversions and gives users confidence in their product pages.
+
+---
+
+**Final Idea:**
+Build a smart monitoring engine in the backend and a clean actionable dashboard in the frontend so users always know which links need attention.
