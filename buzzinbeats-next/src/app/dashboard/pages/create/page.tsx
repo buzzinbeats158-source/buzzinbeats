@@ -66,7 +66,9 @@ export default function CreatePageScreen() {
       });
   }, [editId]);
 
-  const previewUrl = publicPageUrl({ public_username: urlUsername, slug: slug || "..." }, origin).replace(/^https?:\/\//, "");
+  const previewUrl = urlUsername
+    ? publicPageUrl({ public_username: urlUsername, slug: slug || "..." }, origin).replace(/^https?:\/\//, "")
+    : "Loading your page address...";
 
   useEffect(() => {
     if (!slugTouched && title) {
@@ -75,7 +77,7 @@ export default function CreatePageScreen() {
   }, [title, slugTouched]);
 
   useEffect(() => {
-    if (!isEditMode && !title) return;
+    if (!origin || !urlUsername || (!isEditMode && !title)) return;
     if (previewTimeout.current) clearTimeout(previewTimeout.current);
     previewTimeout.current = setTimeout(() => {
       const fullUrl = publicPageUrl({ public_username: urlUsername, slug: slug || "..." }, origin);
