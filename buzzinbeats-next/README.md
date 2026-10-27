@@ -19,8 +19,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 Choosing **Publish Page** creates a published page and its permanent URL in one
 transaction. Add or edit its content afterward. Use the **Published / Draft**
 control in My Pages or the page editor to hide the page and publish it again
-without changing its URL or QR code. **Delete Page** is available in both places
-and asks for confirmation before removing the page from the dashboard.
+without changing its URL or QR code. **Delete Page** is available only inside a
+page's editor and asks for confirmation before removing the page.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 

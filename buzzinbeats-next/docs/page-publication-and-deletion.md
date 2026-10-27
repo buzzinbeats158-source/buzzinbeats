@@ -15,8 +15,9 @@ Changing publication never changes the saved URL or QR destination. Published
 pages show View; drafts explain that publication is required. The existing
 Active/Inactive control continues to govern availability separately.
 
-**Delete Page** is available in My Pages, the content editor and the identity
-settings screen. A native modal dialog names the page and requires confirmation.
+**Delete Page** is available only after opening a page, in the content editor
+and identity settings screen. My Pages has no delete control. A native modal
+dialog names the page and requires confirmation.
 Errors keep the dialog open, and buttons are disabled while deletion is pending.
 Deletion sets `deleted_at` and unpublishes the owned page. Deleted pages are
 excluded from the list, editor, QR download and public lookup. Associated records

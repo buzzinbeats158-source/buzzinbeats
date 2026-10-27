@@ -158,7 +158,7 @@ test("publication controls show the current state and offer the opposite action"
   assert.match(draft, /Publish Page/);
 });
 
-test("the editor and My Pages expose publication and delete controls for both states", () => {
+test("publication is available in both views, while deletion is restricted to the editor", () => {
   const navigation = { useRouter: () => ({ refresh() {}, push() {} }) };
   const publication = loadModule("src/components/PagePublicationButton.tsx", {
     "next/navigation": navigation,
@@ -179,9 +179,10 @@ test("the editor and My Pages expose publication and delete controls for both st
     const header = renderToStaticMarkup(React.createElement(Header, { page, publicUrl: urls.publicPageUrl(page, "https://buzzinbeats.com") }));
     const table = renderToStaticMarkup(React.createElement(Table, { pages: [page], planLimit: 10, initialActiveCount: 1 }));
     for (const markup of [header, table]) {
-      assert.match(markup, /Delete Page/);
       assert.match(markup, isPublished ? /Move to Draft/ : /Publish Page/);
     }
+    assert.match(header, /Delete Page/);
+    assert.doesNotMatch(table, /Delete Page/);
     assert.equal(table.includes('href="/growpro/rank-pulse"'), isPublished);
   }
 });

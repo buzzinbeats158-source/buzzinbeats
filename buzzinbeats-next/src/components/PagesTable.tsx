@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useMemo, useState, useTransition } from "react";
 import { publicPagePath } from "@/lib/public-page-url";
 import PagePublicationButton from "@/components/PagePublicationButton";
-import DeletePageButton from "@/components/DeletePageButton";
 
 type PageRow = {
   id: number;
@@ -259,7 +258,6 @@ export default function PagesTable({
                           <span className="material-symbols-outlined text-sm">tune</span>
                           Continue Editing
                         </a>
-                        <DeletePageButton pageId={page.id} title={page.title} />
                       </div>
                     </td>
                     <td className="px-6 py-5 text-center">
