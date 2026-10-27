@@ -8,6 +8,8 @@ appearance and analytics remain editable; the address and owner are immutable.
 Public lookups, dashboard/admin previews, copied URLs and QR downloads all use
 the saved address. They never fall back to the owner's current name. URL
 segments are encoded individually to support spaces, Unicode and punctuation.
+Missing address fields raise an explicit error rather than generating a link
+or QR code containing `undefined`.
 
 ## Rollout
 
@@ -44,15 +46,15 @@ The application regression tests cover renamed accounts, new addresses, name
 reuse by another account, QR destinations, special characters, public visibility
 rules, immutable edit requests and ownership checks.
 
-On a disposable database with the migration applied, run
-`supabase/tests/permanent_page_urls.sql` to verify the real trigger, RPC snapshots,
-uniqueness and immutable columns. Test rows roll back, but PostgreSQL sequences
-can advance. Do not use the migration runner for this regression file against
-production.
+With the migration applied, run `supabase/tests/permanent_page_urls.sql` to
+verify the real insert trigger, name snapshots, uniqueness and immutable
+columns. Tests use negative fixture IDs and roll back every test row and
+mutation without advancing sequences.
 
-At implementation time, the live API preflight checked 61 existing pages:
-no missing owners and four duplicate address occurrences, all involving
-soft-deleted rows. The direct database connection was unavailable, so the
-migration and database regression tests have **not** been applied/run against
-the live database. The connected Supabase tool account does not list this
-application's project.
+On 2026-10-27, the live database connection became available. The migration
+and database regression checks passed in a rolled-back dry run before the
+migration was applied. All 61 existing pages retained their original addresses.
+The legacy duplicates involving soft-deleted rows were preserved. The API
+confirmed page 64 has `public_username = 'ballu'`, and the original public URL
+`https://buzzinbeats.com/ballu/the-gift-of-wonder` returned HTTP 200 with the
+page's content. The accidental `/undefined/the-gift-of-wonder` URL returned 404.

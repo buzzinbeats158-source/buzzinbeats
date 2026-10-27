@@ -27,6 +27,18 @@ function loadModule(relativePath, dependencies = {}) {
 
 const urls = loadModule("src/lib/public-page-url.ts");
 
+test("missing saved addresses never generate an undefined link or QR destination", () => {
+  for (const page of [
+    { slug: "the-gift-of-wonder" },
+    { public_username: null, slug: "the-gift-of-wonder" },
+    { public_username: "", slug: "the-gift-of-wonder" },
+    { public_username: "ballu" },
+  ]) {
+    assert.throws(() => urls.publicPageUrl(page, "https://buzzinbeats.com"), /permanent address is missing/);
+  }
+  assert.equal(urls.publicPageUrl({ public_username: "ballu", slug: "the-gift-of-wonder" }, "https://buzzinbeats.com"), "https://buzzinbeats.com/ballu/the-gift-of-wonder");
+});
+
 function database(tables) {
   const updates = [];
   return {
