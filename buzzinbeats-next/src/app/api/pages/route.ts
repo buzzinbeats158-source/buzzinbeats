@@ -45,11 +45,15 @@ export async function POST(request: Request) {
   if (error) {
     return NextResponse.json({ success: false, message: error.message }, { status: 500 });
   }
+  if (!page?.is_published) {
+    return NextResponse.json({ success: false, message: "The page was saved but could not be published. Open it in My Pages and choose Publish Page." }, { status: 500 });
+  }
 
   return NextResponse.json({
     success: true,
     page_id: page.id,
     slug: page.slug,
+    is_published: page.is_published,
     redirect_url: `/dashboard/pages/${page.id}`,
   });
 }

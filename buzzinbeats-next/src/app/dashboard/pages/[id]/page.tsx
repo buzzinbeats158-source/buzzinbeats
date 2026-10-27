@@ -20,6 +20,7 @@ export default async function PageDetailsPage({ params }: { params: Promise<{ id
     .select("*")
     .eq("id", pageId)
     .eq("user_id", user!.id)
+    .is("deleted_at", null)
     .maybeSingle();
 
   if (!page) notFound();

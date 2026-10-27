@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { publicPageUrl } from "@/lib/public-page-url";
+import DeletePageButton from "@/components/DeletePageButton";
 
 type PageRecord = {
   id: number;
@@ -39,7 +40,6 @@ export default function CreatePageScreen() {
   const [alert, setAlert] = useState<{ type: "success" | "error"; message: string } | null>(null);
   const [origin, setOrigin] = useState("");
   const [username, setUsername] = useState("");
-  const [showDeleteModal, setShowDeleteModal] = useState(false);
   const previewTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const isEditMode = !!page;
@@ -139,12 +139,6 @@ export default function CreatePageScreen() {
     const formData = new FormData();
     formData.set("qr_color", color);
     await fetch(`/api/pages/${page.id}/qr-settings`, { method: "POST", body: formData });
-  }
-
-  async function handleDelete() {
-    if (!page) return;
-    await fetch(`/api/pages/${page.id}`, { method: "DELETE" });
-    router.push("/dashboard/pages");
   }
 
   if (!loaded) return <div className="mx-auto max-w-4xl py-12 text-center text-slate-400">Loading...</div>;
@@ -318,13 +312,7 @@ export default function CreatePageScreen() {
 
       <div className="mt-8 flex items-center justify-end gap-4">
         {isEditMode && (
-          <button
-            onClick={() => setShowDeleteModal(true)}
-            className="mr-auto flex items-center gap-2 rounded-lg px-4 py-2 font-semibold text-slate-400 transition-all hover:bg-red-50 hover:text-red-500"
-          >
-            <span className="material-symbols-outlined text-sm">delete</span>
-            Delete Page
-          </button>
+          <div className="mr-auto"><DeletePageButton pageId={page!.id} title={page!.title} /></div>
         )}
         <a
           href={isEditMode ? `/dashboard/pages/${page!.id}` : "#"}
@@ -337,41 +325,6 @@ export default function CreatePageScreen() {
         </a>
       </div>
 
-      {showDeleteModal && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-          <div className="absolute inset-0 bg-slate-900/40 backdrop-blur-sm" onClick={() => setShowDeleteModal(false)} />
-          <div className="relative z-10 w-full max-w-md overflow-hidden rounded-2xl border border-slate-100 bg-white text-left shadow-2xl">
-            <div className="px-6 pb-6 pt-8">
-              <div className="flex items-start gap-4">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-red-50">
-                  <span className="material-symbols-outlined text-red-600">warning</span>
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-slate-900">Delete Page?</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-slate-500">
-                    Are you sure you want to delete <span className="font-bold text-slate-700">&quot;{page?.title}&quot;</span>? This
-                    action is permanent and cannot be undone. All associated products and links will be removed.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-col-reverse gap-3 bg-slate-50 px-6 py-4 sm:flex-row sm:justify-end">
-              <button
-                onClick={() => setShowDeleteModal(false)}
-                className="inline-flex justify-center rounded-xl border border-slate-200 bg-white px-6 py-2.5 text-sm font-bold text-slate-600 shadow-sm hover:bg-slate-50"
-              >
-                Keep Page
-              </button>
-              <button
-                onClick={handleDelete}
-                className="inline-flex justify-center rounded-xl bg-red-600 px-6 py-2.5 text-sm font-bold text-white shadow-lg shadow-red-500/20 hover:bg-red-700"
-              >
-                Yes, Delete
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

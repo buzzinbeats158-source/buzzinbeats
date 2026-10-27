@@ -16,6 +16,12 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+Choosing **Publish Page** creates a published page and its permanent URL in one
+transaction. Add or edit its content afterward. Use the **Published / Draft**
+control in My Pages or the page editor to hide the page and publish it again
+without changing its URL or QR code. **Delete Page** is available in both places
+and asks for confirmation before removing the page from the dashboard.
+
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.

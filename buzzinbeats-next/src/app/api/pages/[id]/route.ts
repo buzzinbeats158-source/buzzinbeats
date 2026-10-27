@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { getCurrentUser } from "@/lib/data/current-user";
 import { createClient } from "@/lib/supabase/server";
+import { revalidatePath } from "next/cache";
 
 export async function PUT(request: Request, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -49,8 +50,20 @@ export async function DELETE(request: Request, { params }: { params: Promise<{ i
   if (!user) return NextResponse.json({ success: false, message: "Not authenticated" }, { status: 401 });
 
   const supabase = await createClient();
-  const { error } = await supabase.from("pages").delete().eq("id", id).eq("user_id", user.id);
+  const { data: page, error } = await supabase
+    .from("pages")
+    .update({ deleted_at: new Date().toISOString(), is_published: false, updated_at: new Date().toISOString() })
+    .eq("id", id)
+    .eq("user_id", user.id)
+    .is("deleted_at", null)
+    .select("id")
+    .maybeSingle();
   if (error) return NextResponse.json({ success: false, message: error.message }, { status: 500 });
+  if (!page) return NextResponse.json({ success: false, message: "Page not found" }, { status: 404 });
+
+  revalidatePath("/dashboard/pages");
+  revalidatePath("/dashboard");
+  revalidatePath(`/dashboard/pages/${id}`);
 
   return NextResponse.json({ success: true });
 }

@@ -13,6 +13,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
     .select("id, title, description, public_username, slug, qr_color, qr_logo_path")
     .eq("id", id)
     .eq("user_id", user.id)
+    .is("deleted_at", null)
     .maybeSingle();
 
   if (!page) return NextResponse.json({ message: "Not found" }, { status: 404 });

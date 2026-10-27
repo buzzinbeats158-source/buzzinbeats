@@ -1,12 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
+import PagePublicationButton from "@/components/PagePublicationButton";
+import DeletePageButton from "@/components/DeletePageButton";
 
 export default function PageHeaderCard({
   page,
   publicUrl,
 }: {
-  page: { id: number; page_id: string | null; title: string; description: string | null; public_username: string; slug: string };
+  page: { id: number; page_id: string | null; title: string; description: string | null; public_username: string; slug: string; is_published: boolean };
   publicUrl: string;
 }) {
   const [copied, setCopied] = useState(false);
@@ -40,17 +43,24 @@ export default function PageHeaderCard({
             </span>
           </div>
 
-          <div className="mt-4">
-            <a
-              href={publicUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg border border-primary bg-white px-5 py-2 text-sm font-bold text-primary transition-all hover:bg-primary/5"
-            >
-              <span className="material-symbols-outlined text-sm">visibility</span>
-              Preview Page
-            </a>
+          <div className="mt-4 flex flex-wrap items-center gap-3">
+            <PagePublicationButton pageId={page.id} isPublished={page.is_published} />
+            {page.is_published && (
+              <a
+                href={publicUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg border border-primary bg-white px-5 py-2 text-sm font-bold text-primary transition-all hover:bg-primary/5"
+              >
+                <span className="material-symbols-outlined text-sm">visibility</span>
+                View Page
+              </a>
+            )}
+            <DeletePageButton pageId={page.id} title={page.title} />
           </div>
+          {!page.is_published && (
+            <p className="mt-3 text-sm text-amber-700">This page is a draft. Publish it to make its link and QR code available to visitors.</p>
+          )}
         </div>
 
         <div className="flex flex-col items-center gap-3 rounded-xl border border-slate-100 bg-slate-50 p-4">
@@ -78,13 +88,13 @@ export default function PageHeaderCard({
               {copied && <span className="absolute -top-5 left-1/2 -translate-x-1/2 whitespace-nowrap text-[9px] font-semibold text-green-600">Copied!</span>}
             </div>
           </div>
-          <a
+          <Link
             href="/dashboard/pages/create"
             className="mt-1 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2 text-[11px] font-bold text-white shadow-sm transition-all hover:bg-primary/90"
           >
             <span className="material-symbols-outlined text-sm">add</span>
             Create New Page
-          </a>
+          </Link>
         </div>
       </div>
     </div>

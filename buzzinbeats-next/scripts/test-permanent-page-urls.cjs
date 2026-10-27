@@ -143,6 +143,7 @@ test("page edits reject address changes but still allow title changes", async ()
   const tables = fixture();
   const db = database(tables);
   const api = loadModule("src/app/api/pages/[id]/route.ts", {
+    "next/cache": { revalidatePath() {} },
     "next/server": { NextResponse: { json: (body, options) => ({ body, status: options?.status ?? 200 }) } },
     "@/lib/data/current-user": { getCurrentUser: async () => tables.users[0] },
     "@/lib/supabase/server": { createClient: async () => db },
@@ -161,6 +162,7 @@ test("another account cannot edit an existing page address or content", async ()
   const tables = fixture();
   const db = database(tables);
   const api = loadModule("src/app/api/pages/[id]/route.ts", {
+    "next/cache": { revalidatePath() {} },
     "next/server": { NextResponse: { json: (body, options) => ({ body, status: options?.status ?? 200 }) } },
     "@/lib/data/current-user": { getCurrentUser: async () => ({ id: 2 }) },
     "@/lib/supabase/server": { createClient: async () => db },

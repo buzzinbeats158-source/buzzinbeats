@@ -88,6 +88,7 @@ export default async function PagesPage() {
       </div>
 
       <PagesTable
+        key={pageIds.join(":")}
         pages={rows}
         planLimit={limit}
         initialActiveCount={activeCount}

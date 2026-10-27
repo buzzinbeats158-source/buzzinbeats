@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useMemo, useState, useTransition } from "react";
 import { publicPagePath } from "@/lib/public-page-url";
+import PagePublicationButton from "@/components/PagePublicationButton";
+import DeletePageButton from "@/components/DeletePageButton";
 
 type PageRow = {
   id: number;
@@ -239,8 +241,8 @@ export default function PagesTable({
                       </div>
                     </td>
                     <td className="px-6 py-5">
-                      <div className="flex items-center justify-end gap-2">
-                        <a
+                      <div className="flex flex-wrap items-center justify-end gap-2">
+                        {page.is_published && <a
                           href={publicHref}
                           target="_blank"
                           rel="noopener noreferrer"
@@ -249,7 +251,7 @@ export default function PagesTable({
                         >
                           <span className="material-symbols-outlined text-sm">open_in_new</span>
                           View
-                        </a>
+                        </a>}
                         <a
                           href={`/dashboard/pages/${page.id}`}
                           className="flex items-center gap-1.5 rounded-lg bg-primary/5 px-3 py-1.5 text-xs font-bold text-primary transition-colors hover:bg-primary/10"
@@ -257,6 +259,7 @@ export default function PagesTable({
                           <span className="material-symbols-outlined text-sm">tune</span>
                           Continue Editing
                         </a>
+                        <DeletePageButton pageId={page.id} title={page.title} />
                       </div>
                     </td>
                     <td className="px-6 py-5 text-center">
@@ -274,13 +277,7 @@ export default function PagesTable({
                         <span className={`text-xs font-semibold ${status === "active" ? "text-green-600" : "text-red-500"}`}>
                           {status === "active" ? "Active" : "Inactive"}
                         </span>
-                        <span
-                          className={`rounded-full px-1.5 py-0.5 text-[10px] font-bold ${
-                            page.is_published ? "bg-green-50 text-green-600" : "bg-orange-50 text-orange-500"
-                          }`}
-                        >
-                          {page.is_published ? "Published" : "Draft"}
-                        </span>
+                        <PagePublicationButton pageId={page.id} isPublished={page.is_published} />
                       </div>
                     </td>
                   </tr>

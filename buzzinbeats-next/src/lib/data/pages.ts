@@ -40,6 +40,7 @@ export async function createPageAction(formData: FormData) {
   }
 
   if (error) throw new Error(error.message);
+  if (!page?.is_published) throw new Error("The page was saved but could not be published. Open it in My Pages and choose Publish Page.");
   revalidatePath("/dashboard/pages");
   return page;
 }
@@ -49,14 +50,19 @@ export async function togglePublishAction(pageId: number, isPublished: boolean) 
   if (!user) throw new Error("Not authenticated");
 
   const supabase = await createClient();
-  const { error } = await supabase
+  const { data: page, error } = await supabase
     .from("pages")
-    .update({ is_published: isPublished })
+    .update({ is_published: isPublished, updated_at: new Date().toISOString() })
     .eq("id", pageId)
-    .eq("user_id", user.id);
+    .eq("user_id", user.id)
+    .is("deleted_at", null)
+    .select("id")
+    .maybeSingle();
 
   if (error) throw new Error(error.message);
+  if (!page) throw new Error("Page not found or you do not have permission to change it.");
   revalidatePath("/dashboard/pages");
+  revalidatePath(`/dashboard/pages/${pageId}`);
 }
 
 /**
