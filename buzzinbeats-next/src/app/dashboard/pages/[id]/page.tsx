@@ -7,6 +7,7 @@ import { createDigitalProductAction, deleteDigitalProductAction, updateDigitalPr
 import { normalizeDescriptionToHtml } from "@/lib/richtext";
 import PageHeaderCard from "@/components/PageHeaderCard";
 import PageContentManager from "@/components/PageContentManager";
+import { publicPageUrl } from "@/lib/public-page-url";
 
 export default async function PageDetailsPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -32,7 +33,7 @@ export default async function PageDetailsPage({ params }: { params: Promise<{ id
       supabase.from("user_stores").select("name").eq("user_id", user!.id).eq("is_active", true),
     ]);
 
-  const publicUrl = `${process.env.NEXT_PUBLIC_SITE_URL ?? ""}/${user!.name}/${page.slug}`;
+  const publicUrl = publicPageUrl(page, process.env.NEXT_PUBLIC_SITE_URL ?? "");
 
   const normalizedProducts = (products ?? []).map((product) => ({
     ...product,
@@ -91,7 +92,7 @@ export default async function PageDetailsPage({ params }: { params: Promise<{ id
         My Content
       </a>
 
-      <PageHeaderCard page={page} username={user!.name} publicUrl={publicUrl} />
+      <PageHeaderCard page={page} publicUrl={publicUrl} />
 
       <PageContentManager
         pageId={pageId}

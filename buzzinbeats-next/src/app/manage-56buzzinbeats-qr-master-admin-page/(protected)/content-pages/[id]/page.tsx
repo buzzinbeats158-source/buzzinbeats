@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { requireAdmin } from "@/lib/data/admin";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { publicPagePath } from "@/lib/public-page-url";
 
 const BASE = "/manage-56buzzinbeats-qr-master-admin-page/content-pages";
 
@@ -27,7 +28,7 @@ export default async function AdminContentPageDetail({ params }: { params: Promi
   ]);
 
   const owner = page.users as unknown as { name: string; email: string; username: string } | null;
-  const previewHref = owner?.username ? `/${owner.username}/${page.slug}` : null;
+  const previewHref = page.public_username ? publicPagePath(page) : null;
 
   return (
     <div>

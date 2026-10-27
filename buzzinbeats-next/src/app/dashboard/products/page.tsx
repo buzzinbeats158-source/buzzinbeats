@@ -2,6 +2,7 @@ import { getCurrentUser } from "@/lib/data/current-user";
 import { createClient } from "@/lib/supabase/server";
 import { publicStorageUrl } from "@/lib/storage";
 import { normalizeDescriptionToHtml } from "@/lib/richtext";
+import { publicPagePath } from "@/lib/public-page-url";
 
 const SORTS = {
   date_desc: { label: "Newest First", col: "created_at", asc: false },
@@ -23,7 +24,7 @@ export default async function ProductsPage({
   const supabase = await createClient();
   const { data: products } = await supabase
     .from("products")
-    .select("*, pages(id, title, slug)")
+    .select("*, pages(id, title, public_username, slug)")
     .eq("user_id", user!.id)
     .order(col, { ascending: asc });
 
@@ -85,7 +86,7 @@ export default async function ProductsPage({
       ) : (
         <div className="mb-8 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
           {list.map((product) => {
-            const page = product.pages as unknown as { id: number; title: string; slug: string } | null;
+            const page = product.pages as unknown as { id: number; title: string; public_username: string; slug: string } | null;
             const imageUrl = publicStorageUrl(product.image_path);
             const descriptionHtml = normalizeDescriptionToHtml(product.description);
             return (
@@ -134,7 +135,7 @@ export default async function ProductsPage({
                           Manage Page
                         </a>
                         <a
-                          href={`/${user!.name}/${page.slug}`}
+                          href={publicPagePath(page)}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="flex w-full items-center justify-center gap-1 rounded-lg bg-primary/10 px-2 py-1.5 text-[10px] font-bold text-primary transition-all hover:bg-primary hover:text-white"

@@ -9,39 +9,33 @@ import { detectDeviceType } from "@/lib/analytics";
  * because the visibility rule (published + active + subscription bypass)
  * is enforced here in application code, not via RLS — same authorization
  * model as the original controller. Never expose this module to the client.
- *
- * NOTE (carried over from the Laravel audit, not fixed here — flagged for
- * a product decision): the public URL is /{username}/{slug}, but the
- * Laravel controller actually matches `username` against `users.name`
- * (a free-text display name), not a unique username column — the
- * controller's own comment calls this out as a known shortcut. Two users
- * with the same display name would collide. Preserved as-is for behavior
- * parity; recommend introducing a real unique `username` column before
- * this becomes a live 404/wrong-page issue in production.
+ * Resolves the immutable page address before loading the owner, so profile
+ * renames cannot break shared links or make them resolve to another owner.
  */
 export async function loadPublicPage(username: string, slug: string) {
   const supabase = createAdminClient();
 
-  const { data: owner } = await supabase
-    .from("users")
-    .select(
-      "id, name, bypass_subscription, public_branding_enabled, logo_path, logo_enabled, header_branding_enabled, profile_photo_path, business_title, category, bio, services_text, contact_email, contact_phone, contact_phone_code, contact_whatsapp, landing_layout"
-    )
-    .eq("name", username)
-    .maybeSingle();
-
-  if (!owner) return { kind: "not_found" as const };
-
   const { data: page } = await supabase
     .from("pages")
     .select("*")
-    .eq("user_id", owner.id)
+    .eq("public_username", username)
     .eq("slug", slug)
     .eq("is_published", true)
     .is("deleted_at", null)
     .maybeSingle();
 
   if (!page) return { kind: "not_found" as const };
+
+  const { data: owner } = await supabase
+    .from("users")
+    .select(
+      "id, name, bypass_subscription, public_branding_enabled, logo_path, logo_enabled, header_branding_enabled, profile_photo_path, business_title, category, bio, services_text, contact_email, contact_phone, contact_phone_code, contact_whatsapp, landing_layout"
+    )
+    .eq("id", page.user_id)
+    .maybeSingle();
+
+  if (!owner) return { kind: "not_found" as const };
+
   if (page.status !== "active") return { kind: "inactive" as const };
 
   const hasAccess = owner.bypass_subscription === true || (await hasActiveSubscription(owner.id));

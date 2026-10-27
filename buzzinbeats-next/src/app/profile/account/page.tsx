@@ -56,7 +56,7 @@ export default async function AccountSettingsPage() {
               Username
               <span
                 className="material-symbols-outlined cursor-help text-xs text-slate-400"
-                title="Your public URL uses your full name as the username. Change your name above to update it — limited to once every 30 days."
+                title="New pages use your current full name in their URL. Existing page links and QR codes stay permanently unchanged when you change your name."
               >
                 info
               </span>

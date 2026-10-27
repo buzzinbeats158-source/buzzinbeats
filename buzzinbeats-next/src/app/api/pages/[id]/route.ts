@@ -17,9 +17,22 @@ export async function PUT(request: Request, { params }: { params: Promise<{ id: 
   }
 
   const supabase = await createClient();
+  const { data: page, error: lookupError } = await supabase
+    .from("pages")
+    .select("slug")
+    .eq("id", id)
+    .eq("user_id", user.id)
+    .is("deleted_at", null)
+    .maybeSingle();
+  if (lookupError) return NextResponse.json({ success: false, message: lookupError.message }, { status: 500 });
+  if (!page) return NextResponse.json({ success: false, message: "Not found" }, { status: 404 });
+  if (formData.has("slug") && slug !== page.slug) {
+    return NextResponse.json({ success: false, message: "This page's URL is permanently locked to protect shared links and QR codes." }, { status: 422 });
+  }
+
   const { error } = await supabase
     .from("pages")
-    .update({ title, description, slug, updated_at: new Date().toISOString() })
+    .update({ title, description, updated_at: new Date().toISOString() })
     .eq("id", id)
     .eq("user_id", user.id);
 

@@ -2,6 +2,7 @@ import { requireAdmin } from "@/lib/data/admin";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { deleteProductAdminAction } from "@/lib/data/admin-actions";
 import { publicStorageUrl } from "@/lib/storage";
+import { publicPagePath } from "@/lib/public-page-url";
 
 const PAGE_SIZE = 10;
 
@@ -15,7 +16,7 @@ export default async function AdminProductsPage({ searchParams }: { searchParams
 
   const { data: products, count: total } = await supabase
     .from("products")
-    .select("id, title, link, image_path, created_at, users(name, username), pages(title, slug)", { count: "exact" })
+    .select("id, title, link, image_path, created_at, users(name, username), pages(title, public_username, slug)", { count: "exact" })
     .order("created_at", { ascending: false })
     .range(from, to);
 
@@ -44,8 +45,8 @@ export default async function AdminProductsPage({ searchParams }: { searchParams
             <tbody className="divide-y divide-slate-100">
               {(products ?? []).map((p) => {
                 const owner = p.users as unknown as { name: string; username: string } | null;
-                const pg = p.pages as unknown as { title: string; slug: string } | null;
-                const pageHref = owner?.username && pg?.slug ? `/${owner.username}/${pg.slug}` : null;
+                const pg = p.pages as unknown as { title: string; public_username: string; slug: string } | null;
+                const pageHref = pg ? publicPagePath(pg) : null;
                 return (
                   <tr key={p.id}>
                     <td className="px-4 py-3 text-slate-500">#{p.id}</td>

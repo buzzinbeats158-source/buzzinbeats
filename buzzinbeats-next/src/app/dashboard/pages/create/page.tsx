@@ -2,12 +2,14 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { publicPageUrl } from "@/lib/public-page-url";
 
 type PageRecord = {
   id: number;
   title: string;
   description: string | null;
   slug: string;
+  public_username: string;
   qr_color: string | null;
   qr_logo_path: string | null;
 };
@@ -41,6 +43,7 @@ export default function CreatePageScreen() {
   const previewTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const isEditMode = !!page;
+  const urlUsername = page?.public_username ?? username;
 
   useEffect(() => {
     setOrigin(window.location.origin);
@@ -63,7 +66,7 @@ export default function CreatePageScreen() {
       });
   }, [editId]);
 
-  const previewUrl = `${origin.replace(/^https?:\/\//, "")}/${username}/${slug || "..."}`;
+  const previewUrl = publicPageUrl({ public_username: urlUsername, slug: slug || "..." }, origin).replace(/^https?:\/\//, "");
 
   useEffect(() => {
     if (!slugTouched && title) {
@@ -75,7 +78,7 @@ export default function CreatePageScreen() {
     if (!isEditMode && !title) return;
     if (previewTimeout.current) clearTimeout(previewTimeout.current);
     previewTimeout.current = setTimeout(() => {
-      const fullUrl = `${origin}/${username}/${slug || "..."}`;
+      const fullUrl = publicPageUrl({ public_username: urlUsername, slug: slug || "..." }, origin);
       fetch("/api/pages/qr-preview", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -85,7 +88,7 @@ export default function CreatePageScreen() {
         .then((d) => setQrSvg(d.svg))
         .catch(() => {});
     }, 300);
-  }, [slug, qrColor, origin, username, isEditMode, title]);
+  }, [slug, qrColor, origin, urlUsername, isEditMode, title]);
 
   async function handlePublish() {
     if (!title) {
@@ -230,10 +233,11 @@ export default function CreatePageScreen() {
               <label className="block text-sm font-medium text-slate-700">Custom URL Slug</label>
               <div className="flex items-center">
                 <span className="rounded-l-lg border border-r-0 border-slate-200 bg-slate-100 px-4 py-2.5 text-sm text-slate-500">
-                  {origin.replace(/^https?:\/\//, "")}/{username}/
+                  {origin.replace(/^https?:\/\//, "")}/{urlUsername}/
                 </span>
                 <input
                   value={slug}
+                  readOnly={!!editId}
                   onChange={(e) => {
                     setSlugTouched(true);
                     setSlug(e.target.value);
@@ -242,7 +246,11 @@ export default function CreatePageScreen() {
                   className="flex-1 rounded-r-lg border border-slate-200 bg-slate-50 px-4 py-2.5 outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary"
                 />
               </div>
-              <p className="text-xs text-slate-400">Your unique page address. Can be edited at any time.</p>
+              <p className="text-xs text-slate-400">
+                {editId
+                  ? "This address is permanently locked to protect shared links and QR codes."
+                  : "Choose your address carefully. It is permanently locked when you create the page, even if you later change your name."}
+              </p>
             </div>
 
             <div className={`grid grid-cols-2 gap-4 ${isEditMode ? "" : "pointer-events-none opacity-50"}`}>

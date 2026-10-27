@@ -39,6 +39,7 @@ export async function updateAccountAction(formData: FormData) {
 
   revalidatePath("/profile/account");
   revalidatePath("/profile", "layout");
+  revalidatePath("/dashboard", "layout");
 }
 
 export async function updatePasswordAction(formData: FormData) {

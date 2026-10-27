@@ -4,11 +4,9 @@ import { useState } from "react";
 
 export default function PageHeaderCard({
   page,
-  username,
   publicUrl,
 }: {
-  page: { id: number; page_id: string | null; title: string; description: string | null; slug: string };
-  username: string;
+  page: { id: number; page_id: string | null; title: string; description: string | null; public_username: string; slug: string };
   publicUrl: string;
 }) {
   const [copied, setCopied] = useState(false);
@@ -38,7 +36,7 @@ export default function PageHeaderCard({
           <div className="inline-flex items-center gap-2 rounded-lg border border-slate-100 bg-slate-50 p-2 pr-4">
             <span className="rounded border border-slate-200 bg-white px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-slate-500">Slug</span>
             <span className="font-mono text-sm text-slate-600">
-              buzzinbeats.com/{username}/{page.slug}
+              buzzinbeats.com/{page.public_username}/{page.slug}
             </span>
           </div>
 

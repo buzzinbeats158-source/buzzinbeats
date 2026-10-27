@@ -16,7 +16,8 @@ type Props = {
 
 export default async function PublicPage({ params }: Props) {
   const { username, slug } = await params;
-  const result = await loadPublicPage(decodeURIComponent(username), decodeURIComponent(slug));
+  // Next.js has already decoded route params (including literal % signs).
+  const result = await loadPublicPage(username, slug);
 
   if (result.kind === "not_found") notFound();
 

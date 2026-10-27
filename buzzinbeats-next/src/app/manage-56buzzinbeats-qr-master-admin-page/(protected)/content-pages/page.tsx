@@ -2,6 +2,7 @@ import Link from "next/link";
 import { requireAdmin } from "@/lib/data/admin";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { deletePageAction } from "@/lib/data/admin-actions";
+import { publicPagePath } from "@/lib/public-page-url";
 
 const BASE = "/manage-56buzzinbeats-qr-master-admin-page/content-pages";
 const PAGE_SIZE = 10;
@@ -22,7 +23,7 @@ export default async function AdminContentPagesPage({ searchParams }: { searchPa
 
   const { data: pages, count: totalPages } = await supabase
     .from("pages")
-    .select("id, title, slug, page_id, status, is_published, created_at, users(name, username)", { count: "exact" })
+    .select("id, title, public_username, slug, page_id, status, is_published, created_at, users(name, username)", { count: "exact" })
     .order("created_at", { ascending: false })
     .range(from, to);
 
@@ -80,9 +81,9 @@ export default async function AdminContentPagesPage({ searchParams }: { searchPa
                       <Link href={`${BASE}/${p.id}`} className="mr-3 text-sm font-medium text-blue-600 hover:text-blue-900">
                         View
                       </Link>
-                      {owner?.username && (
+                      {p.public_username && (
                         <a
-                          href={`/${owner.username}/${p.slug}`}
+                          href={publicPagePath(p)}
                           target="_blank"
                           rel="noreferrer"
                           className="mr-3 text-sm font-medium text-blue-600 hover:text-blue-900"

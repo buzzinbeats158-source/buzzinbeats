@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useMemo, useState, useTransition } from "react";
+import { publicPagePath } from "@/lib/public-page-url";
 
 type PageRow = {
   id: number;
@@ -10,6 +11,7 @@ type PageRow = {
   title: string;
   description: string | null;
   slug: string;
+  public_username: string;
   status: string;
   is_published: boolean;
   productsCount: number;
@@ -20,7 +22,6 @@ type PageRow = {
 
 export default function PagesTable({
   pages,
-  username,
   planLimit,
   initialActiveCount,
   togglePageStatus,
@@ -28,7 +29,6 @@ export default function PagesTable({
   deactivateAll,
 }: {
   pages: PageRow[];
-  username: string;
   planLimit: number;
   initialActiveCount: number;
   togglePageStatus: (pageId: number, status: "active" | "inactive") => Promise<{ status: string }>;
@@ -189,7 +189,7 @@ export default function PagesTable({
             <tbody className="divide-y divide-gray-100">
               {filtered.map((page) => {
                 const status = statuses[page.id];
-                const publicHref = `/${username}/${page.slug}`;
+                const publicHref = publicPagePath(page);
                 return (
                   <tr key={page.id} className="group transition-colors hover:bg-orange-50/30">
                     <td className="px-6 py-5 text-center text-sm font-bold text-gray-400">

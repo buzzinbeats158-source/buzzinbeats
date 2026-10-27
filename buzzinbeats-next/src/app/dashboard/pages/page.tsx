@@ -47,6 +47,7 @@ export default async function PagesPage() {
     title: p.title,
     description: p.description,
     slug: p.slug,
+    public_username: p.public_username,
     status: p.status,
     is_published: p.is_published,
     productsCount: productsCountByPage[p.id] ?? 0,
@@ -88,7 +89,6 @@ export default async function PagesPage() {
 
       <PagesTable
         pages={rows}
-        username={user!.name}
         planLimit={limit}
         initialActiveCount={activeCount}
         togglePageStatus={togglePageStatus}

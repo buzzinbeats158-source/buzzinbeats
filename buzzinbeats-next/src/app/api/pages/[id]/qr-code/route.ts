@@ -3,6 +3,7 @@ import { getCurrentUser } from "@/lib/data/current-user";
 import { createClient } from "@/lib/supabase/server";
 import { generateQrPng, generateQrSvg } from "@/lib/qr";
 import { downloadPublicObject } from "@/lib/storage/r2";
+import { publicPageUrl } from "@/lib/public-page-url";
 
 /** Mirrors Laravel PageController::downloadQrCode(). */
 export async function GET(request: Request, { params }: { params: Promise<{ id: string }> }) {
@@ -16,14 +17,14 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
   const supabase = await createClient();
   const { data: page } = await supabase
     .from("pages")
-    .select("id, slug, qr_color, qr_logo_path")
+    .select("id, public_username, slug, qr_color, qr_logo_path")
     .eq("id", id)
     .eq("user_id", user.id)
     .maybeSingle();
 
   if (!page) return NextResponse.json({ message: "Not found" }, { status: 404 });
 
-  const publicUrl = `${process.env.NEXT_PUBLIC_SITE_URL ?? new URL(request.url).origin}/${user.name}/${page.slug}`;
+  const publicUrl = publicPageUrl(page, process.env.NEXT_PUBLIC_SITE_URL ?? new URL(request.url).origin);
 
   let logoBuffer: Buffer | null = null;
   if (page.qr_logo_path) {
